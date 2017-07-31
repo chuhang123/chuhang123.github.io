@@ -50,13 +50,7 @@
 <li>具有校验机制，一旦被篡改，通信双方会立刻发现。</li>
 <li>配备身份证书，防止身份被冒充。</li>
 </ul>
-<h2 id="https通信过程"><a href="#https通信过程" class="headerlink" title="https通信过程"></a>https通信过程</h2><p>时序图如下<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_093.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>说明：</p>
+<h2 id="https通信过程"><a href="#https通信过程" class="headerlink" title="https通信过程"></a>https通信过程</h2><p>时序图如下<br><img src="/images/选区_093.png" alt=""><br>说明：</p>
 <ul>
 <li>步骤1中的证书包含了公钥、颁证机构、网址、过期时间。</li>
 <li>如果服务器端需要客户端提供证书，则会在步骤1中的返回信息中增加一个参数（要求客户端提供证书），那么步骤4中也会增加一个参数（客户端证书）。</li>
@@ -135,23 +129,11 @@
 </ul>
 <h2 id="如何获取session"><a href="#如何获取session" class="headerlink" title="如何获取session"></a>如何获取session</h2><p>我们可以通过一下方式通过键值对的形式储存设置session。<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HttpSession session = request.getSession()<span class="comment">;</span></div><div class="line">session.setAttribute(key, value)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
 <p>运行后，我们可以看到redis中多了一条记录。但是我们如何把这条记录取出来呢，这个问题似乎难倒了很多人。在上面配置spring时，我们加入了以下代码<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置HttpSession策略。默认读取header中的X-Auth-Token,作为sessionId。</span></div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="keyword">public</span> <span class="function">HttpSessionStrategy <span class="title">httpSessionStrategy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HeaderHttpSessionStrategy(); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这段代码的作用是，当我们接收到http请求时，响应头信息会有<code>x-auth-token</code>，当我们你发送请求时，头信息中也会有<code>x-auth-token</code>。回到问题，接下来如何具体实现呢，时序图如下<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_083.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>当我们第一次发送请求后，响应头信息中会有一项<code>x-auth-token</code>，再发送下一次请求时，把第一次请求的<code>x-auth-token</code>及对应的值放在头信息中，那么HttpSession就认为是同一个客户发送的请求，我们就可以通过<code>getAttribute</code>方法获取session信息了。</p>
+<p>这段代码的作用是，当我们接收到http请求时，响应头信息会有<code>x-auth-token</code>，当我们你发送请求时，头信息中也会有<code>x-auth-token</code>。回到问题，接下来如何具体实现呢，时序图如下<br><img src="/images/选区_083.png" alt=""><br>当我们第一次发送请求后，响应头信息中会有一项<code>x-auth-token</code>，再发送下一次请求时，把第一次请求的<code>x-auth-token</code>及对应的值放在头信息中，那么HttpSession就认为是同一个客户发送的请求，我们就可以通过<code>getAttribute</code>方法获取session信息了。</p>
 <blockquote>
 <p>时序图中的长方形表示激活，代表时序图中对象执行一项操作的时期。</p>
 </blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过时序图屡一下关系<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_084.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>通过时序图可以知道，我们把session信息储存在过滤器中，这样session就不依赖于各个节点的服务器，直接从高性能的键值对数据库redis中获取session信息。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过时序图屡一下关系<br><img src="/images/选区_084.png" alt=""><br>通过时序图可以知道，我们把session信息储存在过滤器中，这样session就不依赖于各个节点的服务器，直接从高性能的键值对数据库redis中获取session信息。</p>
 <p>参考文献：1.<a href="https://docs.spring.io/spring-session/docs/current/reference/html5/guides/rest.html" target="_blank" rel="external">https://docs.spring.io/spring-session/docs/current/reference/html5/guides/rest.html</a> </p>
 ]]></content>
     
@@ -359,23 +341,17 @@
 </li>
 </ul>
 <p>完成后，将会在系统目录下生成 keystore.p12文件，你也可以在指定目录下生成该文件，如果在<code>/home/administrator/下载/installpackage/key</code>路径下生成keystore.p12文件，可使用下面的指令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize <span class="number">2048</span> -keystore <span class="regexp">/home/</span>administrator<span class="regexp">/下载/i</span>nstallpackage<span class="regexp">/key/</span>keystore.p12 -validity <span class="number">3650</span></div></pre></td></tr></table></figure></p>
-<p>此方法比较方便快捷，但是浏览器会提示不安全（如下图），比较适用于开发阶段。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_079.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p>此方法比较方便快捷，但是浏览器会提示不安全（如下图），比较适用于开发阶段。<br><img src="/images/选区_079.png" alt=""></p>
 <ul>
 <li>另外一种是通过正规渠道购买。</li>
 </ul>
 <h2 id="在SpringMVC中启用https协议"><a href="#在SpringMVC中启用https协议" class="headerlink" title="在SpringMVC中启用https协议"></a>在SpringMVC中启用https协议</h2><p>首先，在配置文件中引入Spring Boot依赖。Spring Boot内嵌的tomcat服务器会在http服务的8080端口启动。在application.properties文件中通过一下配置可启用https协议：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">server.port=<span class="number">8443</span></div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-store</span>=classpath:keystore<span class="selector-class">.p12</span> 		<span class="comment">//把之前生成的证书放在src/main/resources目录下</span></div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-store-password</span>=changeit</div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-password</span>=changeit</div></pre></td></tr></table></figure></p>
-<p>按照以上配置，启动应用程序，即可访问<a href="https://localhost:8443" target="_blank" rel="external">https://localhost:8443</a> 。</p>
+<p>按照以上配置，启动应用程序，即可访问<a href="https://localhost:8443">https://localhost:8443</a> 。</p>
 <h2 id="将http请求重定向至http"><a href="#将http请求重定向至http" class="headerlink" title="将http请求重定向至http"></a>将http请求重定向至http</h2><p>如果你也想使你的应用程序支持http服务，可以在配置文件中增加一下代码<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">Bean</span></div><div class="line">public EmbeddedServletContainerFactory servletContainer() &#123;</div><div class="line">    TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() &#123;</div><div class="line">    @Override</div><div class="line">    protected void postProcessContext(<span class="built_in">Context</span> <span class="built_in">context</span>) &#123;</div><div class="line">      SecurityConstraint securityConstraint = new SecurityConstraint()<span class="comment">;</span></div><div class="line">      securityConstraint.setUserConstraint(<span class="string">"CONFIDENTIAL"</span>)<span class="comment">;</span></div><div class="line">      SecurityCollection collection = new SecurityCollection()<span class="comment">;</span></div><div class="line">      collection.<span class="keyword">addPattern("/*");</span></div><div class="line">      securityConstraint.<span class="keyword">addCollection(collection);</span></div><div class="line">      <span class="built_in">context</span>.<span class="keyword">addConstraint(securityConstraint);</span></div><div class="line">    &#125;</div><div class="line">  &#125;<span class="comment">;</span></div><div class="line"></div><div class="line">  tomcat.<span class="keyword">addAdditionalTomcatConnectors(initiateHttpConnector());</span></div><div class="line">  return tomcat<span class="comment">;</span></div><div class="line">&#125;</div><div class="line">private Connector initiateHttpConnector() &#123;</div><div class="line">  Connector connector = new Connector(<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span>)<span class="comment">;</span></div><div class="line">  connector.setScheme(<span class="string">"http"</span>)<span class="comment">;</span></div><div class="line">  connector.setPort(<span class="number">8080</span>)<span class="comment">;</span></div><div class="line">  connector.setSecure(false)<span class="comment">;</span></div><div class="line">  connector.setRedirectPort(<span class="number">8443</span>)<span class="comment">;</span></div><div class="line"></div><div class="line">  return connector<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>配置完成后，如果您访问<a href="http://localhost8080" target="_blank" rel="external">http://localhost8080</a> ,浏览器将会跳转至<a href="https://localhost:8443/" target="_blank" rel="external">https://localhost:8443/</a> 。</p>
+<p>配置完成后，如果您访问<a href="http://localhost8080" target="_blank" rel="external">http://localhost8080</a> ,浏览器将会跳转至<a href="https://localhost:8443/">https://localhost:8443/</a> 。</p>
 <h2 id="所犯的错误"><a href="#所犯的错误" class="headerlink" title="所犯的错误"></a>所犯的错误</h2><ul>
 <li>最开始google这个问题时，看到starkoverflow中有人说使用https服务的前提条件就是配置tomcat支持https。但是之前认为每次应用程序能在tomcat服务器上启动，是因为idea自带的tomcat。后来看了一篇<a href="https://spring.io/blog/2014/03/07/deploying-spring-boot-applications" target="_blank" rel="external">官方文档</a> ，才知道是spring boot集成了tomcat。</li>
-<li>有时候过于追求完美，在linux、windows系统下分别配置tomcat多个版本，然后在idea中集成tomcat时windows系统一直出问题，也耽误了一些时间。也因此有了<a href="https://chuhang123.github.io/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/">这篇博客</a> </li>
+<li>有时候过于追求完美，在linux、windows系统下分别配置tomcat多个版本，然后在idea中集成tomcat时windows系统一直出问题，也耽误了一些时间。也因此有了<a href="https://chuhang123.github.io/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/" target="_blank" rel="external">这篇博客</a> </li>
 </ul>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>解决这个问题花费了较长时间，主要原因是平时看文档看的太少，对很多东西都不了解。解决问题的过程中很多情况是不知道把代码放在那，不清楚是否适用于本项目。解决的问题中下载了多个实例，对sping的架构有了进一步的认识。</p>
 <blockquote>
@@ -416,13 +392,7 @@
 <blockquote>
 <p>参考文献：<a href="https://ywxv.github.io/wxapp-http-request.html" target="_blank" rel="external">微信小程序中对网络请求的封装</a> </p>
 </blockquote>
-<h2 id="SpringMvc使用zuul过滤"><a href="#SpringMvc使用zuul过滤" class="headerlink" title="SpringMvc使用zuul过滤"></a>SpringMvc使用zuul过滤</h2><p>在SpringMvc中，使用zuul可以对请求进行过滤，使用请参考<a href="http://spring.io/guides/gs/routing-and-filtering/" target="_blank" rel="external">官方文档</a><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/7.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>由上图可知，前台请求的地址实际上是zuul过滤器的地址，然后再由zuul过滤器进行转发到后台的逻辑层。在项目上线后，我们可以吧zuul过滤器放在一个服务器中，把后台的逻辑层代码放在另外一个服务器中，从而减轻了服务器的负担。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取请求</span></div><div class="line">RequestContext ctx = RequestContext.getCurrentContext();</div><div class="line">HttpServletRequest request = ctx.getRequest();</div></pre></td></tr></table></figure></p>
+<h2 id="SpringMvc使用zuul过滤"><a href="#SpringMvc使用zuul过滤" class="headerlink" title="SpringMvc使用zuul过滤"></a>SpringMvc使用zuul过滤</h2><p>在SpringMvc中，使用zuul可以对请求进行过滤，使用请参考<a href="http://spring.io/guides/gs/routing-and-filtering/" target="_blank" rel="external">官方文档</a><br><img src="/images/7.png" alt=""><br>由上图可知，前台请求的地址实际上是zuul过滤器的地址，然后再由zuul过滤器进行转发到后台的逻辑层。在项目上线后，我们可以吧zuul过滤器放在一个服务器中，把后台的逻辑层代码放在另外一个服务器中，从而减轻了服务器的负担。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取请求</span></div><div class="line">RequestContext ctx = RequestContext.getCurrentContext();</div><div class="line">HttpServletRequest request = ctx.getRequest();</div></pre></td></tr></table></figure></p>
 <ul>
 <li>我们可以根据ctx对象来设置请求的状态码、请求的头信息、拦截请求等一系列操作。查找的途径是直接看RequestContext包中的方法。</li>
 <li>我们可以根据request对象来获取请求的参数。我们可以直接浏览HttpServletRequest接口中的方法。</li>
@@ -453,24 +423,12 @@
     <content type="html"><![CDATA[<p>如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。   </p>
 <a id="more"></a>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>本文的实例中，主要表示净水器和服务器之间的交互过程。需要注意的是，此实例主要表示净水器和服务器之间进行http请求。净水器的有效参数：上次交互时间、创建时间、净水前水质、净水后水质、净水器编号、用水量、充值信息。</p>
-<h2 id="不规范的时序图"><a href="#不规范的时序图" class="headerlink" title="不规范的时序图"></a>不规范的时序图</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/8.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<h2 id="不规范的时序图"><a href="#不规范的时序图" class="headerlink" title="不规范的时序图"></a>不规范的时序图</h2><p><img src="/images/8.jpg" alt=""></p>
 <h2 id="时序图的相关知识"><a href="#时序图的相关知识" class="headerlink" title="时序图的相关知识"></a>时序图的相关知识</h2><ul>
 <li>时序图的定义：描述了对象之间传递消息的时间顺序, 用来表示用例中的行为顺序, 是强调消息时间顺序的交互图。</li>
 <li>时序图组成 : 时序图包括四个元素 对象(Object), 生命线(Lifeline), 激活(Activation), 消息(Message);</li>
 </ul>
-<h2 id="规范后的时序图"><a href="#规范后的时序图" class="headerlink" title="规范后的时序图"></a>规范后的时序图</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/9.jpg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<h2 id="规范后的时序图"><a href="#规范后的时序图" class="headerlink" title="规范后的时序图"></a>规范后的时序图</h2><p><img src="/images/9.jpg" alt=""></p>
 <h2 id="错误之处"><a href="#错误之处" class="headerlink" title="错误之处"></a>错误之处</h2><ul>
 <li>请求成功的表示方法为200</li>
 <li>返回信息为虚线，且返回消息后相应的对象不再处于激活状态</li>
@@ -502,26 +460,8 @@
     
     <content type="html"><![CDATA[<p>最近要开发一个小程序的项目，必须要使用https协议，idea自带的tomcat不知道怎么配置成https协议的，就想着在idea中部署自己电脑中的tomcat。下面是在idea中部署tomcat的过程。环境：2017版的idea，tomcat8，jdk1.8。</p>
 <a id="more"></a>
-<p>1.file-&gt;setting-&gt;Application Servers，添加本机的tomcat,起一个名字，选则tomcat所在的路径。<br> <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_072.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br> 2.Run-&gt;Edit Configurations,点击左上角的加号<br>  <img src="/images/选区_073.png" alt=""><br>  起一个名字，然后点击右下角的apply。<br>  3.打开Project Structure（ctrl+Alt+shift+s）<br>  <img src="/images/选区_074.png" alt=""><br>  选择artifacts，然后选择红色方框中的web appliscation: Exploded.<br>    <img src="/images/选区_075.png" alt=""><br>    然后点击加号，选择directory contentl，选择项目中的一个目录即可，因为我的项目中暂时没有视图层，因此暂时选择c层的目录。然后保存运行即可。</p>
-<p>4.这时点击运行，发现会在浏览器中访问localhost,但是服务器没有响应，会出现这样的界面<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_080.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br> 依次点击run-&gt;Debug Configurations<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_076.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br> 勾选方框中的内容，tomcat就能正常的运行了。</p>
+<p>1.file-&gt;setting-&gt;Application Servers，添加本机的tomcat,起一个名字，选则tomcat所在的路径。<br> <img src="/images/选区_072.png" alt=""><br> 2.Run-&gt;Edit Configurations,点击左上角的加号<br>  <img src="/images/选区_073.png" alt=""><br>  起一个名字，然后点击右下角的apply。<br>  3.打开Project Structure（ctrl+Alt+shift+s）<br>  <img src="/images/选区_074.png" alt=""><br>  选择artifacts，然后选择红色方框中的web appliscation: Exploded.<br>    <img src="/images/选区_075.png" alt=""><br>    然后点击加号，选择directory contentl，选择项目中的一个目录即可，因为我的项目中暂时没有视图层，因此暂时选择c层的目录。然后保存运行即可。</p>
+<p>4.这时点击运行，发现会在浏览器中访问localhost,但是服务器没有响应，会出现这样的界面<br><img src="/images/选区_080.png" alt=""><br> 依次点击run-&gt;Debug Configurations<br><img src="/images/选区_076.png" alt=""><br> 勾选方框中的内容，tomcat就能正常的运行了。</p>
 ]]></content>
     
     <summary type="html">
@@ -600,37 +540,11 @@
     
     <content type="html"><![CDATA[<p>最近开发小程序，需要前后台对接，当使用wx.request方法向后台发送http请求时，控制台报错，随后就google了一下，本文主要讲述此问题及解决方案。</p>
 <a id="more"></a>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>控制台报错截图：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/1.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>看到控制台报错，提示要配置域名，google了一下，确实有很多关于wx.request请求配置服务器的文章，就配置了服务器（当时并没有服务器）。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/4.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>难道在开发阶段每次测试都要吧代码推送到服务器么？有这么麻烦么？于是就开始尝试通过第三方平台，以便利前后台对接的测试，如leancloud等，然而效果并不理想。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>控制台报错截图：<br><img src="/images/1.png" alt=""><br>看到控制台报错，提示要配置域名，google了一下，确实有很多关于wx.request请求配置服务器的文章，就配置了服务器（当时并没有服务器）。<br><img src="/images/4.png" alt=""><br>难道在开发阶段每次测试都要吧代码推送到服务器么？有这么麻烦么？于是就开始尝试通过第三方平台，以便利前后台对接的测试，如leancloud等，然而效果并不理想。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ul>
 <li>首先，控制台虽然报错了，但是依然可以正确的发送请求，点击请求的地址即可得到请求的返回值（如果请求地址正确的话，地址可以是本地的）。在测试阶段是可以正确的发送http请求，但是项目上线后就需要配置服务器了。</li>
 <li>端口问题。wx,request文档中说明了请求的地址不能带有端口号，笔着使用SpringMvc后台开发，端口号是8080，讲端口号改为80即可省略端口号。</li>
-<li>在本地开发，如果想配置服务器的话，可以通过修改host文件的方法。将本地与配置的域名进行绑定。配置方法如下：<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/2.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-红色方框中的代码作用是，当我们访问api.water.mengyunzhi.com服务器时，实际上访问的地址是localhost。DNS的作用就是对ip地址进行解析，使其和域名相对应。而hosts文件是用来提高效率的，在进行dns请求前，系统会先检查自己的hosts文件中是否有这个地址的映射关系，如果有，则直接调用这个映射关系，如果没有再向dns服务器提出域名解析。也就是说 Hosts 的请求级别比 DNS 高。当你的 Hosts 文件里面有对应的 IP 时，它就会直接访问那个 IP，而不用通过 DNS。相应的，在小程序的后台配置这个域名即可：<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/3.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-实际上访问的是localhost，这样就方便了我们前后台对接。</li>
+<li>在本地开发，如果想配置服务器的话，可以通过修改host文件的方法。将本地与配置的域名进行绑定。配置方法如下：<br><img src="/images/2.png" alt=""><br>红色方框中的代码作用是，当我们访问api.water.mengyunzhi.com服务器时，实际上访问的地址是localhost。DNS的作用就是对ip地址进行解析，使其和域名相对应。而hosts文件是用来提高效率的，在进行dns请求前，系统会先检查自己的hosts文件中是否有这个地址的映射关系，如果有，则直接调用这个映射关系，如果没有再向dns服务器提出域名解析。也就是说 Hosts 的请求级别比 DNS 高。当你的 Hosts 文件里面有对应的 IP 时，它就会直接访问那个 IP，而不用通过 DNS。相应的，在小程序的后台配置这个域名即可：<br><img src="/images/3.png" alt=""><br>实际上访问的是localhost，这样就方便了我们前后台对接。</li>
 </ul>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在这个问题上，笔者开始的时候犯了一个严重的错误：在软件开发中，相信大多时候第三方平台都会尽力满足开发者的需求，方便我们开发测试。而不至于发送一个请求就要配置服务器这样繁琐的操作。</p>
 <blockquote>
@@ -645,9 +559,9 @@
     </summary>
     
     
-      <category term="小程序" scheme="http://localhost:4000/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
-    
       <category term="服务器" scheme="http://localhost:4000/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="小程序" scheme="http://localhost:4000/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
       <category term="wx.request" scheme="http://localhost:4000/tags/wx-request/"/>
     
@@ -771,21 +685,9 @@
     <content type="html"><![CDATA[<p>从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。</p>
 <a id="more"></a>
 <h2 id="调整IDEA的启动JVM参数"><a href="#调整IDEA的启动JVM参数" class="headerlink" title="调整IDEA的启动JVM参数"></a>调整IDEA的启动JVM参数</h2><p>打开idea，help-&gt;Edit Custom VM options,idea会自动复制bin目录下的idea64.exe.vmoptions文件（32位的idea.exe.vmoptions），我的运行内存是8g的，作如下调整<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">Xms1g		/<span class="regexp">/JVM初始分配的堆内存</span></span></div><div class="line">-<span class="ruby"><span class="regexp">Xmx4g		/</span><span class="regexp">/JVM最大允许分配的堆内存，按需分配</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:ReservedCodeCacheSize=1024m</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:PermSize=372M		/</span><span class="regexp">/JVM初始分配的非堆内存</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:MaxPermSize=744M		/</span><span class="regexp">/JVM最大允许分配的非堆内存，按需分配</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:+UseConcMarkSweepGC</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:SoftRefLRUPolicyMSPerMB=50</span></span></div></pre></td></tr></table></figure></p>
-<p>改变jvm参数后，如果想了解内存的分布状况，勾选一下信息，可在右下角显示内存分配<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_022.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>官方文档给出了推荐的修改方式，参考文献2讲述了jvm内存管理机制，及参数的详细说明，参考文献3从多个方面讲述了如何分配堆内存能够最有效的提高idea的效率。</p>
+<p>改变jvm参数后，如果想了解内存的分布状况，勾选一下信息，可在右下角显示内存分配<br><img src="/images/选区_022.png" alt=""><br>官方文档给出了推荐的修改方式，参考文献2讲述了jvm内存管理机制，及参数的详细说明，参考文献3从多个方面讲述了如何分配堆内存能够最有效的提高idea的效率。</p>
 <p>参考文献：<br>1.<a href="https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties" target="_blank" rel="external">https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties</a><br>2.<a href="http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html" target="_blank" rel="external">http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html</a><br>3.<a href="http://tomaszdziurko.com/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/" target="_blank" rel="external">http://tomaszdziurko.com/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/</a> </p>
-<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><p>全部勾选红色方框中的部分<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_021.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><p>全部勾选红色方框中的部分<br><img src="/images/选区_021.png" alt=""></p>
 <blockquote>
 <p>在Edit Configuration中，查看Before launch中是否有太多设置，耽误运行时间。</p>
 </blockquote>
@@ -835,19 +737,13 @@
 <h2 id="hexo上传图片、视频"><a href="#hexo上传图片、视频" class="headerlink" title="hexo上传图片、视频"></a>hexo上传图片、视频</h2><ul>
 <li>将图片储存在本地，通过<code>![](/images/image.jpg)</code>访问图片，文件夹images和_posts为同一目录。将图片放在images文件夹即可。</li>
 <li>将图片储存在七牛云。如果你的博客有大量的图片，可以将图片放在七牛云上，然后复制url，插入即可。</li>
-<li><p>上传视频，建议将视频放在七牛云上，<a href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/">实例效果</a> ，实例代码</p>
+<li><p>上传视频，建议将视频放在七牛云上，<a href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/" target="_blank" rel="external">实例效果</a> ，实例代码</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">video</span> src=<span class="string">'http://oligray7m.bkt.clouddn.com/1490257478069.mp4 '</span> type=<span class="string">'video/mp4'</span> controls=<span class="string">'controls'</span>  <span class="attribute">width</span>=<span class="string">'100%'</span> height=<span class="string">'100%'</span>&gt;</div><div class="line">&lt;/video&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>使用<a href="https://asciinema.org" target="_blank" rel="external">asciinema</a> 在终端录制视频，安装及操作过程请参考<a href="https://asciinema.org/docs/installation" target="_blank" rel="external">这里</a> ，执行<code>asciinema rec</code>命令，开始录制终端，<code>Ctrl-D</code>结束录制，录制结束后会生成录制视频的网址。您也可以注册一个asclinema账号，对录制的视频进行管理。</p>
 </li>
 </ul>
-<h2 id="畅言评论系统"><a href="#畅言评论系统" class="headerlink" title="畅言评论系统"></a>畅言评论系统</h2><p>因为多说评论系统即将关闭,<a href="https://disqus.com/" target="_blank" rel="external">disqus</a> 在国内访问受限，所以本博客转为使用<a href="https://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a> 。但是很多主题默认的评论系统只有duoshuo或者disqus。所以需要自行安装。登录官网，发现使用畅言必须要有备案才能使用，不过也不用担心，在网上随便找一个域名，在<a href="http://icp.chinaz.com/" target="_blank" rel="external">ICP备案查询</a> 中查找备案号，填入即可，审核通过后（大约要几个小时），进入畅言后台-系统设置-通用设置，进行修改即可，eg：<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_002.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>。</p>
+<h2 id="畅言评论系统"><a href="#畅言评论系统" class="headerlink" title="畅言评论系统"></a>畅言评论系统</h2><p>因为多说评论系统即将关闭,<a href="https://disqus.com/" target="_blank" rel="external">disqus</a> 在国内访问受限，所以本博客转为使用<a href="https://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a> 。但是很多主题默认的评论系统只有duoshuo或者disqus。所以需要自行安装。登录官网，发现使用畅言必须要有备案才能使用，不过也不用担心，在网上随便找一个域名，在<a href="http://icp.chinaz.com/" target="_blank" rel="external">ICP备案查询</a> 中查找备案号，填入即可，审核通过后（大约要几个小时），进入畅言后台-系统设置-通用设置，进行修改即可，eg：<img src="/images/选区_002.png" alt="">。</p>
 <p>将代码放在comment.ejs文件中<br><img src="/images/选区_001.png" width="85%" height="85%"><br>将博客部署到服务器上，你可能发现电脑端没有畅言评论框，打开控制台，你可能会看到下面的报错提示<br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chuhang<span class="number">123</span>.github.io/:<span class="number">211</span> Mixed Content: The page at 'https://chuhang<span class="number">123</span>.github.io/<span class="number">2017</span>/<span class="number">05</span>/<span class="number">19</span>/<span class="symbol">%E6</span><span class="symbol">%89</span><span class="symbol">%8</span>B<span class="symbol">%E6</span><span class="symbol">%8</span>A<span class="symbol">%8</span>A<span class="symbol">%E6</span><span class="symbol">%89</span><span class="symbol">%8</span>Bhexo<span class="symbol">%E5</span><span class="symbol">%BB</span><span class="symbol">%BA</span><span class="symbol">%E7</span><span class="symbol">%AB</span><span class="symbol">%99</span>/' was loaded over HTTPS, but requested an insecure script 'http://assets.changyan.sohu.com/upload/changyan.js?conf=<span class="keyword">c</span><span class="number">245</span>a<span class="number">97</span>f<span class="number">00</span>b<span class="number">9</span>a<span class="number">8889</span>eb<span class="number">374</span>d<span class="number">9</span>a<span class="number">544</span><span class="keyword">c</span><span class="number">127</span>&amp;appid=cyt<span class="number">1</span>izVGM'. This request has been blocked<span class="comment">; the content must be served over HTTPS.</span></div></pre></td></tr></table></figure></p>
 <p>大致是说只能使用https请求，不能使用http请求，有以下两种解决方案</p>
 <ul>
@@ -877,44 +773,6 @@
     
     
       <category term="hexo" scheme="http://localhost:4000/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Brief process of building a personal blog</title>
-    <link href="http://localhost:4000/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
-    <id>http://localhost:4000/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-30T03:03:49.284Z</updated>
-    
-    <content type="html"><![CDATA[<p>The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.</p>
-<a id="more"></a>
-<h3 id="Building-Github-Pages"><a href="#Building-Github-Pages" class="headerlink" title="Building Github Pages"></a>Building Github Pages</h3><p>I have built my site by Github Pages, recommond <a href="https://pages.github.com/" target="_blank" rel="external">document </a> . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space.</p>
-<h3 id="Learning-Hexo"><a href="#Learning-Hexo" class="headerlink" title="Learning Hexo"></a>Learning Hexo</h3><p>Building hexo environment needs node, npm, and the specific installation steps has been given by hexo <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">official website</a> . I recommend <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">learning materials</a> , if after deploying on server, there are not styles, you can deploy on the site again after executing <code>hexo clean</code> command. I used <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman theme</a> , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. </p>
-<h3 id="Writting-blogs-by-using-markdown"><a href="#Writting-blogs-by-using-markdown" class="headerlink" title="Writting blogs by using markdown"></a>Writting blogs by using markdown</h3><p>I did not know markdown before building blog, so I download a mainstream markdown tool called <a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure> </p>
-<blockquote>
-<p>If some of the result is not what you want, you can add a space and try it again. eg: <code>### mengyunzhi</code>（there is a space between the last “#”and”m”). </p>
-</blockquote>
-<h3 id="Uploading-pictures"><a href="#Uploading-pictures" class="headerlink" title="Uploading pictures"></a>Uploading pictures</h3><p>Because you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used  <a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">Image Uploader</a> to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. </p>
-<h3 id="Searching-in-site"><a href="#Searching-in-site" class="headerlink" title="Searching in site"></a>Searching in site</h3><p>I tried to baidu’s search site and para, but I failed. And I saw <a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>  by accident, you can try it in my blog. Here is a <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">tutorial</a> . I recommend swiftype instead baidu and google’s search site. </p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Above is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you!</p>
-<p>If there are mistakes, please correct me.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="English" scheme="http://localhost:4000/categories/English/"/>
-    
     
   </entry>
   
@@ -965,6 +823,38 @@
   </entry>
   
   <entry>
+    <title>Brief process of building a personal blog</title>
+    <link href="http://localhost:4000/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
+    <id>http://localhost:4000/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-30T03:03:49.284Z</updated>
+    
+    <content type="html"><![CDATA[<p>The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.</p>
+<a id="more"></a>
+<h3 id="Building-Github-Pages"><a href="#Building-Github-Pages" class="headerlink" title="Building Github Pages"></a>Building Github Pages</h3><p>I have built my site by Github Pages, recommond <a href="https://pages.github.com/" target="_blank" rel="external">document </a> . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space.</p>
+<h3 id="Learning-Hexo"><a href="#Learning-Hexo" class="headerlink" title="Learning Hexo"></a>Learning Hexo</h3><p>Building hexo environment needs node, npm, and the specific installation steps has been given by hexo <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">official website</a> . I recommend <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">learning materials</a> , if after deploying on server, there are not styles, you can deploy on the site again after executing <code>hexo clean</code> command. I used <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman theme</a> , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. </p>
+<h3 id="Writting-blogs-by-using-markdown"><a href="#Writting-blogs-by-using-markdown" class="headerlink" title="Writting blogs by using markdown"></a>Writting blogs by using markdown</h3><p>I did not know markdown before building blog, so I download a mainstream markdown tool called <a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt=""> </p>
+<blockquote>
+<p>If some of the result is not what you want, you can add a space and try it again. eg: <code>### mengyunzhi</code>（there is a space between the last “#”and”m”). </p>
+</blockquote>
+<h3 id="Uploading-pictures"><a href="#Uploading-pictures" class="headerlink" title="Uploading pictures"></a>Uploading pictures</h3><p>Because you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used  <a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">Image Uploader</a> to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. </p>
+<h3 id="Searching-in-site"><a href="#Searching-in-site" class="headerlink" title="Searching in site"></a>Searching in site</h3><p>I tried to baidu’s search site and para, but I failed. And I saw <a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>  by accident, you can try it in my blog. Here is a <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">tutorial</a> . I recommend swiftype instead baidu and google’s search site. </p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Above is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you!</p>
+<p>If there are mistakes, please correct me.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="http://localhost:4000/categories/English/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>错题本</title>
     <link href="http://localhost:4000/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
     <id>http://localhost:4000/2017/05/16/错题本/</id>
@@ -984,39 +874,6 @@
     
     
       <category term="错题" scheme="http://localhost:4000/tags/%E9%94%99%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构——线性表</title>
-    <link href="http://localhost:4000/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
-    <id>http://localhost:4000/2017/05/16/链表/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-30T02:25:39.033Z</updated>
-    
-    <content type="html"><![CDATA[<p>选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的<a href="http://study.163.com/course/courseMain.htm?courseId=468002" target="_blank" rel="external">视频教程</a> ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固</p>
-<a id="more"></a>
-<p><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A1%A8" target="_blank" rel="external">线性表</a> 是由n个数据元素组成的有限序列。线性表分为<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="external">链表</a> 和<a href="https://zh.wikipedia.org/wiki/%E9%A1%BA%E5%BA%8F%E8%A1%A8" target="_blank" rel="external">顺序表</a> 。</p>
-<ul>
-<li>顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。</li>
-<li>链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。</li>
-<li>为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。</li>
-</ul>
-<blockquote>
-<p>参考 <a href="http://www.cnblogs.com/cyjb/p/Lists.html" target="_blank" rel="external">http://www.cnblogs.com/cyjb/p/Lists.html</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的&lt;a href=&quot;http://study.163.com/course/courseMain.htm?courseId=468002&quot;&gt;视频教程&lt;/a&gt; ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据结构" scheme="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="链表" scheme="http://localhost:4000/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
@@ -1057,6 +914,39 @@
   </entry>
   
   <entry>
+    <title>数据结构——线性表</title>
+    <link href="http://localhost:4000/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
+    <id>http://localhost:4000/2017/05/16/链表/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-30T02:25:39.033Z</updated>
+    
+    <content type="html"><![CDATA[<p>选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的<a href="http://study.163.com/course/courseMain.htm?courseId=468002" target="_blank" rel="external">视频教程</a> ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固</p>
+<a id="more"></a>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A1%A8" target="_blank" rel="external">线性表</a> 是由n个数据元素组成的有限序列。线性表分为<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="external">链表</a> 和<a href="https://zh.wikipedia.org/wiki/%E9%A1%BA%E5%BA%8F%E8%A1%A8" target="_blank" rel="external">顺序表</a> 。</p>
+<ul>
+<li>顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。</li>
+<li>链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。</li>
+<li>为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。</li>
+</ul>
+<blockquote>
+<p>参考 <a href="http://www.cnblogs.com/cyjb/p/Lists.html" target="_blank" rel="external">http://www.cnblogs.com/cyjb/p/Lists.html</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的&lt;a href=&quot;http://study.163.com/course/courseMain.htm?courseId=468002&quot;&gt;视频教程&lt;/a&gt; ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据结构" scheme="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="链表" scheme="http://localhost:4000/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于链表的C语言信息管理系统</title>
     <link href="http://localhost:4000/2017/05/13/%E5%9F%BA%E4%BA%8E%E9%93%BE%E8%A1%A8%E7%9A%84C%E8%AF%AD%E8%A8%80%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     <id>http://localhost:4000/2017/05/13/基于链表的C语言信息管理系统/</id>
@@ -1065,14 +955,7 @@
     
     <content type="html"><![CDATA[<p>这两天学习了朋友推荐的<a href="http://study.163.com/course/courseMain.htm?courseId=1003284031" target="_blank" rel="external">C语言链表视频教程</a> ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。</p>
 <a id="more"></a>
-<h3 id="认识链表"><a href="#认识链表" class="headerlink" title="认识链表"></a>认识链表</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>上图为单向链表的模型，图中包含三个节点，且每个节点包含两个部分，一部分保存或者显示节点的有关信息，一部分储存下一个节点的地址。从第一个节点依次指向最后一个节点，最后一个节点指向一个空值。如果需要查找链表的节点，则需要依次遍历节点。</p>
+<h3 id="认识链表"><a href="#认识链表" class="headerlink" title="认识链表"></a>认识链表</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt=" " title="图片"><br>上图为单向链表的模型，图中包含三个节点，且每个节点包含两个部分，一部分保存或者显示节点的有关信息，一部分储存下一个节点的地址。从第一个节点依次指向最后一个节点，最后一个节点指向一个空值。如果需要查找链表的节点，则需要依次遍历节点。</p>
 <h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><p>基于C语言链表，实现对学生表的基本增删改查操作，将学生数据保存至文件中，从文件中取出。并逐步完善系统，如在链表头和尾及指定位置增加学生信息，恢复删除学生信息等功能。</p>
 <h3 id="整体规划"><a href="#整体规划" class="headerlink" title="整体规划"></a>整体规划</h3><p>定义学生节点STUNODE，声明链表的头和尾g_pHead，g_pEnd，使用switch语句，针对不同的指令，执行不同的命令。搭建学生信息管理系统的骨架。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//学生结点</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">STU</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> arrStuNum[<span class="number">10</span>];</div><div class="line">	<span class="keyword">char</span> arrStuName[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> iStuScore;</div><div class="line">	<span class="class"><span class="keyword">struct</span> _<span class="title">STU</span>* <span class="title">pNext</span>;</span></div><div class="line">&#125; STUNODE;</div><div class="line"></div><div class="line"><span class="comment">//声明链表的头和尾</span></div><div class="line">STUNODE* g_pHead = <span class="literal">NULL</span>;</div><div class="line">STUNODE* g_pEnd = <span class="literal">NULL</span>;</div></pre></td></tr></table></figure></p>
 <h3 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h3><p>以删除功能为例，具体说明。分成只有一个节点或者多个节点两种情况讨论。</p>
@@ -1100,6 +983,41 @@
       <category term="demo" scheme="http://localhost:4000/tags/demo/"/>
     
       <category term="链表" scheme="http://localhost:4000/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>angular+thinkphp上传图片</title>
+    <link href="http://localhost:4000/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+    <id>http://localhost:4000/2017/05/13/angular-thinkphp上传图片/</id>
+    <published>2017-05-13T01:51:34.000Z</published>
+    <updated>2017-07-30T02:24:28.038Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。</p>
+<a id="more"></a>
+<p>效果如下：</p>
+<video src="http://oligray7m.bkt.clouddn.com/1490257478069.mp4 " type="video/mp4" controls="controls" width="100%" height="100%"><br></video>
+
+<h2 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h2><ul>
+<li>获取图片信息</li>
+<li>将图片移至指定的目录下</li>
+<li>将图片的信息保存到数据库中</li>
+</ul>
+<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><p>下载插件示例代码，插件的示例代码非常完善，图片的缩略图功能、进度展示、图片尺寸等信息示例代码中都有，并且每一个操作的返回值也都给出了，使用非常方便。<br>将相关资源引入，上传的样式即可实现。修改路由信息，当用户点击上传按钮时，调用请求的方法，讲图片保存，并返回图片id，点击提交按钮，将图片id存入对应的模块中。</p>
+<p>对应的时序图如下(新增和编辑)：<br><img src="http://oligray7m.bkt.clouddn.com/RJH2OW2@MXSUE1FGO64YV7S.png" alt="时序图"> </p>
+<p>如有错误，欢迎指正！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="angularjs" scheme="http://localhost:4000/categories/angularjs/"/>
+    
+    
+      <category term="demo" scheme="http://localhost:4000/tags/demo/"/>
     
   </entry>
   
@@ -1141,47 +1059,6 @@
     
     
       <category term="web" scheme="http://localhost:4000/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>angular+thinkphp上传图片</title>
-    <link href="http://localhost:4000/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
-    <id>http://localhost:4000/2017/05/13/angular-thinkphp上传图片/</id>
-    <published>2017-05-13T01:51:34.000Z</published>
-    <updated>2017-07-30T02:24:28.038Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。</p>
-<a id="more"></a>
-<p>效果如下：</p>
-<video src="http://oligray7m.bkt.clouddn.com/1490257478069.mp4 " type="video/mp4" controls="controls" width="100%" height="100%"><br></video>
-
-<h2 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h2><ul>
-<li>获取图片信息</li>
-<li>将图片移至指定的目录下</li>
-<li>将图片的信息保存到数据库中</li>
-</ul>
-<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><p>下载插件示例代码，插件的示例代码非常完善，图片的缩略图功能、进度展示、图片尺寸等信息示例代码中都有，并且每一个操作的返回值也都给出了，使用非常方便。<br>将相关资源引入，上传的样式即可实现。修改路由信息，当用户点击上传按钮时，调用请求的方法，讲图片保存，并返回图片id，点击提交按钮，将图片id存入对应的模块中。</p>
-<p>对应的时序图如下(新增和编辑)：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://oligray7m.bkt.clouddn.com/RJH2OW2@MXSUE1FGO64YV7S.png" alt="时序图" title="">
-                </div>
-                <div class="image-caption">时序图</div>
-            </figure> </p>
-<p>如有错误，欢迎指正！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="angularjs" scheme="http://localhost:4000/categories/angularjs/"/>
-    
-    
-      <category term="demo" scheme="http://localhost:4000/tags/demo/"/>
     
   </entry>
   
@@ -1286,13 +1163,7 @@
 <a id="more"></a>
 <h3 id="搭建个人站点"><a href="#搭建个人站点" class="headerlink" title="搭建个人站点"></a>搭建个人站点</h3><p>笔者通过github Pages搭建自己的站点，推荐<a href="https://pages.github.com/" target="_blank" rel="external">学习资料</a> ，如果仅仅是用来写博客，github Pages的300M空间以足够使用，因为现在主流的博客框架均为静态界面，不涉及到和数据库的交互,故不需要太大的空间。</p>
 <h3 id="学习hexo"><a href="#学习hexo" class="headerlink" title="学习hexo"></a>学习hexo</h3><p>搭建hexo环境需要node、npm，具体的安装步骤hexo<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">官网</a> 已给出，推荐hexo<a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">学习资料</a> ，如果部署到站点后网页无样式，执行<code>hexo clean</code>命令后，再次部署到站点即可。笔者使用<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman主题</a>，由于jacman作者的<a href="http://jacman.wuchong.me/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">教程</a> 较为详细，只需一步一步的操作，即可完成主题的设置。</p>
-<h3 id="使用markdown写博客"><a href="#使用markdown写博客" class="headerlink" title="使用markdown写博客"></a>使用markdown写博客</h3><p>笔者在搭建博客之前从未接触过markdown，故首先下载了一个主流的markdown工具<a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> ,了解了markdown的基本语法后，整理了常用的markdown语法，希望对您有所帮助<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>   </p>
+<h3 id="使用markdown写博客"><a href="#使用markdown写博客" class="headerlink" title="使用markdown写博客"></a>使用markdown写博客</h3><p>笔者在搭建博客之前从未接触过markdown，故首先下载了一个主流的markdown工具<a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> ,了解了markdown的基本语法后，整理了常用的markdown语法，希望对您有所帮助<img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt=" " title="示例">   </p>
 <blockquote>
 <p>如果您发现有的效果没有实现，不防加个空格试试。eg：<code>### 梦云智</code>（最后一个”#”和”梦”之间加空格）。</p>
 </blockquote>

@@ -113,21 +113,9 @@
 		<p>从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。</p>
 <a id="more"></a>
 <h2 id="调整IDEA的启动JVM参数"><a href="#调整IDEA的启动JVM参数" class="headerlink" title="调整IDEA的启动JVM参数"></a>调整IDEA的启动JVM参数</h2><p>打开idea，help-&gt;Edit Custom VM options,idea会自动复制bin目录下的idea64.exe.vmoptions文件（32位的idea.exe.vmoptions），我的运行内存是8g的，作如下调整<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">Xms1g		/<span class="regexp">/JVM初始分配的堆内存</span></span></div><div class="line">-<span class="ruby"><span class="regexp">Xmx4g		/</span><span class="regexp">/JVM最大允许分配的堆内存，按需分配</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:ReservedCodeCacheSize=1024m</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:PermSize=372M		/</span><span class="regexp">/JVM初始分配的非堆内存</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:MaxPermSize=744M		/</span><span class="regexp">/JVM最大允许分配的非堆内存，按需分配</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:+UseConcMarkSweepGC</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:SoftRefLRUPolicyMSPerMB=50</span></span></div></pre></td></tr></table></figure></p>
-<p>改变jvm参数后，如果想了解内存的分布状况，勾选一下信息，可在右下角显示内存分配<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_022.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>官方文档给出了推荐的修改方式，参考文献2讲述了jvm内存管理机制，及参数的详细说明，参考文献3从多个方面讲述了如何分配堆内存能够最有效的提高idea的效率。</p>
+<p>改变jvm参数后，如果想了解内存的分布状况，勾选一下信息，可在右下角显示内存分配<br><img src="/images/选区_022.png" alt=""><br>官方文档给出了推荐的修改方式，参考文献2讲述了jvm内存管理机制，及参数的详细说明，参考文献3从多个方面讲述了如何分配堆内存能够最有效的提高idea的效率。</p>
 <p>参考文献：<br>1.<a href="https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties" target="_blank" rel="external">https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties</a><br>2.<a href="http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html" target="_blank" rel="external">http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html</a><br>3.<a href="http://tomaszdziurko.com/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/" target="_blank" rel="external">http://tomaszdziurko.com/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/</a> </p>
-<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><p>全部勾选红色方框中的部分<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_021.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><p>全部勾选红色方框中的部分<br><img src="/images/选区_021.png" alt=""></p>
 <blockquote>
 <p>在Edit Configuration中，查看Before launch中是否有太多设置，耽误运行时间。</p>
 </blockquote>
@@ -291,6 +279,10 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/https/" title="https">https<sup>2</sup></a></li>
 			
 		
@@ -303,10 +295,6 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/链表/" title="链表">链表<sup>2</sup></a></li>
 			
 		
@@ -315,7 +303,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/session/" title="session">session<sup>1</sup></a></li>
 			
 		
 			
@@ -339,7 +327,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -347,11 +335,11 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
 			
 		
 			
@@ -367,7 +355,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/enviroment/" title="enviroment">enviroment<sup>1</sup></a></li>
+				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
 			
 		
 		</ul>

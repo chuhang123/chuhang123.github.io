@@ -149,23 +149,11 @@
 </ul>
 <h2 id="如何获取session"><a href="#如何获取session" class="headerlink" title="如何获取session"></a>如何获取session</h2><p>我们可以通过一下方式通过键值对的形式储存设置session。<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HttpSession session = request.getSession()<span class="comment">;</span></div><div class="line">session.setAttribute(key, value)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
 <p>运行后，我们可以看到redis中多了一条记录。但是我们如何把这条记录取出来呢，这个问题似乎难倒了很多人。在上面配置spring时，我们加入了以下代码<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置HttpSession策略。默认读取header中的X-Auth-Token,作为sessionId。</span></div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="keyword">public</span> <span class="function">HttpSessionStrategy <span class="title">httpSessionStrategy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HeaderHttpSessionStrategy(); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这段代码的作用是，当我们接收到http请求时，响应头信息会有<code>x-auth-token</code>，当我们你发送请求时，头信息中也会有<code>x-auth-token</code>。回到问题，接下来如何具体实现呢，时序图如下<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_083.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>当我们第一次发送请求后，响应头信息中会有一项<code>x-auth-token</code>，再发送下一次请求时，把第一次请求的<code>x-auth-token</code>及对应的值放在头信息中，那么HttpSession就认为是同一个客户发送的请求，我们就可以通过<code>getAttribute</code>方法获取session信息了。</p>
+<p>这段代码的作用是，当我们接收到http请求时，响应头信息会有<code>x-auth-token</code>，当我们你发送请求时，头信息中也会有<code>x-auth-token</code>。回到问题，接下来如何具体实现呢，时序图如下<br><img src="/images/选区_083.png" alt=""><br>当我们第一次发送请求后，响应头信息中会有一项<code>x-auth-token</code>，再发送下一次请求时，把第一次请求的<code>x-auth-token</code>及对应的值放在头信息中，那么HttpSession就认为是同一个客户发送的请求，我们就可以通过<code>getAttribute</code>方法获取session信息了。</p>
 <blockquote>
 <p>时序图中的长方形表示激活，代表时序图中对象执行一项操作的时期。</p>
 </blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过时序图屡一下关系<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_084.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>通过时序图可以知道，我们把session信息储存在过滤器中，这样session就不依赖于各个节点的服务器，直接从高性能的键值对数据库redis中获取session信息。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过时序图屡一下关系<br><img src="/images/选区_084.png" alt=""><br>通过时序图可以知道，我们把session信息储存在过滤器中，这样session就不依赖于各个节点的服务器，直接从高性能的键值对数据库redis中获取session信息。</p>
 <p>参考文献：1.<a href="https://docs.spring.io/spring-session/docs/current/reference/html5/guides/rest.html" target="_blank" rel="external">https://docs.spring.io/spring-session/docs/current/reference/html5/guides/rest.html</a> </p>
   
 	</div>
@@ -335,6 +323,10 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/https/" title="https">https<sup>2</sup></a></li>
 			
 		
@@ -347,10 +339,6 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/链表/" title="链表">链表<sup>2</sup></a></li>
 			
 		
@@ -359,7 +347,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/session/" title="session">session<sup>1</sup></a></li>
 			
 		
 			
@@ -383,7 +371,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -391,11 +379,11 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
 			
 		
 			
@@ -411,7 +399,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/enviroment/" title="enviroment">enviroment<sup>1</sup></a></li>
+				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
 			
 		
 		</ul>

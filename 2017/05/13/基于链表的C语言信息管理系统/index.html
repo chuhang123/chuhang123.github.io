@@ -111,14 +111,7 @@
 		
 		<p>这两天学习了朋友推荐的<a href="http://study.163.com/course/courseMain.htm?courseId=1003284031" target="_blank" rel="external">C语言链表视频教程</a> ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。</p>
 <a id="more"></a>
-<h3 id="认识链表"><a href="#认识链表" class="headerlink" title="认识链表"></a>认识链表</h3><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>上图为单向链表的模型，图中包含三个节点，且每个节点包含两个部分，一部分保存或者显示节点的有关信息，一部分储存下一个节点的地址。从第一个节点依次指向最后一个节点，最后一个节点指向一个空值。如果需要查找链表的节点，则需要依次遍历节点。</p>
+<h3 id="认识链表"><a href="#认识链表" class="headerlink" title="认识链表"></a>认识链表</h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt=" " title="图片"><br>上图为单向链表的模型，图中包含三个节点，且每个节点包含两个部分，一部分保存或者显示节点的有关信息，一部分储存下一个节点的地址。从第一个节点依次指向最后一个节点，最后一个节点指向一个空值。如果需要查找链表的节点，则需要依次遍历节点。</p>
 <h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><p>基于C语言链表，实现对学生表的基本增删改查操作，将学生数据保存至文件中，从文件中取出。并逐步完善系统，如在链表头和尾及指定位置增加学生信息，恢复删除学生信息等功能。</p>
 <h3 id="整体规划"><a href="#整体规划" class="headerlink" title="整体规划"></a>整体规划</h3><p>定义学生节点STUNODE，声明链表的头和尾g_pHead，g_pEnd，使用switch语句，针对不同的指令，执行不同的命令。搭建学生信息管理系统的骨架。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//学生结点</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">STU</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> arrStuNum[<span class="number">10</span>];</div><div class="line">	<span class="keyword">char</span> arrStuName[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> iStuScore;</div><div class="line">	<span class="class"><span class="keyword">struct</span> _<span class="title">STU</span>* <span class="title">pNext</span>;</span></div><div class="line">&#125; STUNODE;</div><div class="line"></div><div class="line"><span class="comment">//声明链表的头和尾</span></div><div class="line">STUNODE* g_pHead = <span class="literal">NULL</span>;</div><div class="line">STUNODE* g_pEnd = <span class="literal">NULL</span>;</div></pre></td></tr></table></figure></p>
 <h3 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h3><p>以删除功能为例，具体说明。分成只有一个节点或者多个节点两种情况讨论。</p>
@@ -168,18 +161,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/05/16/Difference-between-GET-and-POST/" title="Difference between GET and POST">
+ <a href="/2017/05/16/链表/" title="数据结构——线性表">
   <strong>上一篇：</strong><br/>
   <span>
-  Difference between GET and POST</span>
+  数据结构——线性表</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/05/13/订单号生成规则简述/"  title="订单号生成规则简述">
+<a href="/2017/05/13/angular-thinkphp上传图片/"  title="angular+thinkphp上传图片">
  <strong>下一篇：</strong><br/> 
- <span>订单号生成规则简述
+ <span>angular+thinkphp上传图片
 </span>
 </a>
 </div>
@@ -300,6 +293,10 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/https/" title="https">https<sup>2</sup></a></li>
 			
 		
@@ -312,10 +309,6 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/链表/" title="链表">链表<sup>2</sup></a></li>
 			
 		
@@ -324,7 +317,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/session/" title="session">session<sup>1</sup></a></li>
 			
 		
 			
@@ -348,7 +341,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -356,11 +349,11 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
 			
 		
 			
@@ -376,7 +369,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/enviroment/" title="enviroment">enviroment<sup>1</sup></a></li>
+				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
 			
 		
 		</ul>

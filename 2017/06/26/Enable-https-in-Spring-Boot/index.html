@@ -117,23 +117,17 @@
 </li>
 </ul>
 <p>完成后，将会在系统目录下生成 keystore.p12文件，你也可以在指定目录下生成该文件，如果在<code>/home/administrator/下载/installpackage/key</code>路径下生成keystore.p12文件，可使用下面的指令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize <span class="number">2048</span> -keystore <span class="regexp">/home/</span>administrator<span class="regexp">/下载/i</span>nstallpackage<span class="regexp">/key/</span>keystore.p12 -validity <span class="number">3650</span></div></pre></td></tr></table></figure></p>
-<p>此方法比较方便快捷，但是浏览器会提示不安全（如下图），比较适用于开发阶段。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/选区_079.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p>此方法比较方便快捷，但是浏览器会提示不安全（如下图），比较适用于开发阶段。<br><img src="/images/选区_079.png" alt=""></p>
 <ul>
 <li>另外一种是通过正规渠道购买。</li>
 </ul>
 <h2 id="在SpringMVC中启用https协议"><a href="#在SpringMVC中启用https协议" class="headerlink" title="在SpringMVC中启用https协议"></a>在SpringMVC中启用https协议</h2><p>首先，在配置文件中引入Spring Boot依赖。Spring Boot内嵌的tomcat服务器会在http服务的8080端口启动。在application.properties文件中通过一下配置可启用https协议：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">server.port=<span class="number">8443</span></div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-store</span>=classpath:keystore<span class="selector-class">.p12</span> 		<span class="comment">//把之前生成的证书放在src/main/resources目录下</span></div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-store-password</span>=changeit</div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-password</span>=changeit</div></pre></td></tr></table></figure></p>
-<p>按照以上配置，启动应用程序，即可访问<a href="https://localhost:8443" target="_blank" rel="external">https://localhost:8443</a> 。</p>
+<p>按照以上配置，启动应用程序，即可访问<a href="https://localhost:8443">https://localhost:8443</a> 。</p>
 <h2 id="将http请求重定向至http"><a href="#将http请求重定向至http" class="headerlink" title="将http请求重定向至http"></a>将http请求重定向至http</h2><p>如果你也想使你的应用程序支持http服务，可以在配置文件中增加一下代码<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">Bean</span></div><div class="line">public EmbeddedServletContainerFactory servletContainer() &#123;</div><div class="line">    TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() &#123;</div><div class="line">    @Override</div><div class="line">    protected void postProcessContext(<span class="built_in">Context</span> <span class="built_in">context</span>) &#123;</div><div class="line">      SecurityConstraint securityConstraint = new SecurityConstraint()<span class="comment">;</span></div><div class="line">      securityConstraint.setUserConstraint(<span class="string">"CONFIDENTIAL"</span>)<span class="comment">;</span></div><div class="line">      SecurityCollection collection = new SecurityCollection()<span class="comment">;</span></div><div class="line">      collection.<span class="keyword">addPattern("/*");</span></div><div class="line">      securityConstraint.<span class="keyword">addCollection(collection);</span></div><div class="line">      <span class="built_in">context</span>.<span class="keyword">addConstraint(securityConstraint);</span></div><div class="line">    &#125;</div><div class="line">  &#125;<span class="comment">;</span></div><div class="line"></div><div class="line">  tomcat.<span class="keyword">addAdditionalTomcatConnectors(initiateHttpConnector());</span></div><div class="line">  return tomcat<span class="comment">;</span></div><div class="line">&#125;</div><div class="line">private Connector initiateHttpConnector() &#123;</div><div class="line">  Connector connector = new Connector(<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span>)<span class="comment">;</span></div><div class="line">  connector.setScheme(<span class="string">"http"</span>)<span class="comment">;</span></div><div class="line">  connector.setPort(<span class="number">8080</span>)<span class="comment">;</span></div><div class="line">  connector.setSecure(false)<span class="comment">;</span></div><div class="line">  connector.setRedirectPort(<span class="number">8443</span>)<span class="comment">;</span></div><div class="line"></div><div class="line">  return connector<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>配置完成后，如果您访问<a href="http://localhost8080" target="_blank" rel="external">http://localhost8080</a> ,浏览器将会跳转至<a href="https://localhost:8443/" target="_blank" rel="external">https://localhost:8443/</a> 。</p>
+<p>配置完成后，如果您访问<a href="http://localhost8080" target="_blank" rel="external">http://localhost8080</a> ,浏览器将会跳转至<a href="https://localhost:8443/">https://localhost:8443/</a> 。</p>
 <h2 id="所犯的错误"><a href="#所犯的错误" class="headerlink" title="所犯的错误"></a>所犯的错误</h2><ul>
 <li>最开始google这个问题时，看到starkoverflow中有人说使用https服务的前提条件就是配置tomcat支持https。但是之前认为每次应用程序能在tomcat服务器上启动，是因为idea自带的tomcat。后来看了一篇<a href="https://spring.io/blog/2014/03/07/deploying-spring-boot-applications" target="_blank" rel="external">官方文档</a> ，才知道是spring boot集成了tomcat。</li>
-<li>有时候过于追求完美，在linux、windows系统下分别配置tomcat多个版本，然后在idea中集成tomcat时windows系统一直出问题，也耽误了一些时间。也因此有了<a href="https://chuhang123.github.io/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/">这篇博客</a> </li>
+<li>有时候过于追求完美，在linux、windows系统下分别配置tomcat多个版本，然后在idea中集成tomcat时windows系统一直出问题，也耽误了一些时间。也因此有了<a href="https://chuhang123.github.io/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/" target="_blank" rel="external">这篇博客</a> </li>
 </ul>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>解决这个问题花费了较长时间，主要原因是平时看文档看的太少，对很多东西都不了解。解决问题的过程中很多情况是不知道把代码放在那，不清楚是否适用于本项目。解决的问题中下载了多个实例，对sping的架构有了进一步的认识。</p>
 <blockquote>
@@ -312,6 +306,10 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/https/" title="https">https<sup>2</sup></a></li>
 			
 		
@@ -324,10 +322,6 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/链表/" title="链表">链表<sup>2</sup></a></li>
 			
 		
@@ -336,7 +330,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/session/" title="session">session<sup>1</sup></a></li>
 			
 		
 			
@@ -360,7 +354,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -368,11 +362,11 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
 			
 		
 			
@@ -388,7 +382,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/enviroment/" title="enviroment">enviroment<sup>1</sup></a></li>
+				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
 			
 		
 		</ul>

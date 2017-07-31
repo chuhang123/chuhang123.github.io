@@ -117,13 +117,7 @@
 <blockquote>
 <p>参考文献：<a href="https://ywxv.github.io/wxapp-http-request.html" target="_blank" rel="external">微信小程序中对网络请求的封装</a> </p>
 </blockquote>
-<h2 id="SpringMvc使用zuul过滤"><a href="#SpringMvc使用zuul过滤" class="headerlink" title="SpringMvc使用zuul过滤"></a>SpringMvc使用zuul过滤</h2><p>在SpringMvc中，使用zuul可以对请求进行过滤，使用请参考<a href="http://spring.io/guides/gs/routing-and-filtering/" target="_blank" rel="external">官方文档</a><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="/images/7.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>由上图可知，前台请求的地址实际上是zuul过滤器的地址，然后再由zuul过滤器进行转发到后台的逻辑层。在项目上线后，我们可以吧zuul过滤器放在一个服务器中，把后台的逻辑层代码放在另外一个服务器中，从而减轻了服务器的负担。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取请求</span></div><div class="line">RequestContext ctx = RequestContext.getCurrentContext();</div><div class="line">HttpServletRequest request = ctx.getRequest();</div></pre></td></tr></table></figure></p>
+<h2 id="SpringMvc使用zuul过滤"><a href="#SpringMvc使用zuul过滤" class="headerlink" title="SpringMvc使用zuul过滤"></a>SpringMvc使用zuul过滤</h2><p>在SpringMvc中，使用zuul可以对请求进行过滤，使用请参考<a href="http://spring.io/guides/gs/routing-and-filtering/" target="_blank" rel="external">官方文档</a><br><img src="/images/7.png" alt=""><br>由上图可知，前台请求的地址实际上是zuul过滤器的地址，然后再由zuul过滤器进行转发到后台的逻辑层。在项目上线后，我们可以吧zuul过滤器放在一个服务器中，把后台的逻辑层代码放在另外一个服务器中，从而减轻了服务器的负担。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取请求</span></div><div class="line">RequestContext ctx = RequestContext.getCurrentContext();</div><div class="line">HttpServletRequest request = ctx.getRequest();</div></pre></td></tr></table></figure></p>
 <ul>
 <li>我们可以根据ctx对象来设置请求的状态码、请求的头信息、拦截请求等一系列操作。查找的途径是直接看RequestContext包中的方法。</li>
 <li>我们可以根据request对象来获取请求的参数。我们可以直接浏览HttpServletRequest接口中的方法。</li>
@@ -297,6 +291,10 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/https/" title="https">https<sup>2</sup></a></li>
 			
 		
@@ -309,10 +307,6 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/服务器/" title="服务器">服务器<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/链表/" title="链表">链表<sup>2</sup></a></li>
 			
 		
@@ -321,7 +315,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
+				<li><a href="/tags/session/" title="session">session<sup>1</sup></a></li>
 			
 		
 			
@@ -345,7 +339,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
+				<li><a href="/tags/安全/" title="安全">安全<sup>1</sup></a></li>
 			
 		
 			
@@ -353,11 +347,11 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
+				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/性能/" title="性能">性能<sup>1</sup></a></li>
+				<li><a href="/tags/asynchronously/" title="asynchronously">asynchronously<sup>1</sup></a></li>
 			
 		
 			
@@ -373,7 +367,7 @@ conf: 'c245a97f00b9a8889eb374d9a544c127'
 			
 		
 			
-				<li><a href="/tags/enviroment/" title="enviroment">enviroment<sup>1</sup></a></li>
+				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
 			
 		
 		</ul>
