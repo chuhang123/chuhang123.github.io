@@ -645,9 +645,9 @@
     </summary>
     
     
-      <category term="服务器" scheme="https://chuhang123.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="小程序" scheme="https://chuhang123.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="服务器" scheme="https://chuhang123.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="wx.request" scheme="https://chuhang123.github.io/tags/wx-request/"/>
     
@@ -881,38 +881,40 @@
   </entry>
   
   <entry>
-    <title>Difference between GET and POST</title>
-    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
-    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
+    <title>Brief process of building a personal blog</title>
+    <link href="https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
+    <id>https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
     <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-30T03:02:11.784Z</updated>
+    <updated>2017-07-30T03:03:49.284Z</updated>
     
-    <content type="html"><![CDATA[<p> According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. </p>
- <a id="more"></a>
-<h3 id="security"><a href="#security" class="headerlink" title="security"></a>security</h3><p> We might see some documents  sometimes display that GET is safe but  disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because  we can not change data by using GET.  And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url.</p>
-<h3 id="The-size-of-the-data-transfer"><a href="#The-size-of-the-data-transfer" class="headerlink" title="The size of the data transfer"></a>The size of the data transfer</h3><ul>
-<li>GET<br>url is limited in special browser or server. For example, the length of url in IE browser is limited  as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited.</li>
-</ul>
-<ul>
-<li>POST<br>because POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST.</li>
-</ul>
-<h3 id="Data-encoding"><a href="#Data-encoding" class="headerlink" title="Data encoding"></a>Data encoding</h3><p>As the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit  must be ASCII coding. If it is not ASCII coding, we need to convert.</p>
-<h3 id="Default-form"><a href="#Default-form" class="headerlink" title="Default form"></a>Default form</h3><p>GET is the default action of form.</p>
-<h3 id="Relationship-with-server"><a href="#Relationship-with-server" class="headerlink" title="Relationship with server"></a>Relationship with server</h3><p>GET is used to get data from server, while POST is used to transfer data to server.</p>
+    <content type="html"><![CDATA[<p>The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.</p>
+<a id="more"></a>
+<h3 id="Building-Github-Pages"><a href="#Building-Github-Pages" class="headerlink" title="Building Github Pages"></a>Building Github Pages</h3><p>I have built my site by Github Pages, recommond <a href="https://pages.github.com/" target="_blank" rel="external">document </a> . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space.</p>
+<h3 id="Learning-Hexo"><a href="#Learning-Hexo" class="headerlink" title="Learning Hexo"></a>Learning Hexo</h3><p>Building hexo environment needs node, npm, and the specific installation steps has been given by hexo <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">official website</a> . I recommend <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">learning materials</a> , if after deploying on server, there are not styles, you can deploy on the site again after executing <code>hexo clean</code> command. I used <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman theme</a> , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. </p>
+<h3 id="Writting-blogs-by-using-markdown"><a href="#Writting-blogs-by-using-markdown" class="headerlink" title="Writting blogs by using markdown"></a>Writting blogs by using markdown</h3><p>I did not know markdown before building blog, so I download a mainstream markdown tool called <a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> </p>
+<blockquote>
+<p>If some of the result is not what you want, you can add a space and try it again. eg: <code>### mengyunzhi</code>（there is a space between the last “#”and”m”). </p>
+</blockquote>
+<h3 id="Uploading-pictures"><a href="#Uploading-pictures" class="headerlink" title="Uploading pictures"></a>Uploading pictures</h3><p>Because you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used  <a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">Image Uploader</a> to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. </p>
+<h3 id="Searching-in-site"><a href="#Searching-in-site" class="headerlink" title="Searching in site"></a>Searching in site</h3><p>I tried to baidu’s search site and para, but I failed. And I saw <a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>  by accident, you can try it in my blog. Here is a <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">tutorial</a> . I recommend swiftype instead baidu and google’s search site. </p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Above is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you!</p>
+<p>If there are mistakes, please correct me.</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt; According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. &lt;/p&gt;
+      &lt;p&gt;The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.&lt;/p&gt;
     
     </summary>
     
       <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
     
-    
-      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
-    
-      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
     
   </entry>
   
@@ -958,44 +960,6 @@
     </summary>
     
       <category term="php" scheme="https://chuhang123.github.io/categories/php/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Brief process of building a personal blog</title>
-    <link href="https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
-    <id>https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-30T03:03:49.284Z</updated>
-    
-    <content type="html"><![CDATA[<p>The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.</p>
-<a id="more"></a>
-<h3 id="Building-Github-Pages"><a href="#Building-Github-Pages" class="headerlink" title="Building Github Pages"></a>Building Github Pages</h3><p>I have built my site by Github Pages, recommond <a href="https://pages.github.com/" target="_blank" rel="external">document </a> . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space.</p>
-<h3 id="Learning-Hexo"><a href="#Learning-Hexo" class="headerlink" title="Learning Hexo"></a>Learning Hexo</h3><p>Building hexo environment needs node, npm, and the specific installation steps has been given by hexo <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">official website</a> . I recommend <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">learning materials</a> , if after deploying on server, there are not styles, you can deploy on the site again after executing <code>hexo clean</code> command. I used <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman theme</a> , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. </p>
-<h3 id="Writting-blogs-by-using-markdown"><a href="#Writting-blogs-by-using-markdown" class="headerlink" title="Writting blogs by using markdown"></a>Writting blogs by using markdown</h3><p>I did not know markdown before building blog, so I download a mainstream markdown tool called <a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure> </p>
-<blockquote>
-<p>If some of the result is not what you want, you can add a space and try it again. eg: <code>### mengyunzhi</code>（there is a space between the last “#”and”m”). </p>
-</blockquote>
-<h3 id="Uploading-pictures"><a href="#Uploading-pictures" class="headerlink" title="Uploading pictures"></a>Uploading pictures</h3><p>Because you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used  <a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">Image Uploader</a> to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. </p>
-<h3 id="Searching-in-site"><a href="#Searching-in-site" class="headerlink" title="Searching in site"></a>Searching in site</h3><p>I tried to baidu’s search site and para, but I failed. And I saw <a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>  by accident, you can try it in my blog. Here is a <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">tutorial</a> . I recommend swiftype instead baidu and google’s search site. </p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Above is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you!</p>
-<p>If there are mistakes, please correct me.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
     
     
   </entry>
@@ -1057,6 +1021,42 @@
   </entry>
   
   <entry>
+    <title>Difference between GET and POST</title>
+    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
+    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-30T03:02:11.784Z</updated>
+    
+    <content type="html"><![CDATA[<p> According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. </p>
+ <a id="more"></a>
+<h3 id="security"><a href="#security" class="headerlink" title="security"></a>security</h3><p> We might see some documents  sometimes display that GET is safe but  disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because  we can not change data by using GET.  And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url.</p>
+<h3 id="The-size-of-the-data-transfer"><a href="#The-size-of-the-data-transfer" class="headerlink" title="The size of the data transfer"></a>The size of the data transfer</h3><ul>
+<li>GET<br>url is limited in special browser or server. For example, the length of url in IE browser is limited  as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited.</li>
+</ul>
+<ul>
+<li>POST<br>because POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST.</li>
+</ul>
+<h3 id="Data-encoding"><a href="#Data-encoding" class="headerlink" title="Data encoding"></a>Data encoding</h3><p>As the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit  must be ASCII coding. If it is not ASCII coding, we need to convert.</p>
+<h3 id="Default-form"><a href="#Default-form" class="headerlink" title="Default form"></a>Default form</h3><p>GET is the default action of form.</p>
+<h3 id="Relationship-with-server"><a href="#Relationship-with-server" class="headerlink" title="Relationship with server"></a>Relationship with server</h3><p>GET is used to get data from server, while POST is used to transfer data to server.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
+    
+    
+      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
+    
+      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于链表的C语言信息管理系统</title>
     <link href="https://chuhang123.github.io/2017/05/13/%E5%9F%BA%E4%BA%8E%E9%93%BE%E8%A1%A8%E7%9A%84C%E8%AF%AD%E8%A8%80%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
     <id>https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/</id>
@@ -1104,47 +1104,6 @@
   </entry>
   
   <entry>
-    <title>angular+thinkphp上传图片</title>
-    <link href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
-    <id>https://chuhang123.github.io/2017/05/13/angular-thinkphp上传图片/</id>
-    <published>2017-05-13T01:51:34.000Z</published>
-    <updated>2017-07-30T02:24:28.038Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。</p>
-<a id="more"></a>
-<p>效果如下：</p>
-<video src="http://oligray7m.bkt.clouddn.com/1490257478069.mp4 " type="video/mp4" controls="controls" width="100%" height="100%"><br></video>
-
-<h2 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h2><ul>
-<li>获取图片信息</li>
-<li>将图片移至指定的目录下</li>
-<li>将图片的信息保存到数据库中</li>
-</ul>
-<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><p>下载插件示例代码，插件的示例代码非常完善，图片的缩略图功能、进度展示、图片尺寸等信息示例代码中都有，并且每一个操作的返回值也都给出了，使用非常方便。<br>将相关资源引入，上传的样式即可实现。修改路由信息，当用户点击上传按钮时，调用请求的方法，讲图片保存，并返回图片id，点击提交按钮，将图片id存入对应的模块中。</p>
-<p>对应的时序图如下(新增和编辑)：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://oligray7m.bkt.clouddn.com/RJH2OW2@MXSUE1FGO64YV7S.png" alt="时序图" title="">
-                </div>
-                <div class="image-caption">时序图</div>
-            </figure> </p>
-<p>如有错误，欢迎指正！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="angularjs" scheme="https://chuhang123.github.io/categories/angularjs/"/>
-    
-    
-      <category term="demo" scheme="https://chuhang123.github.io/tags/demo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>订单号生成规则简述</title>
     <link href="https://chuhang123.github.io/2017/05/13/%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0/"/>
     <id>https://chuhang123.github.io/2017/05/13/订单号生成规则简述/</id>
@@ -1182,6 +1141,47 @@
     
     
       <category term="web" scheme="https://chuhang123.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>angular+thinkphp上传图片</title>
+    <link href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+    <id>https://chuhang123.github.io/2017/05/13/angular-thinkphp上传图片/</id>
+    <published>2017-05-13T01:51:34.000Z</published>
+    <updated>2017-07-30T02:24:28.038Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。</p>
+<a id="more"></a>
+<p>效果如下：</p>
+<video src="http://oligray7m.bkt.clouddn.com/1490257478069.mp4 " type="video/mp4" controls="controls" width="100%" height="100%"><br></video>
+
+<h2 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h2><ul>
+<li>获取图片信息</li>
+<li>将图片移至指定的目录下</li>
+<li>将图片的信息保存到数据库中</li>
+</ul>
+<h2 id="具体细节"><a href="#具体细节" class="headerlink" title="具体细节"></a>具体细节</h2><p>下载插件示例代码，插件的示例代码非常完善，图片的缩略图功能、进度展示、图片尺寸等信息示例代码中都有，并且每一个操作的返回值也都给出了，使用非常方便。<br>将相关资源引入，上传的样式即可实现。修改路由信息，当用户点击上传按钮时，调用请求的方法，讲图片保存，并返回图片id，点击提交按钮，将图片id存入对应的模块中。</p>
+<p>对应的时序图如下(新增和编辑)：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://oligray7m.bkt.clouddn.com/RJH2OW2@MXSUE1FGO64YV7S.png" alt="时序图" title="">
+                </div>
+                <div class="image-caption">时序图</div>
+            </figure> </p>
+<p>如有错误，欢迎指正！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="angularjs" scheme="https://chuhang123.github.io/categories/angularjs/"/>
+    
+    
+      <category term="demo" scheme="https://chuhang123.github.io/tags/demo/"/>
     
   </entry>
   
@@ -1255,6 +1255,27 @@
   </entry>
   
   <entry>
+    <title>Gallery</title>
+    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
+    <id>https://chuhang123.github.io/2017/04/16/test/</id>
+    <published>2017-04-16T01:51:34.000Z</published>
+    <updated>2017-07-30T03:04:06.061Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一个gallery测试</p>
+]]></content>
+    
+    <summary type="html">
+    
+      Gallery Post Test. 测试图片类文章的显示。
+    
+    </summary>
+    
+      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>搭建个人博客全过程简要</title>
     <link href="https://chuhang123.github.io/2017/04/16/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%80%E8%A6%81/"/>
     <id>https://chuhang123.github.io/2017/04/16/搭建个人博客简要/</id>
@@ -1289,27 +1310,6 @@
     
     
       <category term="hexo" scheme="https://chuhang123.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gallery</title>
-    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
-    <id>https://chuhang123.github.io/2017/04/16/test/</id>
-    <published>2017-04-16T01:51:34.000Z</published>
-    <updated>2017-07-30T03:04:06.061Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一个gallery测试</p>
-]]></content>
-    
-    <summary type="html">
-    
-      Gallery Post Test. 测试图片类文章的显示。
-    
-    </summary>
-    
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
-    
     
   </entry>
   
