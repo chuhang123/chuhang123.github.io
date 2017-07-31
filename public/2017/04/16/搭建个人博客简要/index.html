@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>搭建个人博客全过程简要 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="hexo">
+    <meta name="description" content="本文主要简述搭建个人博客的全部流程，从搭建个人站点、学习hexo，到使用markdown写博客、实现上传图片的功能，对具体的技术细节不做讲述。工具：github账号、node、npm、hexo、极简图床、markdown、swiftype。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建个人博客全过程简要">
+<meta property="og:url" content="http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="本文主要简述搭建个人博客的全部流程，从搭建个人站点、学习hexo，到使用markdown写博客、实现上传图片的功能，对具体的技术细节不做讲述。工具：github账号、node、npm、hexo、极简图床、markdown、swiftype。">
+<meta property="og:image" content="http://p1.bqimg.com/567571/10524bb9033523f6.png">
+<meta property="og:updated_time" content="2017-07-30T02:26:03.957Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建个人博客全过程简要">
+<meta name="twitter:description" content="本文主要简述搭建个人博客的全部流程，从搭建个人站点、学习hexo，到使用markdown写博客、实现上传图片的功能，对具体的技术细节不做讲述。工具：github账号、node、npm、hexo、极简图床、markdown、swiftype。">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/10524bb9033523f6.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">搭建个人博客全过程简要</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">搭建个人博客全过程简要</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-04-16T01:51:34.000Z" itemprop="datePublished" class="page-time">
+  2017-04-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搭建个人站点"><span class="post-toc-number">1.</span> <span class="post-toc-text">搭建个人站点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#学习hexo"><span class="post-toc-number">2.</span> <span class="post-toc-text">学习hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用markdown写博客"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用markdown写博客</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上传图片"><span class="post-toc-number">4.</span> <span class="post-toc-text">上传图片</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#站内搜索"><span class="post-toc-number">5.</span> <span class="post-toc-text">站内搜索</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">6.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-搭建个人博客简要"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">搭建个人博客全过程简要</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-04-16 09:51:34" datetime="2017-04-16T01:51:34.000Z"  itemprop="datePublished">2017-04-16</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本文主要简述搭建个人博客的全部流程，从搭建个人站点、学习hexo，到使用markdown写博客、实现上传图片的功能，对具体的技术细节不做讲述。工具：github账号、node、npm、hexo、极简图床、markdown、swiftype。</p>
+<a id="more"></a>
+<h3 id="搭建个人站点"><a href="#搭建个人站点" class="headerlink" title="搭建个人站点"></a>搭建个人站点</h3><p>笔者通过github Pages搭建自己的站点，推荐<a href="https://pages.github.com/" target="_blank" rel="external">学习资料</a> ，如果仅仅是用来写博客，github Pages的300M空间以足够使用，因为现在主流的博客框架均为静态界面，不涉及到和数据库的交互,故不需要太大的空间。</p>
+<h3 id="学习hexo"><a href="#学习hexo" class="headerlink" title="学习hexo"></a>学习hexo</h3><p>搭建hexo环境需要node、npm，具体的安装步骤hexo<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">官网</a> 已给出，推荐hexo<a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">学习资料</a> ，如果部署到站点后网页无样式，执行<code>hexo clean</code>命令后，再次部署到站点即可。笔者使用<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman主题</a>，由于jacman作者的<a href="http://jacman.wuchong.me/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">教程</a> 较为详细，只需一步一步的操作，即可完成主题的设置。</p>
+<h3 id="使用markdown写博客"><a href="#使用markdown写博客" class="headerlink" title="使用markdown写博客"></a>使用markdown写博客</h3><p>笔者在搭建博客之前从未接触过markdown，故首先下载了一个主流的markdown工具<a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> ,了解了markdown的基本语法后，整理了常用的markdown语法，希望对您有所帮助<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>   </p>
+<blockquote>
+<p>如果您发现有的效果没有实现，不防加个空格试试。eg：<code>### 梦云智</code>（最后一个”#”和”梦”之间加空格）。</p>
+</blockquote>
+<h3 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h3><p>因为写博客时经常需要图片加以说明，因此需要上传图片的功能，笔者使用的<a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">极简图床</a> 上传图片，下载后，上传图片，并复制图片地址，就实现了图片的上传功能。</p>
+<h3 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h3><p>折腾了百度站内搜索，没折腾出理想的效果，尝试了para，没有成功，最后无意中看到了<a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a> ,效果可以再我的博客中尝试一下，推荐<a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">教程</a> 。相比于百度、Google的站内搜索，极力推荐swiftype。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上即为搭建个人博客的从无到有的过程。在搭建博客之前，可能会感觉需要过高的技术需求，但真正接触后，发现即使是一个技术小白，也完全有可能在较短的时间内搭建起自己的博客。相信读者只要有搭建博客的决心，就一定能如你所愿。Good Luck!</p>
+<p>如有错误，欢迎指正！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-30T02:26:03.957Z" itemprop="dateUpdated">2017-07-30 10:26:03</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://127.0.0.1:8080">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/&title=《搭建个人博客全过程简要》 — chuhang 技术不宅&pic=http://127.0.0.1:8080/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/&title=《搭建个人博客全过程简要》 — chuhang 技术不宅&source=本文主要简述搭建个人博客的全部流程，从搭建个人站点、学习hexo，到使用markdown写博客、实现上传图片的功能，对具体的技术细节不做讲述。工具：git..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搭建个人博客全过程简要》 — chuhang 技术不宅&url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/&via=http://127.0.0.1:8080" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/04/16/test/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Gallery</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/&title=《搭建个人博客全过程简要》 — chuhang 技术不宅&pic=http://127.0.0.1:8080/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/&title=《搭建个人博客全过程简要》 — chuhang 技术不宅&source=本文主要简述搭建个人博客的全部流程，从搭建个人站点、学习hexo，到使用markdown写博客、实现上传图片的功能，对具体的技术细节不做讲述。工具：git..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搭建个人博客全过程简要》 — chuhang 技术不宅&url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/&via=http://127.0.0.1:8080" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://127.0.0.1:8080/2017/04/16/搭建个人博客简要/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3ay27CQAwFUP7/p+m2FS26todKcc6sUAhhThaWH/N4xOsZr+/3J5/f//bwwsDAuCyjuq33m3t9ZrLpnPp6PwYGxn0Yf0Ww5J48XCYvK/9fDAwMjCS9yxPHPHBjYGBgTBh5CjgJ5RgYGBiTInYSEJNX8E+1OAYGxgUZedf9/z9/ZL6BgYFxKcazuKrFZ/KEXkn847cYGBirGZ8YYSaDgfeMhPrLf2FgYCxl5AcdemOAvFjtATAwMO7AqB7qyg9+5VeOFbcYGBirGUk7vpcgToYBx/qCGBgYKxiTIFhN8qp3NtttGBgYixjVdn8e63oNuAPpIAYGxlJGLwXstdiq3yYlMQYGxm5G76GnhpTzIcTo3WBgYFyEUU3+8hZbdeuTl4WBgbGbkYwnJ4XuaBhZPaiBgYGxlJGXiNWAm2/3QMsPAwNjNaMaNE+ldNVGWyE1xMDAWMfIf5aQeterI8zCfAMDA2MF430Cl4wSkyFoPsjMB6V/jgcwMDBuwPh0AM1Dan6kAwMD4z6M3mGsZt1cvF4+M4KBgbGOMWnQJ4ctqvf0jn1gYGBsZTyLqzfs7LXYClQMDIzVjHz1NjQvTScpKQYGxibGPMj2jnwdDrgYGBg3YOSPrjbaeuOEaujHwMDASDaUU3sHLKKKHAMDA2OcPlaHBxEAAwPjNox8i73rk3sKqSEGBsZSRu+IQ1KaToL42dIXAwPjsowvVQqEmssTAGcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
