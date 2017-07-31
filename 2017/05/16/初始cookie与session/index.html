@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>初始cookie与session | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初始cookie与session">
+<meta property="og:url" content="https://chuhang123.github.io/2017/05/16/初始cookie与session/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。">
+<meta property="og:updated_time" content="2017-07-30T03:02:29.349Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初始cookie与session">
+<meta name="twitter:description" content="作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">初始cookie与session</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">初始cookie与session</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-16T01:51:34.000Z" itemprop="datePublished" class="page-time">
+  2017-05-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/php/">php</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#了解cookie"><span class="post-toc-number">1.</span> <span class="post-toc-text">了解cookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cookie分类"><span class="post-toc-number">2.</span> <span class="post-toc-text">cookie分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cookie的缺陷"><span class="post-toc-number">3.</span> <span class="post-toc-text">cookie的缺陷</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#session是什么技术"><span class="post-toc-number">4.</span> <span class="post-toc-text">session是什么技术</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于session"><span class="post-toc-number">5.</span> <span class="post-toc-text">关于session</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#session和cookie的区别。"><span class="post-toc-number">6.</span> <span class="post-toc-text">session和cookie的区别。</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number"></span> <span class="post-toc-text">总结</span></a>
+        </nav>
+    </aside>
+    
+<article id="post-初始cookie与session"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">初始cookie与session</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-16 09:51:34" datetime="2017-05-16T01:51:34.000Z"  itemprop="datePublished">2017-05-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/php/">php</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。</p>
+<a id="more"></a>
+<h3 id="了解cookie"><a href="#了解cookie" class="headerlink" title="了解cookie"></a>了解cookie</h3><p>当登录一个网站时，网站往往会请求用户输入用户名和密码，并且用户可以勾选“下次自动登录”。如果勾选了，那么下次访问同一网站时，用户会发现没输入用户名和密码就已经登录了。这正是因为前一次登录时，服务器发送了包含登录凭据（用户名加密码的某种加密形式）的Cookie到用户的硬盘上。第二次登录时，（如果该Cookie尚未到期）浏览器会发送该Cookie，服务器验证凭据，于是不必输入用户名和密码就让用户登录了。</p>
+<h3 id="cookie分类"><a href="#cookie分类" class="headerlink" title="cookie分类"></a>cookie分类</h3><p>Cookie总是保存在客户端中，按在客户端中的存储位置，可分为内存Cookie和硬盘Cookie。内存Cookie由浏览器维护，保存在内存中，浏览器关闭后就消失了，其存在时间是短暂的。硬盘Cookie保存在硬盘里，有一个过期时间，除非用户手工清理或到了过期时间，硬盘Cookie不会被删除，其存在时间是长期的。所以，按存在时间，可分为非持久Cookie和持久Cookie。</p>
+<h3 id="cookie的缺陷"><a href="#cookie的缺陷" class="headerlink" title="cookie的缺陷"></a>cookie的缺陷</h3><ul>
+<li>Cookie会被附加在每个HTTP请求中，所以无形中增加了流量。</li>
+<li>由于在HTTP请求中的Cookie是明文传递的，所以安全性成问题。（除非用HTTPS）</li>
+<li>Cookie的大小限制在4KB左右。对于复杂的存储需求来说是不够用的。[3]</li>
+</ul>
+<h3 id="session是什么技术"><a href="#session是什么技术" class="headerlink" title="session是什么技术"></a>session是什么技术</h3><p>session采用的是在服务器端保存状态数据的方案。当较多的用户数据长时间的储存在服务器上，会增加服务器的负担，因此session中的数据信息要尽可能的少。</p>
+<h3 id="关于session"><a href="#关于session" class="headerlink" title="关于session"></a>关于session</h3><ul>
+<li>session_id的名称可以修改么？可以通过session_name()来获取或者设置。</li>
+<li>session_id的值可以修改么？可以通过session_id()来获取或者设置。</li>
+<li>session文件在计算机中的保存路径可以修改么？可以通过session_save_path()来获取或者设置。windows系统上的默认值为“C:\Windows\Temp”。</li>
+<li>启动session会话后怎么做？通过session_start()函数启动回话后，接下来就可以注册session变量，PHP通过预定义数组来注册session变量，并且用isset()函数或者empty（）函数判断session变量是否注册。</li>
+</ul>
+<h3 id="session和cookie的区别。"><a href="#session和cookie的区别。" class="headerlink" title="session和cookie的区别。"></a>session和cookie的区别。</h3><ul>
+<li>cookie机制采用的是在客户端保存的方案，也就是说cookie数据存放在用户的浏览器上，而session机制采用的是在服务器端保存的方案，即session数据存放在服务器端。</li>
+<li>单个cookie文件的大小在客户端限制是3字节，而session文件大小在服务器段没有限制。</li>
+<li>恶意网站可以通过暗中读取用户cookie的方式来盗取用户的隐私信息，因此，考虑到安全性，应当减少cookie的使用，转而使用session。</li>
+<li>session将数据保存在服务器上，当访问增多时，会降低服务器的性能，因此，考虑到减轻服务器的负担，应当减少使用session，转而使用cookie。故建议在实际开发中，将重要的信息使用session保存，其他信息使用cookie保存。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用户访问一个服务器，服务器首先检客户端是否含有session标识（session id）。如果客户端已经创建过session，则服务器会把他检索出来使用，如果没有，服务器会为他重新创建一个相关联的session id，并返回给客户端。用户浏览器收到这个session id后，会在硬盘的指定目录下生成客户端的session文件。文件的命名格为”sess”+session_id，文件中包含的是回话的具体内容。就这样建立一个回话后，下一次http请求时，用户浏览器会将当前域名下所有的cookie发给服务器，服务器根据cookie 中的session_id来读取保存在计算机中的相应session文件，并从session文件中获取会话的内容。</p>
+<blockquote>
+<p>如有错误，欢迎指正！</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-30T03:02:29.349Z" itemprop="dateUpdated">2017-07-30 11:02:29</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/16/初始cookie与session/&title=《初始cookie与session》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/16/初始cookie与session/&title=《初始cookie与session》 — chuhang 技术不宅&source=作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/16/初始cookie与session/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初始cookie与session》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/16/初始cookie与session/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/16/初始cookie与session/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/19/手把手hexo建站/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">hexo+Github Pages搭建个人博客详解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/16/The-brief-process-of-building-a-personal-blog/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Brief process of building a personal blog</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/16/初始cookie与session/&title=《初始cookie与session》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/16/初始cookie与session/&title=《初始cookie与session》 — chuhang 技术不宅&source=作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/16/初始cookie与session/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《初始cookie与session》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/16/初始cookie与session/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/16/初始cookie与session/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aQW6DQAwF0Nz/0u22Ugv5tscpi8cqIkB4E2ls2X694uPrx5Gcv3/O/fnk8+EDDw8Pb/Dqv4/8mqsrr140Oe6XILkLDw8Pb4/X26wnQeXq23tG/s54eHh4z+Hdv0SyBNUwkC8xHh4e3jN51YCRJOi9K/Hw8PD+l5cUI5LP+YZeDS3rtRY8PDy8mFdtXD3h80p/Dw8PD2/cVU823F4RdhKQCm+Lh4eHt8DLN9xe8joqIgyuwcPDw9vjVR96agyrt8WXi7x4eHh4C7x82+2VaPNycBIG7hfuNYkqeHh4eANe3tDaaHT1yh/Rn4SHh4e3wKuGjTzZTZag2vpKzuDh4eFt86rber6JT4YDqsWIN5NleHh4eGNeUn5NmmF5wp2cz9tmb94KDw8Pb403Kd1Wy6mTQkb1mXh4eHh7vOpQVJLUJqMDeUrdDBt4eHh4a7yNcm3e7qqOHRT+DDw8PLwFXv7FNjJ59WrRBA8PD+8zvHkqXB2imgSJ6q/g4eHhneLNCxC9QajeAFbenMPDw8Pb4OWpcHXgKU+Ok0XM78XDw8Pb5uXl0bzRdSqo9GoLfzwNDw8P7yivuhHnJdpqCMmHD5ozZXh4eHiHeL1m2Nm2Vh4YThVB8PDw8DZ4vS27V9rIR6xONdvw8PDw5rzqQ8+m2qey30KVAg8PD+8QL0+Ik806KUZUW2695B4PDw/v87x5ql1diHLV5D5U4OHh4R3l9ZpSeTkgv+vNdENQTbns7+Hh4eEd5VW32km7K0nTq0XbvJiCh4eHd5Y3CQa9IkKealcXohz98PDw8Aa8pDE2SXaTheulyFFgwMPDw/tXXnU4YJ4W56n2ZZUaDw8P7wG8swNbeSJeDjN4eHh4a7zktjxpTu5KisV5Un6g1oKHh4fX/5Wo8Dpv2FdfKAlUo9EBPDw8vPd3fQMxX+QpGVtBxAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

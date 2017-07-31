@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>hexo+Github Pages搭建个人博客详解 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="hexo">
+    <meta name="description" content="github Pages是托管在github上的静态网页，有300M的免费空间。Hexo 是一个快速、简洁且高效的博客框架。因为hexo是静态页面，不涉及到和数据库的交互等复杂操作，所以github pages的300M空间足以使用。本文将手把手教你在github pages上使用hexo搭建静态博客。您需要一个github账号，Node.js 、git 应用程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo+Github Pages搭建个人博客详解">
+<meta property="og:url" content="https://chuhang123.github.io/2017/05/19/手把手hexo建站/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="github Pages是托管在github上的静态网页，有300M的免费空间。Hexo 是一个快速、简洁且高效的博客框架。因为hexo是静态页面，不涉及到和数据库的交互等复杂操作，所以github pages的300M空间足以使用。本文将手把手教你在github pages上使用hexo搭建静态博客。您需要一个github账号，Node.js 、git 应用程序">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_002.png">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_001.png">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_003.png">
+<meta property="og:updated_time" content="2017-05-21T09:56:57.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo+Github Pages搭建个人博客详解">
+<meta name="twitter:description" content="github Pages是托管在github上的静态网页，有300M的免费空间。Hexo 是一个快速、简洁且高效的博客框架。因为hexo是静态页面，不涉及到和数据库的交互等复杂操作，所以github pages的300M空间足以使用。本文将手把手教你在github pages上使用hexo搭建静态博客。您需要一个github账号，Node.js 、git 应用程序">
+<meta name="twitter:image" content="https://chuhang123.github.io/images/选区_002.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">hexo+Github Pages搭建个人博客详解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">hexo+Github Pages搭建个人博客详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-19T00:01:54.000Z" itemprop="datePublished" class="page-time">
+  2017-05-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo建站"><span class="post-toc-number">1.</span> <span class="post-toc-text">hexo建站</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将博客部署到github-pages上"><span class="post-toc-number">2.</span> <span class="post-toc-text">将博客部署到github pages上</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hexo上传图片、视频"><span class="post-toc-number">3.</span> <span class="post-toc-text">hexo上传图片、视频</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#畅言评论系统"><span class="post-toc-number">4.</span> <span class="post-toc-text">畅言评论系统</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#markdown基本语法"><span class="post-toc-number">5.</span> <span class="post-toc-text">markdown基本语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-number">6.</span> <span class="post-toc-text">最后</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-手把手hexo建站"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hexo+Github Pages搭建个人博客详解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-19 08:01:54" datetime="2017-05-19T00:01:54.000Z"  itemprop="datePublished">2017-05-19</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>github Pages是托管在github上的静态网页，有300M的免费空间。Hexo 是一个快速、简洁且高效的博客框架。因为hexo是静态页面，不涉及到和数据库的交互等复杂操作，所以github pages的300M空间足以使用。本文将手把手教你在github pages上使用hexo搭建静态博客。您需要一个github账号，<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 、<a href="https://git-scm.com/" target="_blank" rel="external">git</a> 应用程序</p>
+<a id="more"></a>
+<h2 id="hexo建站"><a href="#hexo建站" class="headerlink" title="hexo建站"></a>hexo建站</h2><ul>
+<li>安裝hexo <code>npm install -g hexo-cli</code></li>
+<li>初始化博客<code>hexo init &lt;folder&gt;</code></li>
+<li>切換到对应的目录<code>cd &lt;folder&gt;</code></li>
+<li>检查是否有未安装的依赖<code>npm install</code></li>
+<li>配置_config.yml文件，参考<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">官网</a> ，配置文件信息务必要填写正确。eg：<code>timezone: Asia/Shanghai</code>，如出现拼写错误将影响文章发表的日期。</li>
+<li>在本地预览博客<code>hexo s</code></li>
+<li>发布文章<code>hexo new &quot;My New Post&quot;</code>，终端会显示文章生成的路径，按照对应的路径即可编辑文章。</li>
+</ul>
+<h2 id="将博客部署到github-pages上"><a href="#将博客部署到github-pages上" class="headerlink" title="将博客部署到github pages上"></a>将博客部署到github pages上</h2><ul>
+<li>进入github官网，创建一个github仓库，命名为<code>username.github.io</code>。eg：chuhang123.github.io</li>
+<li><p>修改_config.yml文件的部署地址，实例如下：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">deploy</span>:</div><div class="line">  <span class="attribute">type</span>: git </div><div class="line">  <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/chuhang123/chuhang123.github.io.git</span></div><div class="line">  <span class="attribute">branch </span>: master</div></pre></td></tr></table></figure>
+</li>
+<li><p>将本地的博客推送到服务器上<code>hexo d -g</code></p>
+</li>
+<li>hexo有很多主题，读者可根据自己的喜好安装自己喜欢的主题，主题一般都会有对应的教程，如笔者使用的<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman主题</a> ，<a href="http://jacman.wuchong.me/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">教程</a> 就很详尽，请读者根据自己所选择的主题自行配置。<blockquote>
+<p>如出现博客推送到服务器后，css样式无法显示，执行<code>hexo clean</code>，再次推送即可。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="hexo上传图片、视频"><a href="#hexo上传图片、视频" class="headerlink" title="hexo上传图片、视频"></a>hexo上传图片、视频</h2><ul>
+<li>将图片储存在本地，通过<code>![](/images/image.jpg)</code>访问图片，文件夹images和_posts为同一目录。将图片放在images文件夹即可。</li>
+<li>将图片储存在七牛云。如果你的博客有大量的图片，可以将图片放在七牛云上，然后复制url，插入即可。</li>
+<li><p>上传视频，建议将视频放在七牛云上，<a href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/">实例效果</a> ，实例代码</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">video</span> src=<span class="string">'http://oligray7m.bkt.clouddn.com/1490257478069.mp4 '</span> type=<span class="string">'video/mp4'</span> controls=<span class="string">'controls'</span>  <span class="attribute">width</span>=<span class="string">'100%'</span> height=<span class="string">'100%'</span>&gt;</div><div class="line">&lt;/video&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<a href="https://asciinema.org" target="_blank" rel="external">asciinema</a> 在终端录制视频，安装及操作过程请参考<a href="https://asciinema.org/docs/installation" target="_blank" rel="external">这里</a> ，执行<code>asciinema rec</code>命令，开始录制终端，<code>Ctrl-D</code>结束录制，录制结束后会生成录制视频的网址。您也可以注册一个asclinema账号，对录制的视频进行管理。</p>
+</li>
+</ul>
+<h2 id="畅言评论系统"><a href="#畅言评论系统" class="headerlink" title="畅言评论系统"></a>畅言评论系统</h2><p>因为多说评论系统即将关闭,<a href="https://disqus.com/" target="_blank" rel="external">disqus</a> 在国内访问受限，所以本博客转为使用<a href="https://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a> 。但是很多主题默认的评论系统只有duoshuo或者disqus。所以需要自行安装。登录官网，发现使用畅言必须要有备案才能使用，不过也不用担心，在网上随便找一个域名，在<a href="http://icp.chinaz.com/" target="_blank" rel="external">ICP备案查询</a> 中查找备案号，填入即可，审核通过后（大约要几个小时），进入畅言后台-系统设置-通用设置，进行修改即可，eg：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/选区_002.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>。</p>
+<p>将代码放在comment.ejs文件中<br><img src="/images/选区_001.png" width="85%" height="85%"><br>将博客部署到服务器上，你可能发现电脑端没有畅言评论框，打开控制台，你可能会看到下面的报错提示<br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chuhang<span class="number">123</span>.github.io/:<span class="number">211</span> Mixed Content: The page at 'https://chuhang<span class="number">123</span>.github.io/<span class="number">2017</span>/<span class="number">05</span>/<span class="number">19</span>/<span class="symbol">%E6</span><span class="symbol">%89</span><span class="symbol">%8</span>B<span class="symbol">%E6</span><span class="symbol">%8</span>A<span class="symbol">%8</span>A<span class="symbol">%E6</span><span class="symbol">%89</span><span class="symbol">%8</span>Bhexo<span class="symbol">%E5</span><span class="symbol">%BB</span><span class="symbol">%BA</span><span class="symbol">%E7</span><span class="symbol">%AB</span><span class="symbol">%99</span>/' was loaded over HTTPS, but requested an insecure script 'http://assets.changyan.sohu.com/upload/changyan.js?conf=<span class="keyword">c</span><span class="number">245</span>a<span class="number">97</span>f<span class="number">00</span>b<span class="number">9</span>a<span class="number">8889</span>eb<span class="number">374</span>d<span class="number">9</span>a<span class="number">544</span><span class="keyword">c</span><span class="number">127</span>&amp;appid=cyt<span class="number">1</span>izVGM'. This request has been blocked<span class="comment">; the content must be served over HTTPS.</span></div></pre></td></tr></table></figure></p>
+<p>大致是说只能使用https请求，不能使用http请求，有以下两种解决方案</p>
+<ul>
+<li>因为畅言支持https加密站点，直接将js代码中的http请求修改为https即可。</li>
+<li>在head标签中加入一下代码，会将博客中http请求自动转化为https请求，但是在本地预览可能有问题,暂时还没找到解决方案<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"upgrade-insecure-requests"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">"chuhang"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用任意一种解决方案后，就可以愉快的使用畅言评论系统了。</p>
+<blockquote>
+<p>将博客部署到github后，注意博客的访问速度，如果访问过慢，打开控制台，看看是有什么原因导致的，比如使用百度站内搜索，将http修改为https后，访问速度就会变慢。</p>
+</blockquote>
+<h2 id="markdown基本语法"><a href="#markdown基本语法" class="headerlink" title="markdown基本语法"></a>markdown基本语法</h2><p><a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown </a> 是一种轻量级标记语言，非常适合写作。现将基本的markdown语法整理如下，方便未使用过markdown的读者参考<br><img src="/images/选区_003.png" width="85%" height="85%"></p>
+<blockquote>
+<p>如果您发现有的效果没有实现，不防加个空格试试。eg：### 梦云智（最后一个”#”和”梦”之间加空格）。</p>
+</blockquote>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>通过以上步骤，一个基本的博客站点就可以搭建起来了。建议每篇博客都要有关键词，提升被搜索引擎的找到的概率。 如果对主题的样式不是特别满意，您可以在themes/themeName/layout文件夹下修改主题页面的整体布局，在themes/themeName/source/css文件夹下修改css属性，打造属于自己的style。</p>
+<blockquote>
+<p>如有错误，欢迎指正。谢谢！</p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-21T09:56:57.895Z" itemprop="dateUpdated">2017-05-21 17:56:57</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/&title=《hexo+Github Pages搭建个人博客详解》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/&title=《hexo+Github Pages搭建个人博客详解》 — chuhang 技术不宅&source=github Pages是托管在github上的静态网页，有300M的免费空间。Hexo 是一个快速、简洁且高效的博客框架。因为hexo是静态页面，不涉及..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/19/手把手hexo建站/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo+Github Pages搭建个人博客详解》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/27/IDEA性能优化篇/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">IDEA性能优化篇</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/16/初始cookie与session/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">初始cookie与session</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/&title=《hexo+Github Pages搭建个人博客详解》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/&title=《hexo+Github Pages搭建个人博客详解》 — chuhang 技术不宅&source=github Pages是托管在github上的静态网页，有300M的免费空间。Hexo 是一个快速、简洁且高效的博客框架。因为hexo是静态页面，不涉及..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/19/手把手hexo建站/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo+Github Pages搭建个人博客详解》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/19/手把手hexo建站/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3a0W7CMAwF0P3/T7PXSVPh3qQg6p4+TSVrcopkYjs/P/H1CK6j8X/vJGP+jzztwsDAuCwjWVyy6HyWnXkPqRgYGDdgHE2cj3keNPOQvTYvBgYGRjsmXxwGBgbG5xl5UvrVARcDA+MrGe12LRlZJ6LxXBgYGHdj5FX3z//9lv4GBgbGpRiP8loLiG3KWq8KAwNjNGOtAfl8/FmYtiGKgYExlbHTpEwWnZfbkvbn4R0MDIwbMNplteG4pdaNTwwMjNGMNvwly41CZIlfLL1hYGAMYuQlszZ9balbLwsDA2MoIx96VoLaHiyL8BgYGDdgtAGxKISVhyqSDeJhwMXAwBjNSDZ8O4tuX02dYGNgYIxmtP/WftoeIHv+guoyHAYGxjhGXpp/xFeyrDapjr4BDAyMcYydUNhu9fYbD4fjMTAwRjOS7V3bBsgT4OT5+Y8EBgbGVEZSFGsPsJ4QOmM8BgbGHRinVenijWBe2qsbDBgYGEMZa4cq8vHJ0dh25OHWEAMDYzRjLSA+Nq483NdVQwwMjKGMneCbFPqTAxmLlUIMDIzRjJ0QuZgrLxXvou8BAwNjKGOtcJYX9/fvtDNiYGBMZSRBtp3sHQH3xRMwMDBuwGhLXTtp7c4vwIszIxgYGBhB0NxPgBf3sBgYGBhlkM2fudbgPDngYmBgXISRJLH7hyTaUt1bym0YGBgXZGyd1NhoOrYB94SmJgYGxvUYv6o02xm+IWStAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

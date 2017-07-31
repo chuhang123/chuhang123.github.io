@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>IDEA性能优化篇 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA性能优化篇">
+<meta property="og:url" content="https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_022.png">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_021.png">
+<meta property="og:updated_time" content="2017-05-31T14:26:23.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IDEA性能优化篇">
+<meta name="twitter:description" content="从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。">
+<meta name="twitter:image" content="https://chuhang123.github.io/images/选区_022.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">IDEA性能优化篇</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">IDEA性能优化篇</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-27T06:33:41.000Z" itemprop="datePublished" class="page-time">
+  2017-05-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调整IDEA的启动JVM参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">调整IDEA的启动JVM参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自动编译"><span class="post-toc-number">2.</span> <span class="post-toc-text">自动编译</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jrebel热部署"><span class="post-toc-number">3.</span> <span class="post-toc-text">jrebel热部署</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-IDEA性能优化篇"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">IDEA性能优化篇</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-27 14:33:41" datetime="2017-05-27T06:33:41.000Z"  itemprop="datePublished">2017-05-27</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。</p>
+<a id="more"></a>
+<h2 id="调整IDEA的启动JVM参数"><a href="#调整IDEA的启动JVM参数" class="headerlink" title="调整IDEA的启动JVM参数"></a>调整IDEA的启动JVM参数</h2><p>打开idea，help-&gt;Edit Custom VM options,idea会自动复制bin目录下的idea64.exe.vmoptions文件（32位的idea.exe.vmoptions），我的运行内存是8g的，作如下调整<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby">Xms1g		/<span class="regexp">/JVM初始分配的堆内存</span></span></div><div class="line">-<span class="ruby"><span class="regexp">Xmx4g		/</span><span class="regexp">/JVM最大允许分配的堆内存，按需分配</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:ReservedCodeCacheSize=1024m</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:PermSize=372M		/</span><span class="regexp">/JVM初始分配的非堆内存</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:MaxPermSize=744M		/</span><span class="regexp">/JVM最大允许分配的非堆内存，按需分配</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:+UseConcMarkSweepGC</span></span></div><div class="line">-<span class="ruby"><span class="regexp">XX:SoftRefLRUPolicyMSPerMB=50</span></span></div></pre></td></tr></table></figure></p>
+<p>改变jvm参数后，如果想了解内存的分布状况，勾选一下信息，可在右下角显示内存分配<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/选区_022.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>官方文档给出了推荐的修改方式，参考文献2讲述了jvm内存管理机制，及参数的详细说明，参考文献3从多个方面讲述了如何分配堆内存能够最有效的提高idea的效率。</p>
+<p>参考文献：<br>1.<a href="https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties" target="_blank" rel="external">https://intellij-support.jetbrains.com/hc/en-us/articles/206544869-Configuring-JVM-options-and-platform-properties</a><br>2.<a href="http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html" target="_blank" rel="external">http://www.cnblogs.com/mingforyou/archive/2012/03/03/2378143.html</a><br>3.<a href="http://tomaszdziurko.com/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/" target="_blank" rel="external">http://tomaszdziurko.com/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/</a> </p>
+<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a>自动编译</h2><p>全部勾选红色方框中的部分<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/选区_021.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<blockquote>
+<p>在Edit Configuration中，查看Before launch中是否有太多设置，耽误运行时间。</p>
+</blockquote>
+<h2 id="jrebel热部署"><a href="#jrebel热部署" class="headerlink" title="jrebel热部署"></a>jrebel热部署</h2><p>（待破解）</p>
+<p>参考文献：<br><a href="http://www.jianshu.com/p/d177316890e3" target="_blank" rel="external">http://www.jianshu.com/p/d177316890e3</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-31T14:26:23.325Z" itemprop="dateUpdated">2017-05-31 22:26:23</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/&title=《IDEA性能优化篇》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/&title=《IDEA性能优化篇》 — chuhang 技术不宅&source=从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《IDEA性能优化篇》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/03/css浮动流代码实现及实例讲解/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">css浮动流实战</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/19/手把手hexo建站/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">hexo+Github Pages搭建个人博客详解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/&title=《IDEA性能优化篇》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/&title=《IDEA性能优化篇》 — chuhang 技术不宅&source=从php转到java后，IDE改用idea了，但是使用idea运行起来比较慢，在网上搜集了一下资料优化idea，并记录如下。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《IDEA性能优化篇》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQW7DMAwF0dz/0u42RRFnPikXkDhaGUlr67kAS5F8vfC63tbfT94/v//5T3f+9FuLlwwZMrZlXLeLb/r+/uSaPPcjVYYMGQMYncffh9raK+N7kyFDhozONd+QDBkyZKxl8FDLU73O0VeGDBlzGGm6xh9AtpuyZciQMY3Bq+7/f/1If0OGDBlbMa5w8eNopzwX70qGDBlHM3iA46RacpkGXBkyZExjdBK12nBGOhYWjHfIkCHjOEYaLtOhrvTbtLX5K8OVIUPGAAYJdrwlkLY8g1ZlP2bLkCFjKwZPv2rltlorlAToYHJEhgwZmzNScXrI5KF5wV9AhgwZRzM6gH5SSO6PAq4MGTKOZvDCfTqjVUsr+T1lyJAxgcHLarVRiXTYi7y+L69ehgwZxzHS0VJy7Ey3lR6qgzkRGTJkHMqoDXLxzaV49C9BhgwZAxj8AJlmncVtpZMVMmTIOJqxINjhIMtLcsVRDBkyZAxgpI2BJ4I1TxzRyIUMGTKOY6RpGU8KO+3JYIxDhgwZYxhpGscf3z8Gf3k1MmTIGMAgiWBt63zwIi6xpf0KGTJkbMi4wsUTxFopLU0NZciQMYHROazWwjRpc6ZpqAwZMiYweGmeBNC1Dc7g0CtDhowBjPTgyhNNPjyRhn4ZMmTISINs+u1angwZMmTwrfDH89IeQsqQIWMAo5bYpSUzEnAfL7fJkCFjQ0Y/7+JNx9qrWdbUlCFDxn6MHxLy2xkWoB77AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
