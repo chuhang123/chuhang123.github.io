@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuhang123.github.io/"/>
-  <updated>2017-07-31T07:27:23.688Z</updated>
+  <updated>2017-07-31T07:46:14.241Z</updated>
   <id>https://chuhang123.github.io/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>fsfsdf</title>
+    <link href="https://chuhang123.github.io/2017/07/31/fsfsdf/"/>
+    <id>https://chuhang123.github.io/2017/07/31/fsfsdf/</id>
+    <published>2017-07-31T07:46:14.000Z</published>
+    <updated>2017-07-31T07:46:14.241Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>111https初步学习之——原理、性能</title>
@@ -867,6 +881,42 @@
   </entry>
   
   <entry>
+    <title>Difference between GET and POST</title>
+    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
+    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-30T03:02:11.784Z</updated>
+    
+    <content type="html"><![CDATA[<p> According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. </p>
+ <a id="more"></a>
+<h3 id="security"><a href="#security" class="headerlink" title="security"></a>security</h3><p> We might see some documents  sometimes display that GET is safe but  disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because  we can not change data by using GET.  And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url.</p>
+<h3 id="The-size-of-the-data-transfer"><a href="#The-size-of-the-data-transfer" class="headerlink" title="The size of the data transfer"></a>The size of the data transfer</h3><ul>
+<li>GET<br>url is limited in special browser or server. For example, the length of url in IE browser is limited  as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited.</li>
+</ul>
+<ul>
+<li>POST<br>because POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST.</li>
+</ul>
+<h3 id="Data-encoding"><a href="#Data-encoding" class="headerlink" title="Data encoding"></a>Data encoding</h3><p>As the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit  must be ASCII coding. If it is not ASCII coding, we need to convert.</p>
+<h3 id="Default-form"><a href="#Default-form" class="headerlink" title="Default form"></a>Default form</h3><p>GET is the default action of form.</p>
+<h3 id="Relationship-with-server"><a href="#Relationship-with-server" class="headerlink" title="Relationship with server"></a>Relationship with server</h3><p>GET is used to get data from server, while POST is used to transfer data to server.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
+    
+    
+      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
+    
+      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初始cookie与session</title>
     <link href="https://chuhang123.github.io/2017/05/16/%E5%88%9D%E5%A7%8Bcookie%E4%B8%8Esession/"/>
     <id>https://chuhang123.github.io/2017/05/16/初始cookie与session/</id>
@@ -970,42 +1020,6 @@
     
     
       <category term="错题" scheme="https://chuhang123.github.io/tags/%E9%94%99%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Difference between GET and POST</title>
-    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
-    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-30T03:02:11.784Z</updated>
-    
-    <content type="html"><![CDATA[<p> According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. </p>
- <a id="more"></a>
-<h3 id="security"><a href="#security" class="headerlink" title="security"></a>security</h3><p> We might see some documents  sometimes display that GET is safe but  disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because  we can not change data by using GET.  And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url.</p>
-<h3 id="The-size-of-the-data-transfer"><a href="#The-size-of-the-data-transfer" class="headerlink" title="The size of the data transfer"></a>The size of the data transfer</h3><ul>
-<li>GET<br>url is limited in special browser or server. For example, the length of url in IE browser is limited  as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited.</li>
-</ul>
-<ul>
-<li>POST<br>because POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST.</li>
-</ul>
-<h3 id="Data-encoding"><a href="#Data-encoding" class="headerlink" title="Data encoding"></a>Data encoding</h3><p>As the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit  must be ASCII coding. If it is not ASCII coding, we need to convert.</p>
-<h3 id="Default-form"><a href="#Default-form" class="headerlink" title="Default form"></a>Default form</h3><p>GET is the default action of form.</p>
-<h3 id="Relationship-with-server"><a href="#Relationship-with-server" class="headerlink" title="Relationship with server"></a>Relationship with server</h3><p>GET is used to get data from server, while POST is used to transfer data to server.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
-    
-    
-      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
-    
-      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
     
   </entry>
   
@@ -1241,27 +1255,6 @@
   </entry>
   
   <entry>
-    <title>Gallery</title>
-    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
-    <id>https://chuhang123.github.io/2017/04/16/test/</id>
-    <published>2017-04-16T01:51:34.000Z</published>
-    <updated>2017-07-30T03:04:06.061Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一个gallery测试</p>
-]]></content>
-    
-    <summary type="html">
-    
-      Gallery Post Test. 测试图片类文章的显示。
-    
-    </summary>
-    
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>搭建个人博客全过程简要</title>
     <link href="https://chuhang123.github.io/2017/04/16/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%80%E8%A6%81/"/>
     <id>https://chuhang123.github.io/2017/04/16/搭建个人博客简要/</id>
@@ -1296,6 +1289,27 @@
     
     
       <category term="hexo" scheme="https://chuhang123.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gallery</title>
+    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
+    <id>https://chuhang123.github.io/2017/04/16/test/</id>
+    <published>2017-04-16T01:51:34.000Z</published>
+    <updated>2017-07-30T03:04:06.061Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一个gallery测试</p>
+]]></content>
+    
+    <summary type="html">
+    
+      Gallery Post Test. 测试图片类文章的显示。
+    
+    </summary>
+    
+      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+    
     
   </entry>
   
