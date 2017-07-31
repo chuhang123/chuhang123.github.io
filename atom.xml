@@ -4,9 +4,9 @@
   <subtitle>A technology blog for myself.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://chuhang123.github.io/"/>
+  <link href="http://localhost:4000/"/>
   <updated>2017-07-31T07:46:14.241Z</updated>
-  <id>https://chuhang123.github.io/</id>
+  <id>http://localhost:4000/</id>
   
   <author>
     <name>chuhang</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>fsfsdf</title>
-    <link href="https://chuhang123.github.io/2017/07/31/fsfsdf/"/>
-    <id>https://chuhang123.github.io/2017/07/31/fsfsdf/</id>
+    <link href="http://localhost:4000/2017/07/31/fsfsdf/"/>
+    <id>http://localhost:4000/2017/07/31/fsfsdf/</id>
     <published>2017-07-31T07:46:14.000Z</published>
     <updated>2017-07-31T07:46:14.241Z</updated>
     
@@ -31,8 +31,8 @@
   
   <entry>
     <title>111https初步学习之——原理、性能</title>
-    <link href="https://chuhang123.github.io/2017/07/16/http-and-https/"/>
-    <id>https://chuhang123.github.io/2017/07/16/http-and-https/</id>
+    <link href="http://localhost:4000/2017/07/16/http-and-https/"/>
+    <id>http://localhost:4000/2017/07/16/http-and-https/</id>
     <published>2017-07-16T01:51:34.000Z</published>
     <updated>2017-07-31T07:27:23.688Z</updated>
     
@@ -85,20 +85,20 @@
     </summary>
     
     
-      <category term="https" scheme="https://chuhang123.github.io/tags/https/"/>
+      <category term="https" scheme="http://localhost:4000/tags/https/"/>
     
-      <category term="安全" scheme="https://chuhang123.github.io/tags/%E5%AE%89%E5%85%A8/"/>
+      <category term="安全" scheme="http://localhost:4000/tags/%E5%AE%89%E5%85%A8/"/>
     
-      <category term="服务器" scheme="https://chuhang123.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="服务器" scheme="http://localhost:4000/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
-      <category term="性能" scheme="https://chuhang123.github.io/tags/%E6%80%A7%E8%83%BD/"/>
+      <category term="性能" scheme="http://localhost:4000/tags/%E6%80%A7%E8%83%BD/"/>
     
   </entry>
   
   <entry>
     <title>SpringMVC实现session分布式管理</title>
-    <link href="https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/"/>
-    <id>https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/</id>
+    <link href="http://localhost:4000/2017/07/06/Using-session-in-SpringMVC/"/>
+    <id>http://localhost:4000/2017/07/06/Using-session-in-SpringMVC/</id>
     <published>2017-07-05T19:48:23.000Z</published>
     <updated>2017-07-06T00:15:24.250Z</updated>
     
@@ -164,17 +164,17 @@
     
     </summary>
     
-      <category term="SpringMvc" scheme="https://chuhang123.github.io/categories/SpringMvc/"/>
+      <category term="SpringMvc" scheme="http://localhost:4000/categories/SpringMvc/"/>
     
     
-      <category term="session" scheme="https://chuhang123.github.io/tags/session/"/>
+      <category term="session" scheme="http://localhost:4000/tags/session/"/>
     
   </entry>
   
   <entry>
     <title>JS异步编程解决方法实例</title>
-    <link href="https://chuhang123.github.io/2017/07/05/Solve-js-asynchronously/"/>
-    <id>https://chuhang123.github.io/2017/07/05/Solve-js-asynchronously/</id>
+    <link href="http://localhost:4000/2017/07/05/Solve-js-asynchronously/"/>
+    <id>http://localhost:4000/2017/07/05/Solve-js-asynchronously/</id>
     <published>2017-07-05T15:04:07.000Z</published>
     <updated>2017-07-14T08:53:33.524Z</updated>
     
@@ -204,17 +204,17 @@
     
     </summary>
     
-      <category term="js" scheme="https://chuhang123.github.io/categories/js/"/>
+      <category term="js" scheme="http://localhost:4000/categories/js/"/>
     
     
-      <category term="asynchronously" scheme="https://chuhang123.github.io/tags/asynchronously/"/>
+      <category term="asynchronously" scheme="http://localhost:4000/tags/asynchronously/"/>
     
   </entry>
   
   <entry>
     <title>净水器API</title>
-    <link href="https://chuhang123.github.io/2017/06/29/WaterPurifier-API/"/>
-    <id>https://chuhang123.github.io/2017/06/29/WaterPurifier-API/</id>
+    <link href="http://localhost:4000/2017/06/29/WaterPurifier-API/"/>
+    <id>http://localhost:4000/2017/06/29/WaterPurifier-API/</id>
     <published>2017-06-29T02:30:09.000Z</published>
     <updated>2017-07-30T06:37:57.341Z</updated>
     
@@ -287,14 +287,14 @@
     </summary>
     
     
-      <category term="API" scheme="https://chuhang123.github.io/tags/API/"/>
+      <category term="API" scheme="http://localhost:4000/tags/API/"/>
     
   </entry>
   
   <entry>
     <title>git常用指令</title>
-    <link href="https://chuhang123.github.io/2017/06/26/git-command/"/>
-    <id>https://chuhang123.github.io/2017/06/26/git-command/</id>
+    <link href="http://localhost:4000/2017/06/26/git-command/"/>
+    <id>http://localhost:4000/2017/06/26/git-command/</id>
     <published>2017-06-26T14:39:45.000Z</published>
     <updated>2017-07-30T03:20:38.099Z</updated>
     
@@ -340,14 +340,14 @@
     </summary>
     
     
-      <category term="git" scheme="https://chuhang123.github.io/tags/git/"/>
+      <category term="git" scheme="http://localhost:4000/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>在SpringMVC中启用https协议</title>
-    <link href="https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/"/>
-    <id>https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/</id>
+    <link href="http://localhost:4000/2017/06/26/Enable-https-in-Spring-Boot/"/>
+    <id>http://localhost:4000/2017/06/26/Enable-https-in-Spring-Boot/</id>
     <published>2017-06-26T08:02:03.000Z</published>
     <updated>2017-06-26T13:25:57.353Z</updated>
     
@@ -394,17 +394,17 @@
     
     </summary>
     
-      <category term="SpringMvc" scheme="https://chuhang123.github.io/categories/SpringMvc/"/>
+      <category term="SpringMvc" scheme="http://localhost:4000/categories/SpringMvc/"/>
     
     
-      <category term="https" scheme="https://chuhang123.github.io/tags/https/"/>
+      <category term="https" scheme="http://localhost:4000/tags/https/"/>
     
   </entry>
   
   <entry>
     <title>http请求的封装与过滤</title>
-    <link href="https://chuhang123.github.io/2017/06/23/http%E8%AF%B7%E6%B1%82%E7%9A%84%E5%B0%81%E8%A3%85%E4%B8%8E%E8%BF%87%E6%BB%A4/"/>
-    <id>https://chuhang123.github.io/2017/06/23/http请求的封装与过滤/</id>
+    <link href="http://localhost:4000/2017/06/23/http%E8%AF%B7%E6%B1%82%E7%9A%84%E5%B0%81%E8%A3%85%E4%B8%8E%E8%BF%87%E6%BB%A4/"/>
+    <id>http://localhost:4000/2017/06/23/http请求的封装与过滤/</id>
     <published>2017-06-23T14:15:49.000Z</published>
     <updated>2017-06-24T14:31:05.345Z</updated>
     
@@ -436,17 +436,17 @@
     
     </summary>
     
-      <category term="SpringMvc" scheme="https://chuhang123.github.io/categories/SpringMvc/"/>
+      <category term="SpringMvc" scheme="http://localhost:4000/categories/SpringMvc/"/>
     
     
-      <category term="小程序" scheme="https://chuhang123.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+      <category term="小程序" scheme="http://localhost:4000/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
   <entry>
     <title>时序图使用记录</title>
-    <link href="https://chuhang123.github.io/2017/06/23/%E6%97%B6%E5%BA%8F%E5%9B%BE%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
-    <id>https://chuhang123.github.io/2017/06/23/时序图使用记录/</id>
+    <link href="http://localhost:4000/2017/06/23/%E6%97%B6%E5%BA%8F%E5%9B%BE%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/"/>
+    <id>http://localhost:4000/2017/06/23/时序图使用记录/</id>
     <published>2017-06-23T12:43:02.000Z</published>
     <updated>2017-06-26T14:58:41.791Z</updated>
     
@@ -489,14 +489,14 @@
     </summary>
     
     
-      <category term="时序图" scheme="https://chuhang123.github.io/tags/%E6%97%B6%E5%BA%8F%E5%9B%BE/"/>
+      <category term="时序图" scheme="http://localhost:4000/tags/%E6%97%B6%E5%BA%8F%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>在IDEA中部署tomcat</title>
-    <link href="https://chuhang123.github.io/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/"/>
-    <id>https://chuhang123.github.io/2017/06/23/在IDEA中部署tomcat/</id>
+    <link href="http://localhost:4000/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/"/>
+    <id>http://localhost:4000/2017/06/23/在IDEA中部署tomcat/</id>
     <published>2017-06-23T03:21:35.000Z</published>
     <updated>2017-06-26T13:15:31.105Z</updated>
     
@@ -530,15 +530,15 @@
     
     </summary>
     
-      <category term="SpringMvc" scheme="https://chuhang123.github.io/categories/SpringMvc/"/>
+      <category term="SpringMvc" scheme="http://localhost:4000/categories/SpringMvc/"/>
     
     
   </entry>
   
   <entry>
     <title>Spring-Idea-Ubuntu环境搭建</title>
-    <link href="https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/</id>
+    <link href="http://localhost:4000/2017/06/16/Spring-Idea-Ubuntu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://localhost:4000/2017/06/16/Spring-Idea-Ubuntu环境搭建/</id>
     <published>2017-06-16T01:51:34.000Z</published>
     <updated>2017-07-30T03:02:54.811Z</updated>
     
@@ -582,19 +582,19 @@
     
     </summary>
     
-      <category term="java" scheme="https://chuhang123.github.io/categories/java/"/>
+      <category term="java" scheme="http://localhost:4000/categories/java/"/>
     
     
-      <category term="ubuntu" scheme="https://chuhang123.github.io/tags/ubuntu/"/>
+      <category term="ubuntu" scheme="http://localhost:4000/tags/ubuntu/"/>
     
-      <category term="enviroment" scheme="https://chuhang123.github.io/tags/enviroment/"/>
+      <category term="enviroment" scheme="http://localhost:4000/tags/enviroment/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序wx.request请求服务器配置问题</title>
-    <link href="https://chuhang123.github.io/2017/06/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fwx-request%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/"/>
-    <id>https://chuhang123.github.io/2017/06/14/微信小程序wx-request请求服务器配置问题/</id>
+    <link href="http://localhost:4000/2017/06/14/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fwx-request%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/"/>
+    <id>http://localhost:4000/2017/06/14/微信小程序wx-request请求服务器配置问题/</id>
     <published>2017-06-14T14:45:24.000Z</published>
     <updated>2017-07-30T06:39:10.383Z</updated>
     
@@ -645,18 +645,18 @@
     </summary>
     
     
-      <category term="小程序" scheme="https://chuhang123.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+      <category term="小程序" scheme="http://localhost:4000/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
-      <category term="服务器" scheme="https://chuhang123.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="服务器" scheme="http://localhost:4000/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
-      <category term="wx.request" scheme="https://chuhang123.github.io/tags/wx-request/"/>
+      <category term="wx.request" scheme="http://localhost:4000/tags/wx-request/"/>
     
   </entry>
   
   <entry>
     <title>验证信息真伪加密算法记录</title>
-    <link href="https://chuhang123.github.io/2017/06/13/%E9%AA%8C%E8%AF%81%E4%BF%A1%E6%81%AF%E7%9C%9F%E4%BC%AA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/"/>
-    <id>https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/</id>
+    <link href="http://localhost:4000/2017/06/13/%E9%AA%8C%E8%AF%81%E4%BF%A1%E6%81%AF%E7%9C%9F%E4%BC%AA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/"/>
+    <id>http://localhost:4000/2017/06/13/验证信息真伪加密算法记录/</id>
     <published>2017-06-13T15:42:25.000Z</published>
     <updated>2017-07-16T01:57:59.849Z</updated>
     
@@ -675,16 +675,16 @@
     </summary>
     
     
-      <category term="加密" scheme="https://chuhang123.github.io/tags/%E5%8A%A0%E5%AF%86/"/>
+      <category term="加密" scheme="http://localhost:4000/tags/%E5%8A%A0%E5%AF%86/"/>
     
-      <category term="算法" scheme="https://chuhang123.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://localhost:4000/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>mysql下hebinate使用sql关键字报错问题</title>
-    <link href="https://chuhang123.github.io/2017/06/06/sql%E5%85%B3%E9%94%AE%E5%AD%97%E6%8A%A5%E9%94%99/"/>
-    <id>https://chuhang123.github.io/2017/06/06/sql关键字报错/</id>
+    <link href="http://localhost:4000/2017/06/06/sql%E5%85%B3%E9%94%AE%E5%AD%97%E6%8A%A5%E9%94%99/"/>
+    <id>http://localhost:4000/2017/06/06/sql关键字报错/</id>
     <published>2017-06-06T12:04:52.000Z</published>
     <updated>2017-06-15T08:03:19.202Z</updated>
     
@@ -709,18 +709,18 @@
     </summary>
     
     
-      <category term="sql" scheme="https://chuhang123.github.io/tags/sql/"/>
+      <category term="sql" scheme="http://localhost:4000/tags/sql/"/>
     
-      <category term="关键字" scheme="https://chuhang123.github.io/tags/%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+      <category term="关键字" scheme="http://localhost:4000/tags/%E5%85%B3%E9%94%AE%E5%AD%97/"/>
     
-      <category term="hebinate" scheme="https://chuhang123.github.io/tags/hebinate/"/>
+      <category term="hebinate" scheme="http://localhost:4000/tags/hebinate/"/>
     
   </entry>
   
   <entry>
     <title>css浮动流实战</title>
-    <link href="https://chuhang123.github.io/2017/06/03/css%E6%B5%AE%E5%8A%A8%E6%B5%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%8F%8A%E5%AE%9E%E4%BE%8B%E8%AE%B2%E8%A7%A3/"/>
-    <id>https://chuhang123.github.io/2017/06/03/css浮动流代码实现及实例讲解/</id>
+    <link href="http://localhost:4000/2017/06/03/css%E6%B5%AE%E5%8A%A8%E6%B5%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E5%8F%8A%E5%AE%9E%E4%BE%8B%E8%AE%B2%E8%A7%A3/"/>
+    <id>http://localhost:4000/2017/06/03/css浮动流代码实现及实例讲解/</id>
     <published>2017-06-03T14:47:22.000Z</published>
     <updated>2017-06-04T13:42:16.692Z</updated>
     
@@ -752,19 +752,19 @@
     
     </summary>
     
-      <category term="css" scheme="https://chuhang123.github.io/categories/css/"/>
+      <category term="css" scheme="http://localhost:4000/categories/css/"/>
     
     
-      <category term="浮动" scheme="https://chuhang123.github.io/tags/%E6%B5%AE%E5%8A%A8/"/>
+      <category term="浮动" scheme="http://localhost:4000/tags/%E6%B5%AE%E5%8A%A8/"/>
     
-      <category term="实战" scheme="https://chuhang123.github.io/tags/%E5%AE%9E%E6%88%98/"/>
+      <category term="实战" scheme="http://localhost:4000/tags/%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>IDEA性能优化篇</title>
-    <link href="https://chuhang123.github.io/2017/05/27/IDEA%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AF%87/"/>
-    <id>https://chuhang123.github.io/2017/05/27/IDEA性能优化篇/</id>
+    <link href="http://localhost:4000/2017/05/27/IDEA%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%AF%87/"/>
+    <id>http://localhost:4000/2017/05/27/IDEA性能优化篇/</id>
     <published>2017-05-27T06:33:41.000Z</published>
     <updated>2017-05-31T14:26:23.325Z</updated>
     
@@ -804,8 +804,8 @@
   
   <entry>
     <title>hexo+Github Pages搭建个人博客详解</title>
-    <link href="https://chuhang123.github.io/2017/05/19/%E6%89%8B%E6%8A%8A%E6%89%8Bhexo%E5%BB%BA%E7%AB%99/"/>
-    <id>https://chuhang123.github.io/2017/05/19/手把手hexo建站/</id>
+    <link href="http://localhost:4000/2017/05/19/%E6%89%8B%E6%8A%8A%E6%89%8Bhexo%E5%BB%BA%E7%AB%99/"/>
+    <id>http://localhost:4000/2017/05/19/手把手hexo建站/</id>
     <published>2017-05-19T00:01:54.000Z</published>
     <updated>2017-05-21T09:56:57.895Z</updated>
     
@@ -876,14 +876,14 @@
     </summary>
     
     
-      <category term="hexo" scheme="https://chuhang123.github.io/tags/hexo/"/>
+      <category term="hexo" scheme="http://localhost:4000/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>Brief process of building a personal blog</title>
-    <link href="https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
-    <id>https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
+    <link href="http://localhost:4000/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
+    <id>http://localhost:4000/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
     <published>2017-05-16T01:51:34.000Z</published>
     <updated>2017-07-30T03:03:49.284Z</updated>
     
@@ -913,15 +913,15 @@
     
     </summary>
     
-      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
+      <category term="English" scheme="http://localhost:4000/categories/English/"/>
     
     
   </entry>
   
   <entry>
     <title>初始cookie与session</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E5%88%9D%E5%A7%8Bcookie%E4%B8%8Esession/"/>
-    <id>https://chuhang123.github.io/2017/05/16/初始cookie与session/</id>
+    <link href="http://localhost:4000/2017/05/16/%E5%88%9D%E5%A7%8Bcookie%E4%B8%8Esession/"/>
+    <id>http://localhost:4000/2017/05/16/初始cookie与session/</id>
     <published>2017-05-16T01:51:34.000Z</published>
     <updated>2017-07-30T03:02:29.349Z</updated>
     
@@ -959,15 +959,15 @@
     
     </summary>
     
-      <category term="php" scheme="https://chuhang123.github.io/categories/php/"/>
+      <category term="php" scheme="http://localhost:4000/categories/php/"/>
     
     
   </entry>
   
   <entry>
     <title>错题本</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
-    <id>https://chuhang123.github.io/2017/05/16/错题本/</id>
+    <link href="http://localhost:4000/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
+    <id>http://localhost:4000/2017/05/16/错题本/</id>
     <published>2017-05-16T01:51:34.000Z</published>
     <updated>2017-07-30T02:26:39.631Z</updated>
     
@@ -983,14 +983,14 @@
     </summary>
     
     
-      <category term="错题" scheme="https://chuhang123.github.io/tags/%E9%94%99%E9%A2%98/"/>
+      <category term="错题" scheme="http://localhost:4000/tags/%E9%94%99%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>数据结构——线性表</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://chuhang123.github.io/2017/05/16/链表/</id>
+    <link href="http://localhost:4000/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
+    <id>http://localhost:4000/2017/05/16/链表/</id>
     <published>2017-05-16T01:51:34.000Z</published>
     <updated>2017-07-30T02:25:39.033Z</updated>
     
@@ -1013,17 +1013,17 @@
     
     </summary>
     
-      <category term="数据结构" scheme="https://chuhang123.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="数据结构" scheme="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+      <category term="链表" scheme="http://localhost:4000/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
   <entry>
     <title>Difference between GET and POST</title>
-    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
-    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
+    <link href="http://localhost:4000/2017/05/16/Difference-between-GET-and-POST/"/>
+    <id>http://localhost:4000/2017/05/16/Difference-between-GET-and-POST/</id>
     <published>2017-05-16T01:51:34.000Z</published>
     <updated>2017-07-30T03:02:11.784Z</updated>
     
@@ -1047,19 +1047,19 @@
     
     </summary>
     
-      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
+      <category term="English" scheme="http://localhost:4000/categories/English/"/>
     
     
-      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
+      <category term="GET" scheme="http://localhost:4000/tags/GET/"/>
     
-      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
+      <category term="POST" scheme="http://localhost:4000/tags/POST/"/>
     
   </entry>
   
   <entry>
     <title>基于链表的C语言信息管理系统</title>
-    <link href="https://chuhang123.github.io/2017/05/13/%E5%9F%BA%E4%BA%8E%E9%93%BE%E8%A1%A8%E7%9A%84C%E8%AF%AD%E8%A8%80%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
-    <id>https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/</id>
+    <link href="http://localhost:4000/2017/05/13/%E5%9F%BA%E4%BA%8E%E9%93%BE%E8%A1%A8%E7%9A%84C%E8%AF%AD%E8%A8%80%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://localhost:4000/2017/05/13/基于链表的C语言信息管理系统/</id>
     <published>2017-05-13T01:51:34.000Z</published>
     <updated>2017-07-30T03:05:55.009Z</updated>
     
@@ -1094,19 +1094,19 @@
     
     </summary>
     
-      <category term="数据结构" scheme="https://chuhang123.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="数据结构" scheme="http://localhost:4000/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="demo" scheme="https://chuhang123.github.io/tags/demo/"/>
+      <category term="demo" scheme="http://localhost:4000/tags/demo/"/>
     
-      <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+      <category term="链表" scheme="http://localhost:4000/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   
   <entry>
     <title>订单号生成规则简述</title>
-    <link href="https://chuhang123.github.io/2017/05/13/%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0/"/>
-    <id>https://chuhang123.github.io/2017/05/13/订单号生成规则简述/</id>
+    <link href="http://localhost:4000/2017/05/13/%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0/"/>
+    <id>http://localhost:4000/2017/05/13/订单号生成规则简述/</id>
     <published>2017-05-13T01:51:34.000Z</published>
     <updated>2017-07-30T03:04:49.876Z</updated>
     
@@ -1140,14 +1140,14 @@
     </summary>
     
     
-      <category term="web" scheme="https://chuhang123.github.io/tags/web/"/>
+      <category term="web" scheme="http://localhost:4000/tags/web/"/>
     
   </entry>
   
   <entry>
     <title>angular+thinkphp上传图片</title>
-    <link href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
-    <id>https://chuhang123.github.io/2017/05/13/angular-thinkphp上传图片/</id>
+    <link href="http://localhost:4000/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
+    <id>http://localhost:4000/2017/05/13/angular-thinkphp上传图片/</id>
     <published>2017-05-13T01:51:34.000Z</published>
     <updated>2017-07-30T02:24:28.038Z</updated>
     
@@ -1178,17 +1178,17 @@
     
     </summary>
     
-      <category term="angularjs" scheme="https://chuhang123.github.io/categories/angularjs/"/>
+      <category term="angularjs" scheme="http://localhost:4000/categories/angularjs/"/>
     
     
-      <category term="demo" scheme="https://chuhang123.github.io/tags/demo/"/>
+      <category term="demo" scheme="http://localhost:4000/tags/demo/"/>
     
   </entry>
   
   <entry>
     <title>16-17跟媳妇平凡的日子</title>
-    <link href="https://chuhang123.github.io/2017/04/30/16-17%E8%B7%9F%E5%AA%B3%E5%A6%87%E5%B9%B3%E5%87%A1%E7%9A%84%E6%97%A5%E5%AD%90/"/>
-    <id>https://chuhang123.github.io/2017/04/30/16-17跟媳妇平凡的日子/</id>
+    <link href="http://localhost:4000/2017/04/30/16-17%E8%B7%9F%E5%AA%B3%E5%A6%87%E5%B9%B3%E5%87%A1%E7%9A%84%E6%97%A5%E5%AD%90/"/>
+    <id>http://localhost:4000/2017/04/30/16-17跟媳妇平凡的日子/</id>
     <published>2017-04-30T01:55:08.000Z</published>
     <updated>2017-05-31T14:30:19.249Z</updated>
     
@@ -1202,15 +1202,15 @@
     
     </summary>
     
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+      <category term="photos" scheme="http://localhost:4000/categories/photos/"/>
     
     
   </entry>
   
   <entry>
     <title>16-17美图集</title>
-    <link href="https://chuhang123.github.io/2017/04/30/16-17%E7%BE%8E%E5%9B%BE%E9%9B%86/"/>
-    <id>https://chuhang123.github.io/2017/04/30/16-17美图集/</id>
+    <link href="http://localhost:4000/2017/04/30/16-17%E7%BE%8E%E5%9B%BE%E9%9B%86/"/>
+    <id>http://localhost:4000/2017/04/30/16-17美图集/</id>
     <published>2017-04-30T01:54:34.000Z</published>
     <updated>2017-06-04T12:34:57.181Z</updated>
     
@@ -1226,15 +1226,15 @@
     
     </summary>
     
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+      <category term="photos" scheme="http://localhost:4000/categories/photos/"/>
     
     
   </entry>
   
   <entry>
     <title>跟媳妇儿去秦皇岛</title>
-    <link href="https://chuhang123.github.io/2017/04/29/%E7%A7%A6%E7%9A%87%E5%B2%9B/"/>
-    <id>https://chuhang123.github.io/2017/04/29/秦皇岛/</id>
+    <link href="http://localhost:4000/2017/04/29/%E7%A7%A6%E7%9A%87%E5%B2%9B/"/>
+    <id>http://localhost:4000/2017/04/29/秦皇岛/</id>
     <published>2017-04-29T13:00:47.000Z</published>
     <updated>2017-06-04T12:34:40.202Z</updated>
     
@@ -1249,15 +1249,15 @@
     
     </summary>
     
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+      <category term="photos" scheme="http://localhost:4000/categories/photos/"/>
     
     
   </entry>
   
   <entry>
     <title>Gallery</title>
-    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
-    <id>https://chuhang123.github.io/2017/04/16/test/</id>
+    <link href="http://localhost:4000/2017/04/16/test/"/>
+    <id>http://localhost:4000/2017/04/16/test/</id>
     <published>2017-04-16T01:51:34.000Z</published>
     <updated>2017-07-30T03:04:06.061Z</updated>
     
@@ -1270,15 +1270,15 @@
     
     </summary>
     
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+      <category term="photos" scheme="http://localhost:4000/categories/photos/"/>
     
     
   </entry>
   
   <entry>
     <title>搭建个人博客全过程简要</title>
-    <link href="https://chuhang123.github.io/2017/04/16/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%80%E8%A6%81/"/>
-    <id>https://chuhang123.github.io/2017/04/16/搭建个人博客简要/</id>
+    <link href="http://localhost:4000/2017/04/16/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%80%E8%A6%81/"/>
+    <id>http://localhost:4000/2017/04/16/搭建个人博客简要/</id>
     <published>2017-04-16T01:51:34.000Z</published>
     <updated>2017-07-30T02:26:03.957Z</updated>
     
@@ -1309,7 +1309,7 @@
     </summary>
     
     
-      <category term="hexo" scheme="https://chuhang123.github.io/tags/hexo/"/>
+      <category term="hexo" scheme="http://localhost:4000/tags/hexo/"/>
     
   </entry>
   
