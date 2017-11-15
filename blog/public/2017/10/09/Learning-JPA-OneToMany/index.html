@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>学习JPA的@OneToMany注解 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JPA,OneToMany,映射,单向">
+    <meta name="description" content="在JPA中，最常用的关系大概就是一对多了。假设实体A、B的关系为A:B=1:n，通常情况下，我们会在B实体中使用@ManyToOne的注解。但是有时我们需要在A实体中使用@OneToMany的注解，那么我们应该怎么办呢？
+
+以下代码中，假设实体One和Many的关系为One:Many=1:n
+
+单向映射@OneToMany我们只在One实体中使用注解，代码如下1234567891011121314">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习JPA的@OneToMany注解">
+<meta property="og:url" content="https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="在JPA中，最常用的关系大概就是一对多了。假设实体A、B的关系为A:B=1:n，通常情况下，我们会在B实体中使用@ManyToOne的注解。但是有时我们需要在A实体中使用@OneToMany的注解，那么我们应该怎么办呢？
+
+以下代码中，假设实体One和Many的关系为One:Many=1:n
+
+单向映射@OneToMany我们只在One实体中使用注解，代码如下1234567891011121314">
+<meta property="og:updated_time" content="2017-10-19T11:51:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习JPA的@OneToMany注解">
+<meta name="twitter:description" content="在JPA中，最常用的关系大概就是一对多了。假设实体A、B的关系为A:B=1:n，通常情况下，我们会在B实体中使用@ManyToOne的注解。但是有时我们需要在A实体中使用@OneToMany的注解，那么我们应该怎么办呢？
+
+以下代码中，假设实体One和Many的关系为One:Many=1:n
+
+单向映射@OneToMany我们只在One实体中使用注解，代码如下1234567891011121314">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">学习JPA的@OneToMany注解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">学习JPA的@OneToMany注解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-09T07:05:43.000Z" itemprop="datePublished" class="page-time">
+  2017-10-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hibernate/">Hibernate</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单向映射-OneToMany"><span class="post-toc-number">1.</span> <span class="post-toc-text">单向映射@OneToMany</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#双向映射-OneToMany"><span class="post-toc-number">2.</span> <span class="post-toc-text">双向映射@OneToMany</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Learning-JPA-OneToMany"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">学习JPA的@OneToMany注解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-09 15:05:43" datetime="2017-10-09T07:05:43.000Z"  itemprop="datePublished">2017-10-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Hibernate/">Hibernate</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在JPA中，最常用的关系大概就是一对多了。假设实体A、B的关系为A:B=1:n，通常情况下，我们会在B实体中使用@ManyToOne的注解。但是有时我们需要在A实体中使用@OneToMany的注解，那么我们应该怎么办呢？</p>
+<blockquote>
+<p>以下代码中，假设实体One和Many的关系为One:Many=1:n</p>
+</blockquote>
+<h2 id="单向映射-OneToMany"><a href="#单向映射-OneToMany" class="headerlink" title="单向映射@OneToMany"></a>单向映射@OneToMany</h2><p>我们只在One实体中使用注解，代码如下<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">One</span> </span>&#123;</div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.AUTO)</span> <span class="keyword">private</span> <span class="built_in">Long</span> id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    </div><div class="line">    <span class="meta">@OneToMany</span></div><div class="line">    <span class="keyword">private</span> List&lt;Many&gt; manys = new ArrayList&lt;&gt;();</div><div class="line">    <span class="comment">// 省略构造函数，getters and setters</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Many</span> </span>&#123;</div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.AUTO)</span> <span class="keyword">private</span> <span class="built_in">Long</span> id;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>生成的数据表如下：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">MariaDB [springmvc]&gt; select * from one;</div><div class="line"><span class="code">+----+</span>------+</div><div class="line"><span class="section">| id | name |</span></div><div class="line">+----+------+</div><div class="line"><span class="section">|  1 | test |</span></div><div class="line">+----+------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">MariaDB [springmvc]&gt; select * from many;</div><div class="line"><span class="code">+----+</span>------+</div><div class="line"><span class="section">| id | name |</span></div><div class="line">+----+------+</div><div class="line"><span class="section">|  1 | test |</span></div><div class="line">+----+------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">MariaDB [springmvc]&gt; select * from one<span class="emphasis">_manys;</span></div><div class="line">+--------+----------+</div><div class="line">| one_id | manys<span class="emphasis">_id |</span></div><div class="line">+--------+----------+</div><div class="line">|      1 |        1 |</div><div class="line">+--------+----------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>现在，我们如果想要在中间表中存一条记录，就必须先要保证many实体中存在一条记录，然后保存one对象时设置和many的关联关系？代码如下：<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">logger.info(<span class="string">"新建One实体"</span>)<span class="comment">;</span></div><div class="line">One one = new One()<span class="comment">;</span></div><div class="line"></div><div class="line">logger.info(<span class="string">"新建并保存Many实体"</span>)<span class="comment">;</span></div><div class="line">Many many = new Many(<span class="string">"test"</span>)<span class="comment">;</span></div><div class="line">manyRepository.save(many)<span class="comment">;	// 能不能省略这行代码呢？</span></div><div class="line"></div><div class="line">logger.info(<span class="string">"保存"</span>)<span class="comment">;</span></div><div class="line">List&lt;Many&gt; manies = new ArrayList&lt;&gt;()<span class="comment">;</span></div><div class="line">manies.add(many)<span class="comment">;</span></div><div class="line">one.setManys(manies)<span class="comment">;</span></div><div class="line">oneRepository.save(one)<span class="comment">;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们能不能省略<code>manyRepository.save(many);</code>，答案是可以的。直接在One实体中的@OneToMany注解后面加入括号(cascade = CascadeType.ALL, orphanRemoval = true)，JPA仍然会自动保存many实体。</p>
+<ul>
+<li>此时，如果我们把Many实体表中id为1的记录删除，会报一个外键约束的错误，我们需要先把one_manys表中的记录删除，才可以删除Many实体表中id为1的记录。这样是不是有点麻烦呢？有没有办法直接删除Many实体中的记录呢？我们在One实体中增加一个注解@JoinColumn就可以了，代码如下：</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">One</span> </span>&#123;</div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.AUTO)</span> <span class="keyword">private</span> <span class="built_in">Long</span> id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="meta">@OneToMany</span></div><div class="line">    <span class="meta">@JoinColumn(name = <span class="meta-string">"many_id"</span>)</span></div><div class="line">    <span class="keyword">private</span> List&lt;Many&gt; manys = new ArrayList&lt;&gt;();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>数据表的结构如下：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">MariaDB [springmvc]&gt; select * from one;</div><div class="line"><span class="code">+----+</span>------+</div><div class="line"><span class="section">| id | name |</span></div><div class="line">+----+------+</div><div class="line"><span class="section">|  1 | test |</span></div><div class="line">+----+------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">MariaDB [springmvc]&gt; select * from many;</div><div class="line"><span class="code">+----+</span>------<span class="code">+---------+</span></div><div class="line"><span class="section">| id | name | many_id |</span></div><div class="line">+----+------+---------+</div><div class="line"><span class="section">|  1 | test |       1 |</span></div><div class="line">+----+------+---------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">MariaDB [springmvc]&gt; select * from one<span class="emphasis">_manys;</span></div><div class="line">ERROR 1146 (42S02): Table 'springmvc.one_manys' doesn't exist</div></pre></td></tr></table></figure></p>
+<p>这样就不会增加中间表了，此时我们可以直接删除many实体中的记录了。</p>
+<h2 id="双向映射-OneToMany"><a href="#双向映射-OneToMany" class="headerlink" title="双向映射@OneToMany"></a>双向映射@OneToMany</h2><p>代码如下：<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Many</span> </span>&#123;</div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.AUTO)</span> <span class="keyword">private</span> <span class="built_in">Long</span> id;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="meta">@ManyToOne</span></div><div class="line">    <span class="keyword">private</span> One one;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Entity</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">One</span> </span>&#123;</div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.AUTO)</span> <span class="keyword">private</span> <span class="built_in">Long</span> id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="meta">@OneToMany</span></div><div class="line">    <span class="keyword">private</span> List&lt;Many&gt; manys = new ArrayList&lt;&gt;();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>生成的数据表如下：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">MariaDB [springmvc]&gt; select * from one<span class="emphasis">_manys;</span></div><div class="line">+--------+----------+</div><div class="line">| one_id | manys<span class="emphasis">_id |</span></div><div class="line">+--------+----------+</div><div class="line">|      1 |        1 |</div><div class="line">+--------+----------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">MariaDB [springmvc]&gt; select * from many;</div><div class="line"><span class="code">+----+</span>------<span class="code">+--------+</span></div><div class="line"><span class="section">| id | name | one_id |</span></div><div class="line">+----+------+--------+</div><div class="line"><span class="section">|  1 | test |      1 |</span></div><div class="line">+----+------+--------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line"></div><div class="line">MariaDB [springmvc]&gt; select * from one;</div><div class="line"><span class="code">+----+</span>------+</div><div class="line"><span class="section">| id | name |</span></div><div class="line">+----+------+</div><div class="line"><span class="section">|  1 | test |</span></div><div class="line">+----+------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们经常会用到实体间的关系，但是往往在实际的项目中，由于项目过于庞大，增加了学习成本。因此，比较好的学习方法就是在一个测试的项目中学习，减少学习成本。</p>
+<p>参考链接：<br><a href="https://vladmihalcea.com/2017/03/29/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/" target="_blank" rel="external">The best way to map a @OneToMany relationship with JPA and Hibernate</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-10-19T11:51:28.000Z" itemprop="dateUpdated">2017-10-19 19:51:28</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JPA/">JPA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OneToMany/">OneToMany</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单向/">单向</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/映射/">映射</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/&title=《学习JPA的@OneToMany注解》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/&title=《学习JPA的@OneToMany注解》 — chuhang 技术不宅&source=this is a test." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《学习JPA的@OneToMany注解》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/10/SpringMVC-Angularjs-upload-image/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">SpringMVC+Angularjs上传图片</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/08/js-deep-copy-and-shallow-copy/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">js的浅拷贝和深拷贝学习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="学习JPA的@OneToMany注解" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/&title=《学习JPA的@OneToMany注解》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/&title=《学习JPA的@OneToMany注解》 — chuhang 技术不宅&source=this is a test." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《学习JPA的@OneToMany注解》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/09/Learning-JPA-OneToMany/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqUlEQVR42u3ay24DMQgF0Pz/T6dSV5WqmV7AJKl0vIryGh8vDAIej3g9v9fv18n3q+8/f6zktwcWHh4eXmvrVyt//NWn99u6ZyR7uNozHh4e3javelkn7/S2OzkyPDw8vE/j9dLrPMvNSXh4eHj/hZeHgfuL/p6RPx0PDw/vvbykGNErMVTT5eSwVmoteHh4eDFv0gB71+sX9ffw8PDwil315MJNLuvqIEKerP+xWzw8PLwFXtK8zwsN1eZWb2ShnOLj4eHhrfHyK77amnqOVy+E4OHh4e3xNhLiJOGuptH54eLh4eHt8XJMniL3Nl1N36Mn4uHh4S3wqoWDagE3DxvV1lehGYaHh4e3zOuNTJVLA/FAVW+4AQ8PD++VvFOlhGRzSYkh2UNUpcbDw8Nb4PXaTr3re5JMJwEGDw8Pb5uXl257aXdewsgT8WZ6jYeHhzfm5S2oalmhWs6YDH79MQ2Bh4eHd5TXg03aWnl4yFN5PDw8vE/g9a7svKiRlIPz7/RKGHh4eHg9Xi6eJ99VUnX867I+jYeHh3eUdyokVIeuzgaPctzDw8PDO5pzzlv1+WBWbwwrDyp4eHh4G7zJYyakavCYHBMeHh7eWd7ZJlOvrdUrhUT/j4eHh7fGO1XV6FVBquDmBAQeHh7eUV6vgFtNc19ZgBil1Hh4eHitxHrUmA8Cxv2lX30iHh4e3it5ycMK5xTDegMH+VFG8QoPDw9vzEvWqYBRDQ/NYgceHh7eAq9XMqiGiuqme+Xjx2Th4eHhFXnlwmgAy0PLqYbc5W/x8PDw1njV1lQ+FtB7f144xsPDw/sEXrVl1UuLJ8ViPDw8vE/m5ZvrVUSqzbnLT/Hw8PDWePkVnw9p5UWEHjI6XDw8PLwF3qkG2GSMoHdYj1MLDw8PL33KF5/oxTpZRCiFAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

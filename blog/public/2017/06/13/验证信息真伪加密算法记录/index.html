@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>验证信息真伪加密算法记录 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="加密,算法">
+    <meta name="description" content="最近做的项目后台需要验证是不是我们的用户发送的请求。起初，考虑的是使用rsa算法通过公钥、私钥的方法进行加密解密，老师给我讲了另外一种比较简单的算法，却比较实用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="验证信息真伪加密算法记录">
+<meta property="og:url" content="https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="最近做的项目后台需要验证是不是我们的用户发送的请求。起初，考虑的是使用rsa算法通过公钥、私钥的方法进行加密解密，老师给我讲了另外一种比较简单的算法，却比较实用。">
+<meta property="og:updated_time" content="2017-07-15T17:57:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="验证信息真伪加密算法记录">
+<meta name="twitter:description" content="最近做的项目后台需要验证是不是我们的用户发送的请求。起初，考虑的是使用rsa算法通过公钥、私钥的方法进行加密解密，老师给我讲了另外一种比较简单的算法，却比较实用。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">验证信息真伪加密算法记录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">验证信息真伪加密算法记录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-13T15:42:25.000Z" itemprop="datePublished" class="page-time">
+  2017-06-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题场景"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#方案"><span class="post-toc-number">2.</span> <span class="post-toc-text">方案</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-验证信息真伪加密算法记录"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">验证信息真伪加密算法记录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-13 23:42:25" datetime="2017-06-13T15:42:25.000Z"  itemprop="datePublished">2017-06-13</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近做的项目后台需要验证是不是我们的用户发送的请求。起初，考虑的是使用rsa算法通过公钥、私钥的方法进行加密解密，老师给我讲了另外一种比较简单的算法，却比较实用。</p>
+<a id="more"></a>
+<h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><p>前台需要向后台发送http请求，参数是<code>编号</code>，并根据编号获取相应的信息。那么后台如何辨别这个请求是不是我们的用户发送的呢？</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>将发送http请求的header信息中增加几个参数，增加<code>时间戳</code>、<code>随机字符串</code>、<code>加密信息</code>三个参数，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">timestamp: timestamp,	<span class="comment">//时间戳</span></div><div class="line">randomString: randomString,		<span class="comment">//随机字符串</span></div><div class="line">encryptionInfo: encryptionInfo	<span class="comment">//加密信息</span></div></pre></td></tr></table></figure></p>
+<p>加密信息指的是讲编号、时间戳、随机字符串、特定的字符串通过不可解密的方法加密，如sha1、md5算法，如果一次不放心的多加密几次。实例如下<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var encryptionString</span> = timestamp + randomString + <span class="string">'xiaoming'</span>;</div><div class="line"><span class="attribute">var encryptionInfo</span> = app.sha1(encryptionString);</div></pre></td></tr></table></figure></p>
+<p>后台对接受到的参数以及我们约定好的特定的字符串，按照同样的方法加密，如果加密后生成的字符串和前台发送的加密信息（encryptionInfo）相同，那么我们就认为这个http请求是我们的用户发送的请求。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-15T17:57:58.000Z" itemprop="dateUpdated">2017-07-16 01:57:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加密/">加密</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/&title=《验证信息真伪加密算法记录》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/&title=《验证信息真伪加密算法记录》 — chuhang 技术不宅&source=最近做的项目后台需要验证是不是我们的用户发送的请求。起初，考虑的是使用rsa算法通过公钥、私钥的方法进行加密解密，老师给我讲了另外一种比较简单的算法，却比..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《验证信息真伪加密算法记录》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/14/微信小程序wx-request请求服务器配置问题/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">微信小程序wx.request请求服务器配置问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/06/sql关键字报错/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mysql下hebinate使用sql关键字报错问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="验证信息真伪加密算法记录" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/&title=《验证信息真伪加密算法记录》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/&title=《验证信息真伪加密算法记录》 — chuhang 技术不宅&source=最近做的项目后台需要验证是不是我们的用户发送的请求。起初，考虑的是使用rsa算法通过公钥、私钥的方法进行加密解密，老师给我讲了另外一种比较简单的算法，却比..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《验证信息真伪加密算法记录》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/13/验证信息真伪加密算法记录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQXLCMAwFUO5/aXoAavIlRdN05mXFhMT4eWEJya9XfL0/rtO3n/dPo50+n37rNNoNFx4eHt546qehE9jkyXdw5XPGw8PD2+bl2/f3HbgXVHJwPmc8PDy8p/EutuP4rWogwcPDw/u/vHwJqp8fFPfw8PDwvvJ6JdR5utwLMyu1Fjw8PLyYl3eRnvN5pb+Hh4eHN+6q50Git2XnzzRni4eHh7fAqza38iMCvTS6enAhmSceHh7eHi+Zbt6gyjf3SQBIAhUeHh7evbxqGTSZxORgQS/hPo6Dh4eH90e83rd5Kba3KFEYw8PDw1vjJVttNbGuhpkqNZohHh4e3hovT3yrraz54YCkKFzo7+Hh4eGNeZOjn3mo6IWQfAkuRsPDw8Nb4CXDJdv33pP534CLki4eHh7emJcnvnnLal5W6KXvv7yFh4eHt8bLt+a8HFBNr/PSRiEFx8PDw1vgTYqqecDI381LtMki4uHh4W3wyptssVSRFB2qASMJXXh4eHh7vEkJYDKh3iJOShh4eHh49/Lmf/7zRLmXRlcXGg8PD2+bN+mzT0oMeZqeXBeJNR4eHt5NvN7k5kcH8tZadaGPrS88PDy8W3m9EkPvme/3k+pr8u4vZ8rw8PDwbuLlW235PMK4fZWPf1HCwMPDw1vjJdt0sjVXn+kd1Sqk+3h4eHjLvHn622trTZ58VeMGHh4e3hrvrnLthN0LHlExFw8PD6/Fexev6tGBXtpdPW51nA8eHh7eAq96pGmyleek6gGCSXEZDw8Pr8fL211Jhr5RdBiFDTw8PLw1XrW9NGnt50l59VACHh4e3jN5vc06DwxJyy0PWnh4eHhP4OV3qkElOWKVp+N4eHh427zqZl1lVJPv/M7FAuHh4eEt8OZ/+HuDVntx81/Ew8PDG/N+ALsdac72rGW9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

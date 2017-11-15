@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>ArrayList、LinkedList和HashSet的学习总结 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ArrayList,LinkedList,HashSet,iterator,数组">
+    <meta name="description" content="java中，一旦程序定义了数组的长度，就不能修改这个数组的长度了。如果我们需要修改数组的长度，我们可以使用ArrayList，以达到改变数组长度的目的。
+类ArrayListArrayList的缺点：
+
+ArrayList比数组的效率低
+ArrayList只能存储对象，不能包含基本类型，比如int、double。
+
+ArrayList的语法：1ArrayList &amp;lt;Base_Type&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ArrayList、LinkedList和HashSet的学习总结">
+<meta property="og:url" content="https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="java中，一旦程序定义了数组的长度，就不能修改这个数组的长度了。如果我们需要修改数组的长度，我们可以使用ArrayList，以达到改变数组长度的目的。
+类ArrayListArrayList的缺点：
+
+ArrayList比数组的效率低
+ArrayList只能存储对象，不能包含基本类型，比如int、double。
+
+ArrayList的语法：1ArrayList &amp;lt;Base_Type&amp;gt;">
+<meta property="og:image" content="https://chuhang123.github.io/images/101.png">
+<meta property="og:updated_time" content="2017-11-15T14:01:49.658Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ArrayList、LinkedList和HashSet的学习总结">
+<meta name="twitter:description" content="java中，一旦程序定义了数组的长度，就不能修改这个数组的长度了。如果我们需要修改数组的长度，我们可以使用ArrayList，以达到改变数组长度的目的。
+类ArrayListArrayList的缺点：
+
+ArrayList比数组的效率低
+ArrayList只能存储对象，不能包含基本类型，比如int、double。
+
+ArrayList的语法：1ArrayList &amp;lt;Base_Type&amp;gt;">
+<meta name="twitter:image" content="https://chuhang123.github.io/images/101.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">ArrayList、LinkedList和HashSet的学习总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">ArrayList、LinkedList和HashSet的学习总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-15T01:00:51.000Z" itemprop="datePublished" class="page-time">
+  2017-11-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类ArrayList"><span class="post-toc-number">1.</span> <span class="post-toc-text">类ArrayList</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类LinkedList"><span class="post-toc-number">2.</span> <span class="post-toc-text">类LinkedList</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类ArrayList和类LinkedList的比较"><span class="post-toc-number">3.</span> <span class="post-toc-text">类ArrayList和类LinkedList的比较</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Collection-API的层次结构"><span class="post-toc-number">4.</span> <span class="post-toc-text">Collection API的层次结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Set接口和List接口"><span class="post-toc-number">5.</span> <span class="post-toc-text">Set接口和List接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类HashSet"><span class="post-toc-number">6.</span> <span class="post-toc-text">类HashSet</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#iterator"><span class="post-toc-number">7.</span> <span class="post-toc-text">iterator</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-java-dynamic-data-structure"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">ArrayList、LinkedList和HashSet的学习总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-15 09:00:51" datetime="2017-11-15T01:00:51.000Z"  itemprop="datePublished">2017-11-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>java中，一旦程序定义了数组的长度，就不能修改这个数组的长度了。如果我们需要修改数组的长度，我们可以使用ArrayList，以达到改变数组长度的目的。</p>
+<h2 id="类ArrayList"><a href="#类ArrayList" class="headerlink" title="类ArrayList"></a>类ArrayList</h2><p>ArrayList的缺点：</p>
+<ul>
+<li>ArrayList比数组的效率低</li>
+<li>ArrayList只能存储对象，不能包含基本类型，比如int、double。</li>
+</ul>
+<p>ArrayList的语法：<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ArrayList &lt;Base_Type&gt; <span class="keyword">Variable</span> = new <span class="comment">ArrayList&lt;Base_Type&gt;(Capacity)</span>;</div></pre></td></tr></table></figure></p>
+<p>其中，Base_Type必须为类类型，不能为基本类型。Capacity（容量）表示为这个数据项分配内存空间，如果不传值，默认初始容量为10个数据项。如果初始化给了足够大的初始容量，那么系统就不需要频繁的分配内存了，程序将会运行的更快。反之，如果你吧初始容量弄得太大，就会浪费储存空间。<br>我们对是否分配容量做一个测试，代码实例：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> class ListDemo &#123;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> <span class="keyword">long</span> timeList(List&lt;<span class="keyword">String</span>&gt; st) &#123;</div><div class="line">		<span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">		<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</div><div class="line">			st.<span class="built_in">add</span>(<span class="keyword">String</span>.valueOf(i));</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> System.currentTimeMillis() - start;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main (<span class="keyword">String</span> args[]) &#123;</div><div class="line">		System.out.<span class="built_in">println</span>(<span class="string">"assign capacity ArrayList = "</span></div><div class="line">		 + timeList(<span class="keyword">new</span> ArrayList&lt;<span class="keyword">String</span>&gt;(<span class="number">100000</span>)));</div><div class="line"></div><div class="line">		System.out.<span class="built_in">println</span>(<span class="string">"default ArrayList = "</span></div><div class="line">		 + timeList(<span class="keyword">new</span> ArrayList&lt;<span class="keyword">String</span>&gt;()));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果如下：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">assign capacity ArrayList = <span class="number">22</span></div><div class="line"><span class="section">default</span> ArrayList = <span class="number">13</span></div></pre></td></tr></table></figure></p>
+<p>jdk7之前，我们应该这样实例化ArrayList<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; integers = <span class="literal">new</span> ArrayList&lt;<span class="built_in">Integer</span>&gt;();</div></pre></td></tr></table></figure></p>
+<p>jdk7开始，我们可以这样<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">List</span>&lt;<span class="built_in">Integer</span>&gt; integers = <span class="literal">new</span> ArrayList&lt;&gt;();</div></pre></td></tr></table></figure></p>
+<p>不仅方便了我们书写，也使代码有更强的可读性。</p>
+<h2 id="类LinkedList"><a href="#类LinkedList" class="headerlink" title="类LinkedList"></a>类LinkedList</h2><p>类LinkedList的基本用法同上，但是LinkedList内部使用双向链表的数据结构，只有在需要时才分配内存，删除元素时随即释放内存。</p>
+<h2 id="类ArrayList和类LinkedList的比较"><a href="#类ArrayList和类LinkedList的比较" class="headerlink" title="类ArrayList和类LinkedList的比较"></a>类ArrayList和类LinkedList的比较</h2><ul>
+<li>类LinkedList插入元素效率高，但访问元素效率低。</li>
+<li>类ArrayList访问元素效率高，但插入效率低。<br>他们的效率相差多少，我们通过实例来了解（仅修改main方法）：<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main (<span class="keyword">String</span> args[]) &#123;</div><div class="line">	System.out.<span class="built_in">println</span>(<span class="string">"time for ArrayList = "</span></div><div class="line">	 + timeList(<span class="keyword">new</span> ArrayList&lt;<span class="keyword">String</span>&gt;()));</div><div class="line"></div><div class="line">	System.out.<span class="built_in">println</span>(<span class="string">"time for LinkedList = "</span></div><div class="line">	 + timeList(<span class="keyword">new</span> LinkedList&lt;<span class="keyword">String</span>&gt;()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>运行结果：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">time</span> <span class="keyword">for</span> ArrayList = <span class="number">22</span></div><div class="line"><span class="selector-tag">time</span> <span class="keyword">for</span> LinkedList = <span class="number">13</span></div></pre></td></tr></table></figure></p>
+<p>如果我们指定位置添加元素，将第六行代码<code>st.add(String.valueOf(i));</code>修改为<code>st.add(0, String.valueOf(i));</code><br>运行结果为：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">time</span> <span class="keyword">for</span> ArrayList = <span class="number">915</span></div><div class="line"><span class="selector-tag">time</span> <span class="keyword">for</span> LinkedList = <span class="number">11</span></div></pre></td></tr></table></figure></p>
+<p>为什么会差这么多呢，因为每插入一个元素，arraylist都要吧所有的元素都后移，而LinkedList指需要增加一个新的结点，并调整一下对应关系就可以了。<br>我们进行一次新增元素，再进行一次查看元素，他们的效率相差多少呢？将<code>timeList</code>修改为如下所示：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">long</span> timeList(List&lt;<span class="keyword">String</span>&gt; st) &#123;</div><div class="line">	<span class="keyword">long</span> start = System.currentTimeMillis();</div><div class="line">	<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</div><div class="line">		st.<span class="built_in">add</span>(<span class="keyword">String</span>.valueOf(i));</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</div><div class="line">		st.<span class="built_in">get</span>(i);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> System.currentTimeMillis() - start;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结果如下<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">time</span> <span class="keyword">for</span> ArrayList = <span class="number">17</span></div><div class="line"></div><div class="line"><span class="selector-tag">time</span> <span class="keyword">for</span> LinkedList = <span class="number">156</span></div></pre></td></tr></table></figure></p>
+<p>因此，我们在进行相同次数的查找和添加元素的情况下，ArrayList效率较高。因此，我们使用ArrayList的次数会更多一些。</p>
+<h2 id="Collection-API的层次结构"><a href="#Collection-API的层次结构" class="headerlink" title="Collection API的层次结构"></a>Collection API的层次结构</h2><p>通过上面的学习，我们对动态数据结构有了基本的认识，那么java中关于数组的接口和实现类的层次结构是什么样的呢？如下图：<br><img src="/images/101.png"><br>由上图可知，Iterable接口、Collection接口中定义的方法，几个实现类都实现了，只不过他们的具体实现方法会有所差异。同样的，ArrayList和LinkedList都是List接口的实现类，所以他们的方法名都是一样的，但是具体的实现方法有所差异。</p>
+<h2 id="Set接口和List接口"><a href="#Set接口和List接口" class="headerlink" title="Set接口和List接口"></a>Set接口和List接口</h2><p>1.Set对应的中文名是集合，有两个特点：</p>
+<ul>
+<li>不含重复元素</li>
+<li>无序</li>
+</ul>
+<p>2.List接口类似于书续重的序列，也有两个特点：</p>
+<ul>
+<li>可含重复的元素</li>
+<li>有序</li>
+</ul>
+<h2 id="类HashSet"><a href="#类HashSet" class="headerlink" title="类HashSet"></a>类HashSet</h2><p>HashSet继承了Set接口的特性，值得注意的是，当一个对象被存储进HashSet集合中以后，就不能修改这个对象中的那些参与计算哈希值的字段了，否则，对象修改后的哈希值与最初存储进HashSet集合中时的哈希值就不同了，在这种情况下，即使在contains方法中使用该对象的当前引用作为的参数去HashSet集合中检索对象，也将返回找不到对象的结果。因为new一个HashSet，实际上是new HashMap，并以这个对象的hashCode为key，这个对象本身为value储存。当对象的hashcode改变后，我们可以使用迭代器进行删除的操作，代码如下：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="type">Iterator</span>&lt;<span class="type">MandatoryInstrument</span>&gt; <span class="keyword">iterator</span> = mandatoryInstrumentList.<span class="keyword">iterator</span>();</div><div class="line"><span class="keyword">while</span> (<span class="keyword">iterator</span>.hasNext()) &#123;</div><div class="line">    <span class="type">MandatoryInstrument</span> mandatoryInstrument = <span class="keyword">iterator</span>.next();</div><div class="line">    <span class="keyword">if</span> (mandatoryInstrument.getCheckDepartment() == null) &#123;</div><div class="line">        <span class="keyword">iterator</span>.remove();</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h2><p>iterator（迭代器）是什么？eg：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (int <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; <span class="number">10000</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">   st.get(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那么，i就是一个迭代器——能够以合理的方式一次访问一个元素、遍历整个数组或者链表的变量。从一个元素走到另一个元素的过程就是是迭代（iterable）</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-15T14:01:49.658Z" itemprop="dateUpdated">2017-11-15 22:01:49</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArrayList/">ArrayList</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HashSet/">HashSet</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LinkedList/">LinkedList</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iterator/">iterator</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数组/">数组</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/&title=《ArrayList、LinkedList和HashSet的学习总结》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/&title=《ArrayList、LinkedList和HashSet的学习总结》 — chuhang 技术不宅&source=this is a test." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ArrayList、LinkedList和HashSet的学习总结》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/21/angular-spring-batch-delete/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">angular和springmvc实现批量删除</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="ArrayList、LinkedList和HashSet的学习总结" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/&title=《ArrayList、LinkedList和HashSet的学习总结》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/&title=《ArrayList、LinkedList和HashSet的学习总结》 — chuhang 技术不宅&source=this is a test." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ArrayList、LinkedList和HashSet的学习总结》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/11/15/java-dynamic-data-structure/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aUY4iMQwE0Ln/pWcPgOipshOEVq+/EANNXlZqeyv++Ymv35fr3fuvn0nu8PrJ59eHLzw8PLz10p8Z7344WXS+NQk7+RYeHh7ePd67J2py63eA56Ukf03W84cFDw8P7wt4ybeSv+YtOB4eHt7/wUtg+9KSRxh4eHh4n+clje/zjfKSsIkzLmYteHh4eDEvP0X6ntdXzvfw8PDw1qfqm8a3fUwnBaleLR4eHt4F3iZoSN5vD8DaX48+iYeHh3eU1x7zt63tLIDYbw0eHh7ePV4eQLSHWG3gm38racTrfAUPDw8v5rWBQrtDye7Oxq2SjcbDw8O7wcsfwe1YVbId+ejApq3Hw8PD+wwvDwva5jtpxzcloUip8fDw8Ea8PKs4u6B2uGp4SIaHh4d3jTcLI06NRrXhQoHHw8PDu8bLH9DtRrRBcH7EFa0ZDw8P7xrvxuBUvh1nw4g/Zsrw8PDw1rxZo/zclM9GsnJYW8bw8PDwzvJmDXEeqj4Xhv14VjRThoeHh3eUlxeA/GG9KSTJJ+sChoeHh3eBN2t286OytomflZCiPODh4eEteMntZk3zZmwraaCj9/Hw8PAu8GYhwmZEIH/ct2Um+kfCw8PDO8RrA9zNQMAmGs6jirqC4eHh4S14bdjatsV5OLsf8MLDw8P7JG9z67b8FFFCOzSAh4eH9xHeZtGzeHcWRiStPB4eHt4nec8/MGugV+ny5sLDw8M7yvstr02k24bF+bjV2/KGh4eHd4E3e8a2gcIG1r4+UELw8PDw4rP1zdjTZmtaUt7Q4+Hh4d3mzU6OZs13HgrPwhQ8PDy87+cl99mHFMna8PDw8L6Tlweps3b58IEZHh4e3jVe2xy38W47gLUfd8DDw8O7x2v/w9/yNsu6ESvj4eHhLXj/AM31QQXOOOzbAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

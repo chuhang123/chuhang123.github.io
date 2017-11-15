@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Spring-Idea-Ubuntu环境搭建 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ubuntu,enviroment">
+    <meta name="description" content="近几天学习springMVC，但是发现一直比较卡，就尝试在ubuntu系统下搭建springMVC环境，看看效果。首先搭建java环境，安装jdk，下载idea，安装xampp，打开xampp的mysql控制台，创建数据库，进本的环境就起来了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-Idea-Ubuntu环境搭建">
+<meta property="og:url" content="https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="近几天学习springMVC，但是发现一直比较卡，就尝试在ubuntu系统下搭建springMVC环境，看看效果。首先搭建java环境，安装jdk，下载idea，安装xampp，打开xampp的mysql控制台，创建数据库，进本的环境就起来了。">
+<meta property="og:updated_time" content="2017-07-29T19:02:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring-Idea-Ubuntu环境搭建">
+<meta name="twitter:description" content="近几天学习springMVC，但是发现一直比较卡，就尝试在ubuntu系统下搭建springMVC环境，看看效果。首先搭建java环境，安装jdk，下载idea，安装xampp，打开xampp的mysql控制台，创建数据库，进本的环境就起来了。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Spring-Idea-Ubuntu环境搭建</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Spring-Idea-Ubuntu环境搭建</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-16T01:51:34.000Z" itemprop="datePublished" class="page-time">
+  2017-06-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加内存、swaf空间"><span class="post-toc-number">1.</span> <span class="post-toc-text">增加内存、swaf空间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置环境变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置环境变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看内存相关信息"><span class="post-toc-number">4.</span> <span class="post-toc-text">查看内存相关信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置tomcat"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置tomcat</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Spring-Idea-Ubuntu环境搭建"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Spring-Idea-Ubuntu环境搭建</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-16 09:51:34" datetime="2017-06-16T01:51:34.000Z"  itemprop="datePublished">2017-06-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>近几天学习springMVC，但是发现一直比较卡，就尝试在ubuntu系统下搭建springMVC环境，看看效果。首先搭建java环境，安装jdk，下载idea，安装xampp，打开xampp的mysql控制台，创建数据库，进本的环境就起来了。</p>
+<a id="more"></a>
+<h2 id="增加内存、swaf空间"><a href="#增加内存、swaf空间" class="headerlink" title="增加内存、swaf空间"></a>增加内存、swaf空间</h2><p>碰到的第一个问题是开始安装ubuntu时分配的内存有点小了，想增加磁盘空间，并提高ubuntu系统的性能。</p>
+<ul>
+<li>增加ubuntu磁盘空间，请参考<a href="https://help.ubuntu.com/community/ResizeandDuplicateWubiDisk" target="_blank" rel="external">这里</a> ，</li>
+<li>增加swaf空间,不了解swaf的，请戳<a href="http://baike.baidu.com/item/Swap/2666174" target="_blank" rel="external">这里</a> ，执行下面的9条语句，增加2G的swaf空间。<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo su</div><div class="line">swapoff -<span class="selector-tag">a</span></div><div class="line">cd /host/ubuntu/disks/</div><div class="line">mv swap<span class="selector-class">.disk</span> swap<span class="selector-class">.disk</span><span class="selector-class">.bak</span></div><div class="line"><span class="selector-tag">dd</span> <span class="keyword">if</span>=/dev/zero of=swap<span class="selector-class">.disk</span> bs=<span class="number">1024</span> count=<span class="number">2097152</span></div><div class="line">mkswap swap<span class="selector-class">.disk</span></div><div class="line">swapon -<span class="selector-tag">a</span></div><div class="line">free -m</div><div class="line">rm swap<span class="selector-class">.disk</span><span class="selector-class">.bak</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>笔者使用的wubi装的windows、ubuntu双系统，故如果相对ubuntu系统进行改动的话，请参考<a href="https://wiki.ubuntu.com/WubiGuide#How_do_I_resize_the_virtual_disks.3F" target="_blank" rel="external">官方文档</a> ，一定是最节约时间的方法。</p>
+</blockquote>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>启动xampp<code>sudo /opt/lampp/lampp start</code><br>启动mysql<code>sudo /opt/lampp/lampp startmysql</code><br>打开sql控制台<code>/opt/lampp/bin/mysql -u root</code><br>显示数据库<code>show databases;</code><br>删除数据库<code>drop database  name;</code></p>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul>
+<li>用户目录下的 .bashrc 文件<code>gedit ~/.bashrc</code>该文件编辑保存后，可立即在新打开的终端窗口内生效。该方式添加的变量只能当前用户使用。</li>
+<li>系统目录下的 profile 文件<code>sudo gedit /etc/profile</code></li>
+<li>系统目录下的 environment 文件<code>sudo gedit /etc/environment</code></li>
+</ul>
+<h2 id="查看内存相关信息"><a href="#查看内存相关信息" class="headerlink" title="查看内存相关信息"></a>查看内存相关信息</h2><ul>
+<li>查看磁盘空间<code>df -h</code></li>
+<li>查看cup使用率<code>top</code></li>
+<li>查看内存<code>free</code></li>
+<li>杀死进程<code>killall -9 name</code>，name表示进程的名字，如<code>killall -9 shutter</code></li>
+</ul>
+<h2 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h2><ul>
+<li><p>启动 </p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sh <span class="regexp">/usr/</span>program<span class="regexp">/tomcat8/</span>bin<span class="regexp">/startup.sh ; tail -200f /u</span>sr<span class="regexp">/program/</span>tomcat8<span class="regexp">/logs/</span>catalina.out</div></pre></td></tr></table></figure>
+</li>
+<li><p>停止 <code>sh /usr/program/tomcat8/bin/shutdown.sh</code></p>
+</li>
+<li>编辑server.xml文件<code>sudo gedit /usr/program/tomcat8/conf/server.xml</code></li>
+<li>安装见<a href="http://wiki.jikexueyuan.com/project/linux-in-eye-of-java/Tomcat-Install-And-Settings.html" target="_blank" rel="external">极客学院</a> </li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-29T19:02:54.000Z" itemprop="dateUpdated">2017-07-30 03:02:54</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/enviroment/">enviroment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/&title=《Spring-Idea-Ubuntu环境搭建》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/&title=《Spring-Idea-Ubuntu环境搭建》 — chuhang 技术不宅&source=近几天学习springMVC，但是发现一直比较卡，就尝试在ubuntu系统下搭建springMVC环境，看看效果。首先搭建java环境，安装jdk，下载i..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring-Idea-Ubuntu环境搭建》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/23/在IDEA中部署tomcat/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">在IDEA中部署tomcat</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/14/微信小程序wx-request请求服务器配置问题/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">微信小程序wx.request请求服务器配置问题</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="Spring-Idea-Ubuntu环境搭建" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/&title=《Spring-Idea-Ubuntu环境搭建》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/&title=《Spring-Idea-Ubuntu环境搭建》 — chuhang 技术不宅&source=近几天学习springMVC，但是发现一直比较卡，就尝试在ubuntu系统下搭建springMVC环境，看看效果。首先搭建java环境，安装jdk，下载i..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring-Idea-Ubuntu环境搭建》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/16/Spring-Idea-Ubuntu环境搭建/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3ay27DMAwEwPz/T7fXAm2cXdIKUmB8KtI8ND5I9JKPR3x9/bievf7zv7/f+ez1359qv/OGCw8PD2+x9Ouvvv6B66VcM1pesmY8PDy807x8ue3tuL417TvbgwcPDw/vE3h5iZxXubPiGw8PD++/8NqAICmOr9+5CTvw8PDwzvHaCPVEKdyGHTdnLXh4eHgxL+8ifc7fR/p7eHh4eOuuet4MywPfZKOfHQZ//BYeHh7eAd4+UGgX3Q4QbAJiPDw8vBO82UBAHtHOgoN2HOHpjcDDw8M7wJu1qfLWfvudm4L7MTvZ8PDw8Ere8PG+LLXz4YCkGVbHEHh4eHi38mbbbl5Gt420zbHUxC94eHh49/PagrgNCNqwI1/ni9MPDw8P71be9SY+K6Bn+3N+nERHBR4eHt6tvE0DLG9T5c2tpNDPHwnw8PDwzvHyrXnWiMqD1zbMffEpPDw8vMO8FrYpo9toY7g2PDw8vGO8uqW0Dgtm72+HDPDw8PBO8O46DJLoYdPln7XH8PDw8N7Py1+ZHSp5jLsZCMPDw8M7wWtHAWYx7uzgaT+Lh4eH9x5eXs62jNmAwj4QGVbreHh4eCXvro07J+XtrtloAh4eHt4JXttYagdYZwOvbTjy9AEADw8P7wAv/0ASCiSb+2ZcdfYKHh4e3gle3mTKg4N8KbNAoXhKwMPDwzvGm22+edndFtDtTXzx3ICHh4f3Fl4bRrSHzb1tsPpgwMPDwxvxvsqrbVm1AW5+c6NgFw8PD+8Ar91222XtBwjav1cTW3h4eHgxr21NtXFtOwpwV7mPh4eHd5qXzymdOFSK7KRdJx4eHt4H8PKF7iOJzUGCh4eH9zm8tiW2Gd5q+1lF4w8PDw9vzWtj1paxL5HbAwYPDw/vHG/2k210m+zYs139hgsPDw8v/a1v6LeccXWBPgIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

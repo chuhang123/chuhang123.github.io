@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>angular和springmvc实现批量删除 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="http,SpringMVC,batch,delete,checkbox">
+    <meta name="description" content="昨天实现了批量删除的功能，看到了stackoverflow和百度上均有相关的问题，于是决定记录一下。前台angularjs，后台SpringMvc。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular和springmvc实现批量删除">
+<meta property="og:url" content="https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="昨天实现了批量删除的功能，看到了stackoverflow和百度上均有相关的问题，于是决定记录一下。前台angularjs，后台SpringMvc。">
+<meta property="og:updated_time" content="2017-10-21T13:28:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angular和springmvc实现批量删除">
+<meta name="twitter:description" content="昨天实现了批量删除的功能，看到了stackoverflow和百度上均有相关的问题，于是决定记录一下。前台angularjs，后台SpringMvc。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">angular和springmvc实现批量删除</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">angular和springmvc实现批量删除</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-21T12:14:05.000Z" itemprop="datePublished" class="page-time">
+  2017-10-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/angularjs/">angularjs</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#checkbox使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">checkbox使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前后台对接"><span class="post-toc-number">2.</span> <span class="post-toc-text">前后台对接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单元测试"><span class="post-toc-number">3.</span> <span class="post-toc-text">单元测试</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-angular-spring-batch-delete"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">angular和springmvc实现批量删除</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-21 20:14:05" datetime="2017-10-21T12:14:05.000Z"  itemprop="datePublished">2017-10-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/angularjs/">angularjs</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>昨天实现了批量删除的功能，看到了stackoverflow和百度上均有相关的问题，于是决定记录一下。前台angularjs，后台SpringMvc。</p>
+<a id="more"></a>
+<h2 id="checkbox使用"><a href="#checkbox使用" class="headerlink" title="checkbox使用"></a>checkbox使用</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">tr</span> ng-<span class="built_in">repeat</span>=<span class="string">"(key, object) in data.content"</span>&gt;</div><div class="line">     <span class="symbol">&lt;td&gt;</span>&lt;<span class="built_in">input</span> icheck <span class="built_in">type</span>=<span class="string">"checkbox"</span> ng-model=<span class="string">"object._checked"</span>&gt;&lt;/td&gt;</div><div class="line">&lt;/<span class="keyword">tr</span>&gt;</div></pre></td></tr></table></figure>
+<p>当用户勾选复选框后，对象的_checked属性值为true，我们通过下面这个函数获取勾选的object,可以把这个函数放在公共service中，方便框架的其他地方调用。类似的，我们也可以根据自己的需求，修改_checked属性。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 由某个数组中 筛选中被选中的元素，组成新的数组并返回</div><div class="line"> * <span class="doctag">@param</span>    &#123;array&#125;                 lists 原数组</div><div class="line"> * <span class="doctag">@param</span>    &#123;string&#125;                 key   健值 默认为 _checked</div><div class="line"> * <span class="doctag">@return</span>   &#123;array&#125;                       选中元素组成的数组</div><div class="line"> * <span class="doctag">@author</span> 梦云智 http://www.mengyunzhi.com</div><div class="line"> * <span class="doctag">@DateTime</span> 2017-10-17T15:05:18+0800</div><div class="line"> */</div><div class="line"><span class="keyword">self</span>.getCheckedElementsByListsAndKey = <span class="function"><span class="keyword">function</span><span class="params">(lists, key)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (typeof(key) === <span class="string">'undefined'</span>) &#123;</div><div class="line">        key = <span class="string">'_checked'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> tempList = [];</div><div class="line">    angular.<span class="keyword">forEach</span>(lists, <span class="function"><span class="keyword">function</span><span class="params">(list)</span> </span>&#123;</div><div class="line">    	<span class="keyword">if</span> (typeof(<span class="keyword">list</span>[key]) !== <span class="string">'undefined'</span> &amp;&amp; <span class="keyword">list</span>[key] === <span class="keyword">true</span>) &#123;</div><div class="line">    		tempList.push(<span class="keyword">list</span>);</div><div class="line">    	&#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> tempList;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="前后台对接"><a href="#前后台对接" class="headerlink" title="前后台对接"></a>前后台对接</h2><p>前台http请求<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var data =  [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>];		// 假设要删除id为<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>的记录</div><div class="line">$http.delete(<span class="string">'/FromMessage/batchDelete/'</span> + data)</div><div class="line">	.<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="title">success</span><span class="params">(response)</span></span>&#123;</div><div class="line">	  <span class="keyword">if</span> (callback) &#123;callback(response.<span class="built_in">status</span>);&#125;</div><div class="line">	&#125;, <span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">(response)</span></span>&#123;</div><div class="line">	  alert(<span class="string">'FromMessage.batchDelete error: '</span>, response);</div><div class="line">	  <span class="keyword">if</span> (callback) &#123;callback(response.<span class="built_in">status</span>);&#125;</div><div class="line">	&#125;);</div></pre></td></tr></table></figure></p>
+<p>后台代码<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@ResponseStatus</span>(HttpStatus.NO_CONTENT)</div><div class="line">    <span class="variable">@DeleteMapping</span>(<span class="string">"/batchDelete/&#123;fromMessageIds&#125;"</span>)</div><div class="line">    public void batchDelete(<span class="variable">@ApiParam</span>(value = <span class="string">"消息id数组"</span>) <span class="variable">@PathVariable</span> List&lt;Integer&gt; fromMessageIds) &#123;</div><div class="line">        <span class="selector-tag">fromMessageService</span><span class="selector-class">.batchDelete</span>(fromMessageIds);</div><div class="line">        <span class="selector-tag">return</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>后台接受到的是一个数组。如果把数组放到delete方法的body中，由于不符合api规范，会被tomcat或这spring丢弃，后台就不能正确的接受body信息。</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>功能实现后，为了降低代码的维护成本，我们进行单元测试。这里给出示例代码：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">logger.info(<span class="string">"模拟请求"</span>);</div><div class="line"><span class="keyword">this</span>.mockMvc.perform(<span class="keyword">delete</span>(<span class="string">"/FromMessage/batchDelete/"</span> + fromMessage.getId() + <span class="string">','</span> + fromMessage1.getId())</div><div class="line">.header(<span class="string">"x-auth-token"</span>, xAuthToken))</div><div class="line">.andDo(<span class="built_in">document</span>(<span class="string">"FromMessage_batchDelete"</span>, preprocessResponse(prettyPrint())))</div><div class="line">.andExpect(status().<span class="keyword">is</span>(<span class="number">204</span>));</div></pre></td></tr></table></figure></p>
+<p>注意请求的url<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/FromMessage/batchDelete/<span class="number">2</span>,<span class="number">3</span></div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在进行开发的时候，实现复选框选中、后台接收数组等功能，感觉之前都实现过，但是由于记得不清楚，测试了多次也没能通过，还是及时的google能够节约解决问题的时间。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-10-21T13:28:15.000Z" itemprop="dateUpdated">2017-10-21 21:28:15</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC/">SpringMVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/batch/">batch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/checkbox/">checkbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/delete/">delete</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/&title=《angular和springmvc实现批量删除》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/&title=《angular和springmvc实现批量删除》 — chuhang 技术不宅&source=昨天实现了批量删除的功能，看到了stackoverflow和百度上均有相关的问题，于是决定记录一下。前台angularjs，后台SpringMvc。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《angular和springmvc实现批量删除》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/15/java-dynamic-data-structure/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">ArrayList、LinkedList和HashSet的学习总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/21/how-to-convert-json-to-from-object-Gson/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">java中json和object相互转换</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="angular和springmvc实现批量删除" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/&title=《angular和springmvc实现批量删除》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/&title=《angular和springmvc实现批量删除》 — chuhang 技术不宅&source=昨天实现了批量删除的功能，看到了stackoverflow和百度上均有相关的问题，于是决定记录一下。前台angularjs，后台SpringMvc。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《angular和springmvc实现批量删除》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/21/angular-spring-batch-delete/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aS1LDQAwFwNz/0nAA7PAkjUyo6qxS5DfthSWe9HrFj6+bR/Kpu2/4+Z7qO4898PDw8A4d/f3h7n74/fPkO9+/Mz8zHh4e3jYvua0nN/2kJOSv5ue5/TseHh7eB/AKN+VWf5tfUDw8PLz/wqu+Wg0mehEGHh4e3vO8PG7ohap52927QAeyFjw8PLx+3/vKi8RfPV+Z7+Hh4eGNp+p7RSI5SbUYXHwDHh4e3gIvP1xvTFUdgOXFKW/c8fDw8M7yestMeaTbCyB6Ie/FefDw8PCWeb3WuTeU2vitQj6Nh4eHN+b1wtNkWSpvwfML3Ywh8PDw8NZ41S/Nb+XJUC2/xFFwjIeHh7fMm4SwvUhismgVFRU8PDy8R3hnV68my1W91rw8McPDw8Nr8Xo37rzJ7i11VVcK8PDw8J7nJQOqU8P+ajyRfwoPDw/veV4eEOTt+KQk9KLei6UrPDw8vEO8XkDQa6DzmLi3LvBLecDDw8Nb4+Wjr+rh8iZ+0soXsmo8PDy8Fi+/fU9GVtUiNB+qXfzHgIeHh3eU12uL88hg3sQ3SxEeHh7eAq+6blUdaFWb5uqQbLJAhoeHh9fjvW9VJ0OpJOBI8NVXo7qHh4eHN+CVF0AfWcyq1rRRA42Hh4fX4k0Omoe2vXA2b76jMRgeHh7eGq+3RlAdno2C170qh4eHhxfz8lttr10+dfnKIQgeHh7eGm8Szubzpmr8eqBg4OHh4R3lfRUf1aBhEmocGJLh4eHhLfBOBRa9cLbXvie/eDiPwcPDwyt2nr1h1allggNlAw8PD2+NV73dT0KNvQnXxV/w8PDwPoZXLSF5+emVpVsLHh4e3sfwqkfP1xQm86yobuDh4eEd4s3Xp/LIdT6+KpwNDw8Pb4FX/Ye/+vPzY60HHHh4eHgp7xuepYi9h5MLyQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>基于链表的C语言信息管理系统 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="demo,链表">
+    <meta name="description" content="这两天学习了朋友推荐的C语言链表视频教程 ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于链表的C语言信息管理系统">
+<meta property="og:url" content="https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="这两天学习了朋友推荐的C语言链表视频教程 ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg">
+<meta property="og:updated_time" content="2017-07-29T19:05:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于链表的C语言信息管理系统">
+<meta name="twitter:description" content="这两天学习了朋友推荐的C语言链表视频教程 ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">基于链表的C语言信息管理系统</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">基于链表的C语言信息管理系统</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-13T01:51:34.000Z" itemprop="datePublished" class="page-time">
+  2017-05-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数据结构/">数据结构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#认识链表"><span class="post-toc-number">1.</span> <span class="post-toc-text">认识链表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#功能需求"><span class="post-toc-number">2.</span> <span class="post-toc-text">功能需求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整体规划"><span class="post-toc-number">3.</span> <span class="post-toc-text">整体规划</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除功能"><span class="post-toc-number">4.</span> <span class="post-toc-text">删除功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现学生信息管理系统"><span class="post-toc-number">5.</span> <span class="post-toc-text">实现学生信息管理系统</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-基于链表的C语言信息管理系统"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">基于链表的C语言信息管理系统</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-13 09:51:34" datetime="2017-05-13T01:51:34.000Z"  itemprop="datePublished">2017-05-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数据结构/">数据结构</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>这两天学习了朋友推荐的<a href="http://study.163.com/course/courseMain.htm?courseId=1003284031" target="_blank" rel="external">C语言链表视频教程</a> ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。</p>
+<a id="more"></a>
+<h3 id="认识链表"><a href="#认识链表" class="headerlink" title="认识链表"></a>认识链表</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>上图为单向链表的模型，图中包含三个节点，且每个节点包含两个部分，一部分保存或者显示节点的有关信息，一部分储存下一个节点的地址。从第一个节点依次指向最后一个节点，最后一个节点指向一个空值。如果需要查找链表的节点，则需要依次遍历节点。</p>
+<h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><p>基于C语言链表，实现对学生表的基本增删改查操作，将学生数据保存至文件中，从文件中取出。并逐步完善系统，如在链表头和尾及指定位置增加学生信息，恢复删除学生信息等功能。</p>
+<h3 id="整体规划"><a href="#整体规划" class="headerlink" title="整体规划"></a>整体规划</h3><p>定义学生节点STUNODE，声明链表的头和尾g_pHead，g_pEnd，使用switch语句，针对不同的指令，执行不同的命令。搭建学生信息管理系统的骨架。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//学生结点</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">STU</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> arrStuNum[<span class="number">10</span>];</div><div class="line">	<span class="keyword">char</span> arrStuName[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> iStuScore;</div><div class="line">	<span class="class"><span class="keyword">struct</span> _<span class="title">STU</span>* <span class="title">pNext</span>;</span></div><div class="line">&#125; STUNODE;</div><div class="line"></div><div class="line"><span class="comment">//声明链表的头和尾</span></div><div class="line">STUNODE* g_pHead = <span class="literal">NULL</span>;</div><div class="line">STUNODE* g_pEnd = <span class="literal">NULL</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h3><p>以删除功能为例，具体说明。分成只有一个节点或者多个节点两种情况讨论。</p>
+<ul>
+<li><p>只有一个节点。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//只有一个节点</span></div><div class="line"><span class="keyword">if</span> (g_pHead == g_pEnd) &#123;</div><div class="line">	<span class="built_in">free</span>(g_pHead);		<span class="comment">//删除节点</span></div><div class="line">	g_pHead = <span class="literal">NULL</span>;		<span class="comment">//把链表头赋值为NULL</span></div><div class="line">	g_pEnd = <span class="literal">NULL</span>;		<span class="comment">//把链表尾赋值为NULL</span></div><div class="line">	<span class="keyword">return</span>;				<span class="comment">//完成</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>有多个节点。这种情况又需要讨论了，分为链表的头、尾、中间三种。</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//如果是首节点</span></div><div class="line"><span class="keyword">if</span> (g_pHead == pNode) &#123;</div><div class="line">	free(g_pHead);				<span class="comment">//删除节点</span></div><div class="line">	<span class="function"><span class="title">g_pHead</span> = g_pHead-&gt;</span>pNext;	<span class="comment">//指向想一个节点</span></div><div class="line">	return;						<span class="comment">//完成</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//如果是尾节点</span></div><div class="line">STUNODE* pTemp = g_pHead;</div><div class="line"><span class="keyword">if</span> (g_pEnd == pNode) &#123;</div><div class="line">	<span class="comment">//找到倒数第二个节点，并将指向空</span></div><div class="line">	<span class="function"><span class="title">while</span> (pTemp-&gt;</span>pNext != pNode) &#123;</div><div class="line">		<span class="function"><span class="title">pTemp</span> = pTemp-&gt;</span>pNext;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="title">pTemp</span>-&gt;</span>pNext = NULL;		</div><div class="line">	g_pEnd = pTemp;				<span class="comment">//把倒数第二个链表赋值为链表尾</span></div><div class="line">	free(pNode);				<span class="comment">//删除节点</span></div><div class="line">	return;						<span class="comment">//完成</span></div><div class="line">&#125;	</div><div class="line"></div><div class="line"><span class="comment">//如果是中间节点</span></div><div class="line"><span class="keyword">if</span> (pNode != g_pHead &amp;&amp; pNode != g_pEnd &amp;&amp; g_pHead != g_pEnd) &#123;</div><div class="line">	<span class="comment">//找出要删除的节点前一个</span></div><div class="line">	<span class="function"><span class="title">while</span> (pTemp-&gt;</span>pNext != pNode) &#123;</div><div class="line">		<span class="function"><span class="title">pTemp</span> = pTemp-&gt;</span>pNext;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="title">pTemp</span>-&gt;</span><span class="function"><span class="title">pNext</span> = pNode-&gt;</span>pNext;	<span class="comment">//剔除节点</span></div><div class="line">	free(pNode);					<span class="comment">//删除节点</span></div><div class="line">	return;							<span class="comment">//完成</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="实现学生信息管理系统"><a href="#实现学生信息管理系统" class="headerlink" title="实现学生信息管理系统"></a>实现学生信息管理系统</h3><p>完成增删改查后，把链表的节点的属性拼接起来，然后写入制定的文件中。读取时，拆分字符串，再将学生信息存入链表中。<br>效果如下：<br><script type="text/javascript" src="https://asciinema.org/a/5r01vujvrx4b3d1jlpdnui1kb.js" id="asciicast-5r01vujvrx4b3d1jlpdnui1kb" async></script></p>
+<p>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="comment">//学生结点</span></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">STU</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> arrStuNum[<span class="number">10</span>];</div><div class="line">	<span class="keyword">char</span> arrStuName[<span class="number">10</span>];</div><div class="line">	<span class="keyword">int</span> iStuScore;</div><div class="line">	<span class="class"><span class="keyword">struct</span> _<span class="title">STU</span>* <span class="title">pNext</span>;</span></div><div class="line">&#125; STUNODE;</div><div class="line"></div><div class="line"><span class="comment">//声明链表的头和尾</span></div><div class="line">STUNODE* g_pHead = <span class="literal">NULL</span>;</div><div class="line">STUNODE* g_pEnd = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line"><span class="comment">//添加一个学生信息</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddStuMSG</span><span class="params">(<span class="keyword">char</span> arrStuNum[<span class="number">10</span>], <span class="keyword">char</span> arrStuName[<span class="number">10</span>], <span class="keyword">int</span> iStuScore)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//链表头添加一个节点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddStuMSGToLinkHead</span><span class="params">(<span class="keyword">char</span> arrStuNum[<span class="number">10</span>], <span class="keyword">char</span> arrStuName[<span class="number">10</span>], <span class="keyword">int</span> iStuScore)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//清空链表</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FreeLinkData</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//打印数据</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowStuData</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//显示指令</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowOrder</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//指定位置插入节点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertNode</span><span class="params">(STUNODE* pTemp, <span class="keyword">char</span> arrStuNum[<span class="number">10</span>], <span class="keyword">char</span> arrStuName[<span class="number">10</span>], <span class="keyword">int</span> iStuScore)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//查找制定学生</span></div><div class="line"><span class="function">STUNODE* <span class="title">FindStuByNum</span><span class="params">(<span class="keyword">char</span>* arrStuNum)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//删除指定的学生</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DeleteStuNode</span><span class="params">(STUNODE* pNode)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//保存信息到文件中</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">SaveStuToFile</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//读取文件中的学生信息</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ReadStuFromFile</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> nOrder = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">char</span> arrStuNum[<span class="number">10</span>] = &#123;<span class="string">'\0'</span>&#125;;</div><div class="line">	<span class="keyword">char</span> arrStuName[<span class="number">10</span>] = &#123;<span class="string">'\0'</span>&#125;;</div><div class="line">	<span class="keyword">int</span> iStuScore = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">int</span> nFlag = <span class="number">1</span>;</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***********学生信息管理系统************************\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***********本系统操作指令如下**********************\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  1、增加一个学生信息（尾添加）		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	 11、增加一个学生信息（头添加）		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	111、增加一个学生信息（在指定位置添加） ***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  2、查找指定学生的信息（姓名/学号） 	***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  3、修改指定学生的信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  4、保存业主的信息到文件中		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  5、读取文件的业主信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  6、删除指定学生的信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  7、恢复删除的学生的信息		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  9、显示所有学生的信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  0、退出系统				***\n"</span>);</div><div class="line"></div><div class="line">	<span class="comment">//读取文件中的学生信息</span></div><div class="line">	ReadStuFromFile();</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (nFlag)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"请输入指令(10查看指令):\n"</span>);</div><div class="line">		<span class="comment">//printf("%p\n", &amp;nOrder);</span></div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;nOrder);</div><div class="line"></div><div class="line">		<span class="keyword">switch</span> (nOrder)</div><div class="line">		&#123;</div><div class="line">		<span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">			<span class="comment">//添加一个学生信息</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入学生的学号\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入学生的姓名\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuName);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入学生的分数\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;iStuScore);</div><div class="line"></div><div class="line">			AddStuMSG(arrStuNum, arrStuName, iStuScore);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">11</span>:</div><div class="line">			<span class="comment">//添加一个学生信息</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入学生的学号\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入学生的姓名\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuName);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入学生的分数\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;iStuScore);</div><div class="line"></div><div class="line">			AddStuMSGToLinkHead(arrStuNum, arrStuName, iStuScore);</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">111</span>:</div><div class="line">			<span class="comment">//指定位置添加学生</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入指定学号\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line"></div><div class="line">			STUNODE* pTemp;</div><div class="line">			pTemp = FindStuByNum(arrStuNum);</div><div class="line">			<span class="keyword">if</span> (<span class="literal">NULL</span> != pTemp) &#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"输入学生的学号\n"</span>);</div><div class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"输入学生的姓名\n"</span>);</div><div class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuName);</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"输入学生的分数\n"</span>);</div><div class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;iStuScore);</div><div class="line"></div><div class="line">				InsertNode(pTemp, arrStuNum,  arrStuName, iStuScore);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">			<span class="comment">//查找指定学生的信息</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入指定学号\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line"></div><div class="line">			pTemp = FindStuByNum(arrStuNum);</div><div class="line"></div><div class="line">			<span class="comment">//打印</span></div><div class="line">			<span class="keyword">if</span> (<span class="literal">NULL</span> != pTemp) &#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"学号:%s, 姓名:%s, 分数:%d\n"</span>, pTemp-&gt;arrStuNum, pTemp-&gt;arrStuName, pTemp-&gt;iStuScore);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">			<span class="comment">//查找指定学生的信息</span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入指定学号\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line"></div><div class="line">			<span class="comment">//查找</span></div><div class="line">			pTemp = FindStuByNum(arrStuNum);</div><div class="line"></div><div class="line">			<span class="comment">//打印</span></div><div class="line">			<span class="keyword">if</span> (<span class="literal">NULL</span> != pTemp) &#123;</div><div class="line">				<span class="comment">//修改学号</span></div><div class="line">				<span class="built_in">printf</span>(<span class="string">"请输入学号\n"</span>);</div><div class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line">				<span class="built_in">strcpy</span>(pTemp-&gt;arrStuNum, arrStuNum);</div><div class="line"></div><div class="line">				<span class="comment">//修改名字</span></div><div class="line">				<span class="built_in">printf</span>(<span class="string">"请输入姓名\n"</span>);</div><div class="line">				<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuName);</div><div class="line">				<span class="built_in">strcpy</span>(pTemp-&gt;arrStuName, arrStuName);</div><div class="line"></div><div class="line">				<span class="comment">//修改分数</span></div><div class="line">				<span class="built_in">printf</span>(<span class="string">"请输入分数\n"</span>);</div><div class="line">				<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;iStuScore);</div><div class="line">				pTemp-&gt;iStuScore = iStuScore;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">			<span class="comment">//保存学生信息</span></div><div class="line">			SaveStuToFile();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">6</span>:</div><div class="line">			<span class="comment">//删除一个节点 </span></div><div class="line">			<span class="built_in">printf</span>(<span class="string">"输入要删除的学生的学号\n"</span>);</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, arrStuNum);</div><div class="line"></div><div class="line">			<span class="comment">//查找</span></div><div class="line">			pTemp = FindStuByNum(arrStuNum);</div><div class="line"></div><div class="line">			<span class="comment">//删除一个节点</span></div><div class="line">			<span class="keyword">if</span> (<span class="literal">NULL</span> != pTemp) &#123;</div><div class="line">				DeleteStuNode(pTemp);</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">7</span>:</div><div class="line">			<span class="comment">//恢复</span></div><div class="line">			FreeLinkData();</div><div class="line">			g_pHead = <span class="literal">NULL</span>;</div><div class="line">			g_pEnd = <span class="literal">NULL</span>;</div><div class="line">			ReadStuFromFile();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">9</span>:</div><div class="line">			ShowStuData();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">10</span>:</div><div class="line">			<span class="comment">//查看指令</span></div><div class="line">			ShowOrder();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">			nFlag = <span class="number">0</span>;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"not right\n"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//保存学生信息</span></div><div class="line">	SaveStuToFile();</div><div class="line"></div><div class="line">	<span class="comment">//释放链表</span></div><div class="line">	FreeLinkData();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//添加一个学生信息</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddStuMSG</span><span class="params">(<span class="keyword">char</span> arrStuNum[<span class="number">10</span>], <span class="keyword">char</span> arrStuName[<span class="number">10</span>], <span class="keyword">int</span> iStuScore)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//逻辑</span></div><div class="line">	<span class="comment">//创建一个节点</span></div><div class="line">	STUNODE* pTemp = (STUNODE*)<span class="built_in">malloc</span> (<span class="keyword">sizeof</span> (STUNODE));</div><div class="line">	<span class="comment">//检验参数的合法性</span></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == arrStuNum || <span class="literal">NULL</span> == arrStuName || iStuScore &lt; <span class="number">0</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"学生信息输入错误！\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//赋值</span></div><div class="line">	<span class="built_in">strcpy</span>(pTemp-&gt;arrStuNum, arrStuNum);</div><div class="line">	<span class="built_in">strcpy</span>(pTemp-&gt;arrStuName, arrStuName);</div><div class="line">	pTemp-&gt;iStuScore = iStuScore;</div><div class="line">	pTemp-&gt;pNext = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">	<span class="comment">//接在链表上</span></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == g_pHead || <span class="literal">NULL</span> == g_pEnd) &#123;</div><div class="line">		g_pHead = pTemp;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		g_pEnd-&gt;pNext = pTemp;</div><div class="line">	&#125;</div><div class="line">	g_pEnd = pTemp;</div><div class="line"></div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">FreeLinkData</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	STUNODE* pTemp = g_pHead;</div><div class="line">	<span class="keyword">while</span> (g_pHead != <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="comment">//记录结点</span></div><div class="line">		pTemp = g_pHead;</div><div class="line">		<span class="comment">//向后移动一个</span></div><div class="line">		g_pHead = g_pHead-&gt;pNext; </div><div class="line">		<span class="comment">//删除节点</span></div><div class="line">		<span class="built_in">free</span>(pTemp);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//打印数据</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowStuData</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	STUNODE* pTemp = g_pHead;</div><div class="line">	<span class="keyword">while</span> (<span class="literal">NULL</span> != pTemp)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"学号:%s, 姓名:%s, 分数:%d\n"</span>, pTemp-&gt;arrStuNum, pTemp-&gt;arrStuName, pTemp-&gt;iStuScore);</div><div class="line">		<span class="comment">//向下走一步</span></div><div class="line">		pTemp = pTemp-&gt;pNext;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//显示指令</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ShowOrder</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***********学生信息管理系统************************\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***********本系统操作指令如下**********************\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  1、增加一个学生信息（尾添加）		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	 11、增加一个学生信息（头添加）		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	111、增加一个学生信息（在指定位置添加） ***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  2、查找指定学生的信息（姓名/学号） 	***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  3、修改指定学生的信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  4、保存业主的信息到文件中		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  5、读取文件的业主信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  6、删除指定学生的信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  7、恢复删除的学生的信息		***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  9、显示所有学生的信息			***\n"</span>);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"***	  0、退出系统				***\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddStuMSGToLinkHead</span><span class="params">(<span class="keyword">char</span> arrStuNum[<span class="number">10</span>], <span class="keyword">char</span> arrStuName[<span class="number">10</span>], <span class="keyword">int</span> iStuScore)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//创建一个节点</span></div><div class="line">	STUNODE* pTemp = (STUNODE*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(STUNODE));</div><div class="line">	<span class="comment">//检测参数合法性</span></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == arrStuNum || <span class="literal">NULL</span> == arrStuName || iStuScore &lt; <span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"学生信息输入错误！\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="built_in">strcpy</span>(pTemp-&gt;arrStuNum, arrStuNum);</div><div class="line">	<span class="built_in">strcpy</span>(pTemp-&gt;arrStuName, arrStuName);</div><div class="line">	pTemp-&gt;iStuScore = iStuScore;</div><div class="line">	pTemp-&gt;pNext = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">	<span class="comment">//链表为空</span></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == g_pHead || <span class="literal">NULL</span> == g_pEnd) &#123;</div><div class="line">		g_pEnd = pTemp;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		pTemp-&gt;pNext = g_pHead;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	g_pHead = pTemp;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//查找制定学生</span></div><div class="line"><span class="function">STUNODE* <span class="title">FindStuByNum</span><span class="params">(<span class="keyword">char</span>* arrStuNum)</span></span></div><div class="line">&#123;</div><div class="line">	STUNODE* pTemp = g_pHead;</div><div class="line">	<span class="comment">//判断参数的合法性</span></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == arrStuNum) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"学号输入错误！\n"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//判断链表是否为空</span></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == g_pHead || <span class="literal">NULL</span> ==g_pEnd) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"链表为NULL！\n"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//遍历链表</span></div><div class="line">	<span class="keyword">while</span> (<span class="literal">NULL</span> != pTemp) &#123;</div><div class="line">		<span class="keyword">if</span> (<span class="number">0</span> == <span class="built_in">strcmp</span>(pTemp-&gt;arrStuNum, arrStuNum)) &#123;</div><div class="line">			<span class="keyword">return</span> pTemp;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		pTemp = pTemp-&gt;pNext;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"查无此节点！\n"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//指定位置插入节点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertNode</span><span class="params">(STUNODE* pTemp, <span class="keyword">char</span> arrStuNum[<span class="number">10</span>], <span class="keyword">char</span> arrStuName[<span class="number">10</span>], <span class="keyword">int</span> iStuScore)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//创建节点</span></div><div class="line">	STUNODE* pNewTemp = (STUNODE*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(STUNODE));</div><div class="line"></div><div class="line">	<span class="comment">//成员赋值</span></div><div class="line">	<span class="built_in">strcpy</span>(pNewTemp-&gt;arrStuNum, arrStuNum);</div><div class="line">	<span class="built_in">strcpy</span>(pNewTemp-&gt;arrStuName, arrStuName);</div><div class="line">	pNewTemp-&gt;iStuScore = iStuScore;</div><div class="line">	pNewTemp-&gt;pNext = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">	<span class="comment">//判断插入位置是否为未结点</span></div><div class="line">	<span class="keyword">if</span> (pTemp == g_pEnd) &#123;</div><div class="line">		g_pEnd-&gt;pNext = pNewTemp;</div><div class="line">		g_pEnd = pNewTemp;</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		pNewTemp-&gt;pNext =  pTemp-&gt;pNext;</div><div class="line">		pTemp-&gt;pNext =  pNewTemp;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//删除指定的学生</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DeleteStuNode</span><span class="params">(STUNODE* pNode)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//只有一个节点</span></div><div class="line">	<span class="keyword">if</span> (g_pHead == g_pEnd) &#123;</div><div class="line">		<span class="built_in">free</span>(g_pHead);</div><div class="line">		g_pHead = <span class="literal">NULL</span>;</div><div class="line">		g_pEnd = <span class="literal">NULL</span>;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//如果是首节点</span></div><div class="line">	<span class="keyword">if</span> (g_pHead == pNode) &#123;</div><div class="line">		<span class="built_in">free</span>(g_pHead);</div><div class="line">		g_pHead = g_pHead-&gt;pNext;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//如果是尾节点</span></div><div class="line">	STUNODE* pTemp = g_pHead;</div><div class="line">	<span class="keyword">if</span> (g_pEnd == pNode) &#123;</div><div class="line">		<span class="keyword">while</span> (pTemp-&gt;pNext != pNode) &#123;</div><div class="line">			pTemp = pTemp-&gt;pNext;</div><div class="line">		&#125;</div><div class="line">		pTemp-&gt;pNext = <span class="literal">NULL</span>;</div><div class="line">		g_pEnd = pTemp;</div><div class="line">		<span class="built_in">free</span>(pNode);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//如果是中间节点</span></div><div class="line">	<span class="keyword">if</span> (pNode != g_pHead &amp;&amp; pNode != g_pEnd &amp;&amp; g_pHead != g_pEnd) &#123;</div><div class="line">		<span class="keyword">while</span> (pTemp-&gt;pNext != pNode) &#123;</div><div class="line">			pTemp = pTemp-&gt;pNext;</div><div class="line">		&#125;</div><div class="line">		pTemp-&gt;pNext = pNode-&gt;pNext;</div><div class="line">		<span class="built_in">free</span>(pNode);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//保存信息到文件中</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">SaveStuToFile</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	FILE* pFile = <span class="literal">NULL</span>;</div><div class="line">	STUNODE* pTemp = g_pHead;</div><div class="line">	<span class="keyword">char</span> strBuf[<span class="number">30</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	<span class="keyword">char</span> strScore[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line"></div><div class="line">	<span class="comment">//判断链表中是否为null</span></div><div class="line">	<span class="keyword">if</span> (g_pHead == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"没有学生\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//打开文件</span></div><div class="line">	pFile = fopen(<span class="string">"dat.dat"</span>, <span class="string">"wb+"</span>);</div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == pFile) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"文件打开失败！\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//操作文件指针</span></div><div class="line">	<span class="keyword">while</span> (<span class="literal">NULL</span> != pTemp) &#123;</div><div class="line">		<span class="comment">//学号赋值进去</span></div><div class="line">		<span class="built_in">strcpy</span>(strBuf, pTemp-&gt;arrStuNum);</div><div class="line">		<span class="built_in">strcat</span>(strBuf, <span class="string">"."</span>);</div><div class="line">		<span class="comment">//姓名</span></div><div class="line">		<span class="built_in">strcat</span>(strBuf, pTemp-&gt;arrStuName);</div><div class="line">		<span class="built_in">strcat</span>(strBuf, <span class="string">"."</span>);</div><div class="line">		<span class="comment">//分数</span></div><div class="line">		<span class="built_in">snprintf</span>(strScore, <span class="number">10</span>, <span class="string">"%d"</span>, pTemp-&gt;iStuScore);  <span class="comment">//linux下不能使用itoa函数，故用此代替</span></div><div class="line">		<span class="comment">//拼接字符串</span></div><div class="line">		<span class="built_in">strcat</span>(strBuf, strScore);</div><div class="line"></div><div class="line">		fwrite(strBuf, <span class="number">1</span>, <span class="built_in">strlen</span>(strBuf), pFile);</div><div class="line">		fwrite(<span class="string">"\r\n"</span>, <span class="number">1</span>, <span class="built_in">strlen</span>(<span class="string">"\r\n"</span>), pFile);</div><div class="line"></div><div class="line">		pTemp = pTemp-&gt;pNext;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//关闭文件</span></div><div class="line">	fclose(pFile);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//读取文件中的学生信息</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">ReadStuFromFile</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	FILE* pFile = fopen(<span class="string">"dat.dat"</span>, <span class="string">"rb+"</span>);</div><div class="line">	<span class="keyword">char</span> strBuf[<span class="number">30</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	<span class="keyword">char</span> strStuNum[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	<span class="keyword">char</span> strStuName[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	<span class="keyword">char</span> strStuScore[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	<span class="keyword">int</span> nCount = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> iStuScore;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="keyword">if</span> (<span class="literal">NULL</span> == pFile) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"文件打开失败\n"</span>);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//操作指针读取函数</span></div><div class="line">	</div><div class="line">	<span class="keyword">while</span> (<span class="literal">NULL</span> != fgets(strBuf, <span class="number">30</span>, pFile)) &#123;</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">		<span class="keyword">int</span> nCount = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; strBuf[i] != <span class="string">'\r'</span>; i++) &#123;</div><div class="line">			<span class="comment">//没到.</span></div><div class="line">			<span class="keyword">if</span> (<span class="number">0</span> == nCount) &#123;</div><div class="line">				strStuNum[i] = strBuf[i];</div><div class="line">				<span class="keyword">if</span> (<span class="string">'.'</span> == strBuf[i]) &#123;</div><div class="line">					strStuNum[i] = <span class="string">'\0'</span>;</div><div class="line">					nCount++;</div><div class="line">				&#125;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">1</span> == nCount) &#123;</div><div class="line">				<span class="keyword">if</span> (<span class="string">'.'</span> != strBuf[i]) &#123;</div><div class="line">					strStuName[j] = strBuf[i];</div><div class="line">					j++;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">if</span> (<span class="string">'.'</span> == strBuf[i]) &#123;</div><div class="line">					strStuName[j] = <span class="string">'\0'</span>;</div><div class="line">					nCount++;</div><div class="line">					j = <span class="number">0</span>;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				strStuScore[j] = strBuf[i];</div><div class="line">				j++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="comment">//将学生的分数转化为int类型</span></div><div class="line">		iStuScore = strtol(strStuScore, <span class="literal">NULL</span>, <span class="number">10</span>);</div><div class="line">		AddStuMSG(strStuNum, strStuName, iStuScore);</div><div class="line">	&#125;</div><div class="line">	fclose(pFile);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-07-29T19:05:54.000Z" itemprop="dateUpdated">2017-07-30 03:05:54</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/demo/">demo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/链表/">链表</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/&title=《基于链表的C语言信息管理系统》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/&title=《基于链表的C语言信息管理系统》 — chuhang 技术不宅&source=这两天学习了朋友推荐的C语言链表视频教程 ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于链表的C语言信息管理系统》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/13/订单号生成规则简述/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">订单号生成规则简述</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/04/30/16-17跟媳妇平凡的日子/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">16-17跟媳妇平凡的日子</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="基于链表的C语言信息管理系统" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/&title=《基于链表的C语言信息管理系统》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/&title=《基于链表的C语言信息管理系统》 — chuhang 技术不宅&source=这两天学习了朋友推荐的C语言链表视频教程 ，有了对链表的初步认识。教程用C对单向链表的实现了基本的增删改查操作，以及将数据储存到文件中和从文件中读取的功能。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于链表的C语言信息管理系统》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/05/13/基于链表的C语言信息管理系统/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3awW7CMBAEUP7/p+m1EgVmduMqh5cTAur4uVK8zPrxiK/nr+v3O5+/8/rp59ev47xejxMXHh4e3mLq74b7/E5y+2Q5kjnUS4CHh4d3jNc+yvPlyCeabyHJnPHw8PDuw0vA+3I5Z+Ph4eHdn5fHEPnWki8HHh4e3n14eRGcw/bgfCu6IGvBw8PDO9BFus/rI/09PDw8vHVXfdPcyhtg7UZSzBYPDw/vAK+dXBu/zhpdeeEefRMPDw/vUt6s/Z+T2jZYuwF82YTw8PDwDvBmZXEeueax7OxeRTyBh4eH94+8/SGq/CGejDAE4+Hh4V3Ky9dgU3bnRwc2ZXqdH+Ph4eGVc54dq9pPMQ9zV+Pj4eHhHePlP+k3Rw1OLNOX+AMPDw/vAC9pz7cFdH77POZoRy5OH+Dh4eGVvM+P4HygfIPZt9CKmBgPDw/vAC+fymxpZkV2fhirTqzx8PDwLuUlDf5NO7+NcVv86kwZHh4eXsnLH8R50VykIDFy1kLDw8PDu5b3uVyeHbrKj0a1hwbqGeLh4eEd4M1aVm3x3Va5SUOuWGg8PDy8A7x2Wvntr4W1pTweHh7eOV77EJ9lHs/4umpkPDw8vBO8vGCdhbZ5NLxpfb39Wzw8PLwDvLxUrX/8r6ONtqTGw8PD+09eG0O0B6TaIGN/91XKgoeHhxfzzkUG7WYwi3EvqPrx8PDw1lX2l45Ze/gp3k428y86e3h4eHgj3rO8Zg2zzRaS/5f+GBMPDw/vAG9Tl+ZRQhsHX7VAeHh4eOd4s82gjR7aYrptub0dDQ8PD+8YL4l3NwFxMuaJu+Dh4eHdh3fVw30zcrQ0eHh4eDfg5THBrHmWxxlRsoKHh4d3jJfHB5vNYHa6oT22hYeHh3eaN/vBPwsv8lh2dihheOHh4eGlvB9Vd0rfxwRP8wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
