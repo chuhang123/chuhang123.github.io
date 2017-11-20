@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuhang123.github.io/"/>
-  <updated>2017-11-15T14:01:49.658Z</updated>
+  <updated>2017-11-20T12:56:56.496Z</updated>
   <id>https://chuhang123.github.io/</id>
   
   <author>
@@ -14,6 +14,92 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java异常处理学习</title>
+    <link href="https://chuhang123.github.io/2017/11/20/java-exception-handling/"/>
+    <id>https://chuhang123.github.io/2017/11/20/java-exception-handling/</id>
+    <published>2017-11-20T05:56:47.000Z</published>
+    <updated>2017-11-20T12:56:56.496Z</updated>
+    
+    <content type="html"><![CDATA[<p>在开发 程序的过程中，我们可能经常会和异常打交道，那么出现异常时我们应该怎么处理呢，我们一起来学习一下。</p>
+<a id="more"></a>
+<h2 id="基本异常处理"><a href="#基本异常处理" class="headerlink" title="基本异常处理"></a>基本异常处理</h2><p>java提供了在程序中处理某些特定类型条件的方法，能够把程序或方法划分为正常情况或异常情况两部分。异常是一个对象，创建这个对象的过程，也被称为抛出异常。实例如下：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LearnException</span>(<span class="params"><span class="keyword">int</span> i</span>) </span>&#123;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">	    <span class="keyword">if</span> (i &lt; <span class="number">1</span>)  &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ArithmeticException(<span class="string">"请传入大于0的整数"</span>);</div><div class="line">            &#125;</div><div class="line">	    <span class="keyword">int</span> result = <span class="number">100</span>/i;</div><div class="line">	&#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</div><div class="line">	    System.<span class="keyword">out</span>.println(<span class="string">"出现异常了"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 从上面这个例子我们可以看出，java处理异常的基本方式有try-throw-catch三元组成。</p>
+<ul>
+<li><p>try语句块。try是尝试的意思，try语句块中的代码通常是你不能百分之百的确定，但是你想进行一次尝试。它的基本轮廓如下；</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> <span class="section">try</span> &#123;</div><div class="line">    <span class="attribute">Code_To_Try</span></div><div class="line">    Possibly_Throw_An_Exception</div><div class="line">    More_Code</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>throw语句块。上述的例子，也等同与如下代码：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ArithmeticException arithmeticException = <span class="keyword">new</span> <span class="type">ArithmeticException</span>(<span class="string">"请传入大于0的整数"</span>);</div><div class="line"><span class="keyword">throw</span> arithmeticException;</div></pre></td></tr></table></figure>
+<p>实际上，就是new一个异常对象，然后抛出的过程。当异常被抛出时，该块中的代码停止执行，跳出try语句块。</p>
+</li>
+<li><p>catch语句块。其格式如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="attribute">catch</span> (ArithmeticException e) &#123;</div><div class="line">    <span class="attribute">Handling_Exception</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>标识符e就像一个参数，接收刚才抛出的异常，所以e的类型必须等同于抛出的异常类型，否则不能捕获异常。</p>
+</li>
+</ul>
+<h2 id="定义自己的异常类"><a href="#定义自己的异常类" class="headerlink" title="定义自己的异常类"></a>定义自己的异常类</h2><p> 我们也可以自己定义一个异常类，但必须继承已经定义好的异常类的。代码如下：<br> <figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> public <span class="class"><span class="keyword">class</span> <span class="title">DivideByZeroException</span> <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123;</div><div class="line">    public <span class="type">DivideByZeroException</span>() &#123;</div><div class="line">        <span class="keyword">super</span>(<span class="string">"请传入大于0的整数"</span>);		<span class="comment">// 调用基类Exception的构造器</span></div><div class="line">    &#125;</div><div class="line">    public <span class="type">DivideByZeroException</span>(<span class="type">String</span> message) &#123;</div><div class="line">        <span class="keyword">super</span>(message);	<span class="comment">// 调用基类Exception的构造器</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 调用方法如下：<br> <figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> <span class="built_in">try</span> &#123;</div><div class="line">    <span class="built_in">if</span> (i &lt; <span class="number">1</span>)  &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> DivideByZeroException();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> result = <span class="number">100</span>/i;</div><div class="line">&#125; <span class="built_in">catch</span> (DivideByZeroException e) &#123;</div><div class="line">    System.out.<span class="built_in">println</span>(<span class="string">"出现异常了"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 当我们自己定义异常类时，我们需要注意一下三点：</p>
+<ul>
+<li>如果你没有更合理的理由使用其他的异常类作为基类，那么就使用Exception作为基类。</li>
+<li>你定义的异常类至少定义了两个构造器——一个默认构造器，一个拥有String参数的构造器。通常情况下，自己定义的异常类都要保留getMessage方法。</li>
+<li><p>在每一个构造器中，你应该以对基类构造器的调用作为开始，使用super调用。</p>
+<blockquote>
+<p>如果你在写代码时就已经清楚可能会抛出异常，那么最后自己定义一个异常，这样当出现异常时，我们就更容易区分你的异常和预定义类中的异常。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="声明异常"><a href="#声明异常" class="headerlink" title="声明异常"></a>声明异常</h2><p> 有时候我们需要延迟处理异常。比如你有一个代码块可能会抛出异常，但你并不想在这个代码块中捕获异常。因为可能某些程序调用该方法抛出异常后应该简单的终止程序，而另一程序调用该方法抛出异常后要做一些其他的处理。所以，当出现类似这种情况时，我们需要在在方法头部声明异常。代码如下：<br> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">LearnException</span><span class="params">(<span class="keyword">int</span> i)</span> throws DivideByZeroException </span>&#123;</div><div class="line">	<span class="function">Code_To_Try</span></div><div class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title">DivideByZeroException</span><span class="params">()</span>;</div><div class="line">	More_Code</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 如果方法抛出了异常，方法调用立即结束。在方法的首部声明异常的一个好处是，我们可以清楚的区分可能有异常的方法和没有异常的方法，易于阅读。</p>
+<blockquote>
+<p>关键字throw用于抛出异常，throws用于声明异常。</p>
+</blockquote>
+<h2 id="异常的种类"><a href="#异常的种类" class="headerlink" title="异常的种类"></a>异常的种类</h2><p>所有的java异常可以分为两类：可控异常，不可控异常。上述的异常属于可控异常，即：异常必须在catch快中捕获或者在方法的首部声明。不可控异常也称为运行时异常（RuntimeException），当出现此类异常时，通常我们应该修正自己的代码，而不是添加catch语句块。</p>
+<h2 id="多重捕获和finally"><a href="#多重捕获和finally" class="headerlink" title="多重捕获和finally"></a>多重捕获和finally</h2><ul>
+<li>多重捕获。一个try语句块可以抛出任意数量的异常，这些异常可以是不同的类型，因为一个catch语句块只能捕获一种异常，所以一个try语句块可以使用多个catch语句块。</li>
+<li>finally关键字 。无论代码是否发生异常，finally中的代码块总会被执行。<br>代码如下：<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">&#125; <span class="keyword">catch</span> (DivideByZeroException e1) &#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">&#125; <span class="keyword">catch</span> (IOException) &#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">&#125; <span class="keyword">finally</span> &#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/images/102.png"></p>
+<ul>
+<li>我们应该在什么时候抛出异常呢？在 <a href="https://stackoverflow.com/questions/77127/when-to-throw-an-exception" target="_blank" rel="external">When to throw an exception?</a> 中，推荐：当发现当前代码块的基本假设是错误时，应该抛出异常。</li>
+<li>对于所有的异常都捕获Exception是否可行？可行但是不推荐。最好catch更为精确的异常。</li>
+<li>在catch语句块中使用<code>e.printStackTrace()</code>是一个好的习惯么？并不推荐使用这种方法，很多情况下，并不能正确的提示代码出错的位置和相关信息。最好使用在控制台打印的方法。</li>
+</ul>
+<blockquote>
+<p>error—错误 ： 是指程序无法处理的错误.比如内存溢出、端口占用、断言错误等。</p>
+</blockquote>
+<p>参考文献：</p>
+<ol>
+<li>《Java程序设计与问题解决》</li>
+<li><a href="http://www.runoob.com/java/java-exceptions.html" target="_blank" rel="external">Java 异常处理</a> </li>
+<li><a href="https://stackoverflow.com/questions/77127/when-to-throw-an-exception" target="_blank" rel="external">When to throw an exception?</a> </li>
+<li><a href="https://stackoverflow.com/questions/7469316/why-is-exception-printstacktrace-considered-bad-practice" target="_blank" rel="external">Why is exception.printStackTrace() considered bad practice?</a> </li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在开发 程序的过程中，我们可能经常会和异常打交道，那么出现异常时我们应该怎么处理呢，我们一起来学习一下。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="https://chuhang123.github.io/categories/java/"/>
+    
+    
+      <category term="exception" scheme="https://chuhang123.github.io/tags/exception/"/>
+    
+      <category term="throw" scheme="https://chuhang123.github.io/tags/throw/"/>
+    
+      <category term="catch" scheme="https://chuhang123.github.io/tags/catch/"/>
+    
+      <category term="try" scheme="https://chuhang123.github.io/tags/try/"/>
+    
+      <category term="error" scheme="https://chuhang123.github.io/tags/error/"/>
+    
+  </entry>
   
   <entry>
     <title>ArrayList、LinkedList和HashSet的学习总结</title>
@@ -1474,6 +1560,136 @@
   </entry>
   
   <entry>
+    <title>错题本</title>
+    <link href="https://chuhang123.github.io/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
+    <id>https://chuhang123.github.io/2017/05/16/错题本/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-29T18:26:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。<br>2.考研机试题<a href="http://ac.jobdu.com/problemset.php" target="_blank" rel="external">九度</a> ，配色网站<a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">Color Scheme </a> ，易用框架<a href="http://www.jeasyui.net/" target="_blank" rel="external">easyui</a> ,<br>3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。</p>
+<a id="more"></a>
+<p>4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。<br>5.剑指offer</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。&lt;br&gt;2.考研机试题&lt;a href=&quot;http://ac.jobdu.com/problemset.php&quot;&gt;九度&lt;/a&gt; ，配色网站&lt;a href=&quot;http://colorschemedesigner.com/csd-3.5/&quot;&gt;Color Scheme &lt;/a&gt; ，易用框架&lt;a href=&quot;http://www.jeasyui.net/&quot;&gt;easyui&lt;/a&gt; ,&lt;br&gt;3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="错题" scheme="https://chuhang123.github.io/tags/%E9%94%99%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Difference between GET and POST</title>
+    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
+    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-29T19:02:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p> According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. </p>
+ <a id="more"></a>
+<h3 id="security"><a href="#security" class="headerlink" title="security"></a>security</h3><p> We might see some documents  sometimes display that GET is safe but  disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because  we can not change data by using GET.  And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url.</p>
+<h3 id="The-size-of-the-data-transfer"><a href="#The-size-of-the-data-transfer" class="headerlink" title="The size of the data transfer"></a>The size of the data transfer</h3><ul>
+<li>GET<br>url is limited in special browser or server. For example, the length of url in IE browser is limited  as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited.</li>
+</ul>
+<ul>
+<li>POST<br>because POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST.</li>
+</ul>
+<h3 id="Data-encoding"><a href="#Data-encoding" class="headerlink" title="Data encoding"></a>Data encoding</h3><p>As the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit  must be ASCII coding. If it is not ASCII coding, we need to convert.</p>
+<h3 id="Default-form"><a href="#Default-form" class="headerlink" title="Default form"></a>Default form</h3><p>GET is the default action of form.</p>
+<h3 id="Relationship-with-server"><a href="#Relationship-with-server" class="headerlink" title="Relationship with server"></a>Relationship with server</h3><p>GET is used to get data from server, while POST is used to transfer data to server.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt; According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
+    
+    
+      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
+    
+      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Brief process of building a personal blog</title>
+    <link href="https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
+    <id>https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-29T19:03:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.</p>
+<a id="more"></a>
+<h3 id="Building-Github-Pages"><a href="#Building-Github-Pages" class="headerlink" title="Building Github Pages"></a>Building Github Pages</h3><p>I have built my site by Github Pages, recommond <a href="https://pages.github.com/" target="_blank" rel="external">document </a> . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space.</p>
+<h3 id="Learning-Hexo"><a href="#Learning-Hexo" class="headerlink" title="Learning Hexo"></a>Learning Hexo</h3><p>Building hexo environment needs node, npm, and the specific installation steps has been given by hexo <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">official website</a> . I recommend <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">learning materials</a> , if after deploying on server, there are not styles, you can deploy on the site again after executing <code>hexo clean</code> command. I used <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman theme</a> , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. </p>
+<h3 id="Writting-blogs-by-using-markdown"><a href="#Writting-blogs-by-using-markdown" class="headerlink" title="Writting blogs by using markdown"></a>Writting blogs by using markdown</h3><p>I did not know markdown before building blog, so I download a mainstream markdown tool called <a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> </p>
+<blockquote>
+<p>If some of the result is not what you want, you can add a space and try it again. eg: <code>### mengyunzhi</code>（there is a space between the last “#”and”m”). </p>
+</blockquote>
+<h3 id="Uploading-pictures"><a href="#Uploading-pictures" class="headerlink" title="Uploading pictures"></a>Uploading pictures</h3><p>Because you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used  <a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">Image Uploader</a> to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. </p>
+<h3 id="Searching-in-site"><a href="#Searching-in-site" class="headerlink" title="Searching in site"></a>Searching in site</h3><p>I tried to baidu’s search site and para, but I failed. And I saw <a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>  by accident, you can try it in my blog. Here is a <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">tutorial</a> . I recommend swiftype instead baidu and google’s search site. </p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Above is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you!</p>
+<p>If there are mistakes, please correct me.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构——线性表</title>
+    <link href="https://chuhang123.github.io/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
+    <id>https://chuhang123.github.io/2017/05/16/链表/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-07-29T18:25:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的<a href="http://study.163.com/course/courseMain.htm?courseId=468002" target="_blank" rel="external">视频教程</a> ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固</p>
+<a id="more"></a>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A1%A8" target="_blank" rel="external">线性表</a> 是由n个数据元素组成的有限序列。线性表分为<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="external">链表</a> 和<a href="https://zh.wikipedia.org/wiki/%E9%A1%BA%E5%BA%8F%E8%A1%A8" target="_blank" rel="external">顺序表</a> 。</p>
+<ul>
+<li>顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。</li>
+<li>链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。</li>
+<li>为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。</li>
+</ul>
+<blockquote>
+<p>参考 <a href="http://www.cnblogs.com/cyjb/p/Lists.html" target="_blank" rel="external">http://www.cnblogs.com/cyjb/p/Lists.html</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的&lt;a href=&quot;http://study.163.com/course/courseMain.htm?courseId=468002&quot;&gt;视频教程&lt;/a&gt; ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://chuhang123.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>初始cookie与session</title>
     <link href="https://chuhang123.github.io/2017/05/16/%E5%88%9D%E5%A7%8Bcookie%E4%B8%8Esession/"/>
     <id>https://chuhang123.github.io/2017/05/16/初始cookie与session/</id>
@@ -1520,136 +1736,6 @@
   </entry>
   
   <entry>
-    <title>错题本</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
-    <id>https://chuhang123.github.io/2017/05/16/错题本/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-29T18:26:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。<br>2.考研机试题<a href="http://ac.jobdu.com/problemset.php" target="_blank" rel="external">九度</a> ，配色网站<a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">Color Scheme </a> ，易用框架<a href="http://www.jeasyui.net/" target="_blank" rel="external">easyui</a> ,<br>3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。</p>
-<a id="more"></a>
-<p>4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。<br>5.剑指offer</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。&lt;br&gt;2.考研机试题&lt;a href=&quot;http://ac.jobdu.com/problemset.php&quot;&gt;九度&lt;/a&gt; ，配色网站&lt;a href=&quot;http://colorschemedesigner.com/csd-3.5/&quot;&gt;Color Scheme &lt;/a&gt; ，易用框架&lt;a href=&quot;http://www.jeasyui.net/&quot;&gt;easyui&lt;/a&gt; ,&lt;br&gt;3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="错题" scheme="https://chuhang123.github.io/tags/%E9%94%99%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构——线性表</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://chuhang123.github.io/2017/05/16/链表/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-29T18:25:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的<a href="http://study.163.com/course/courseMain.htm?courseId=468002" target="_blank" rel="external">视频教程</a> ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固</p>
-<a id="more"></a>
-<p><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A1%A8" target="_blank" rel="external">线性表</a> 是由n个数据元素组成的有限序列。线性表分为<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="external">链表</a> 和<a href="https://zh.wikipedia.org/wiki/%E9%A1%BA%E5%BA%8F%E8%A1%A8" target="_blank" rel="external">顺序表</a> 。</p>
-<ul>
-<li>顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。</li>
-<li>链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。</li>
-<li>为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。</li>
-</ul>
-<blockquote>
-<p>参考 <a href="http://www.cnblogs.com/cyjb/p/Lists.html" target="_blank" rel="external">http://www.cnblogs.com/cyjb/p/Lists.html</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的&lt;a href=&quot;http://study.163.com/course/courseMain.htm?courseId=468002&quot;&gt;视频教程&lt;/a&gt; ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://chuhang123.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Brief process of building a personal blog</title>
-    <link href="https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/"/>
-    <id>https://chuhang123.github.io/2017/05/16/The-brief-process-of-building-a-personal-blog/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-29T19:03:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.</p>
-<a id="more"></a>
-<h3 id="Building-Github-Pages"><a href="#Building-Github-Pages" class="headerlink" title="Building Github Pages"></a>Building Github Pages</h3><p>I have built my site by Github Pages, recommond <a href="https://pages.github.com/" target="_blank" rel="external">document </a> . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space.</p>
-<h3 id="Learning-Hexo"><a href="#Learning-Hexo" class="headerlink" title="Learning Hexo"></a>Learning Hexo</h3><p>Building hexo environment needs node, npm, and the specific installation steps has been given by hexo <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">official website</a> . I recommend <a href="https://www.digitalocean.com/community/tutorials/how-to-create-a-blog-with-hexo-on-ubuntu-14-04" target="_blank" rel="external">learning materials</a> , if after deploying on server, there are not styles, you can deploy on the site again after executing <code>hexo clean</code> command. I used <a href="https://github.com/wuchong/jacman" target="_blank" rel="external">jacman theme</a> , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. </p>
-<h3 id="Writting-blogs-by-using-markdown"><a href="#Writting-blogs-by-using-markdown" class="headerlink" title="Writting blogs by using markdown"></a>Writting blogs by using markdown</h3><p>I did not know markdown before building blog, so I download a mainstream markdown tool called <a href="https://getremarkable.com/" target="_blank" rel="external">reMarkable</a> . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://p1.bqimg.com/567571/10524bb9033523f6.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure> </p>
-<blockquote>
-<p>If some of the result is not what you want, you can add a space and try it again. eg: <code>### mengyunzhi</code>（there is a space between the last “#”and”m”). </p>
-</blockquote>
-<h3 id="Uploading-pictures"><a href="#Uploading-pictures" class="headerlink" title="Uploading pictures"></a>Uploading pictures</h3><p>Because you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used  <a href="https://chrome.google.com/webstore/detail/%E6%9E%81%E7%AE%80%E5%9B%BE%E5%BA%8A/heebflcbemenefckkgfnnklbhdbdkagg?hl=zh-CN" target="_blank" rel="external">Image Uploader</a> to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. </p>
-<h3 id="Searching-in-site"><a href="#Searching-in-site" class="headerlink" title="Searching in site"></a>Searching in site</h3><p>I tried to baidu’s search site and para, but I failed. And I saw <a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>  by accident, you can try it in my blog. Here is a <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">tutorial</a> . I recommend swiftype instead baidu and google’s search site. </p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>Above is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you!</p>
-<p>If there are mistakes, please correct me.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Difference between GET and POST</title>
-    <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
-    <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-07-29T19:02:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p> According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. </p>
- <a id="more"></a>
-<h3 id="security"><a href="#security" class="headerlink" title="security"></a>security</h3><p> We might see some documents  sometimes display that GET is safe but  disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because  we can not change data by using GET.  And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url.</p>
-<h3 id="The-size-of-the-data-transfer"><a href="#The-size-of-the-data-transfer" class="headerlink" title="The size of the data transfer"></a>The size of the data transfer</h3><ul>
-<li>GET<br>url is limited in special browser or server. For example, the length of url in IE browser is limited  as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited.</li>
-</ul>
-<ul>
-<li>POST<br>because POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST.</li>
-</ul>
-<h3 id="Data-encoding"><a href="#Data-encoding" class="headerlink" title="Data encoding"></a>Data encoding</h3><p>As the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit  must be ASCII coding. If it is not ASCII coding, we need to convert.</p>
-<h3 id="Default-form"><a href="#Default-form" class="headerlink" title="Default form"></a>Default form</h3><p>GET is the default action of form.</p>
-<h3 id="Relationship-with-server"><a href="#Relationship-with-server" class="headerlink" title="Relationship with server"></a>Relationship with server</h3><p>GET is used to get data from server, while POST is used to transfer data to server.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt; According to the online information and the books of PHP, I have sorted out the difference between GET and  POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. &lt;/p&gt;
-    
-    </summary>
-    
-      <category term="English" scheme="https://chuhang123.github.io/categories/English/"/>
-    
-    
-      <category term="GET" scheme="https://chuhang123.github.io/tags/GET/"/>
-    
-      <category term="POST" scheme="https://chuhang123.github.io/tags/POST/"/>
-    
-  </entry>
-  
-  <entry>
     <title>angular+thinkphp上传图片</title>
     <link href="https://chuhang123.github.io/2017/05/13/angular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/"/>
     <id>https://chuhang123.github.io/2017/05/13/angular-thinkphp上传图片/</id>
@@ -1687,47 +1773,6 @@
     
     
       <category term="demo" scheme="https://chuhang123.github.io/tags/demo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>订单号生成规则简述</title>
-    <link href="https://chuhang123.github.io/2017/05/13/%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0/"/>
-    <id>https://chuhang123.github.io/2017/05/13/订单号生成规则简述/</id>
-    <published>2017-05-13T01:51:34.000Z</published>
-    <updated>2017-07-29T19:04:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。</p>
-<a id="more"></a>
-<h2 id="订单编号生成规则"><a href="#订单编号生成规则" class="headerlink" title="订单编号生成规则"></a>订单编号生成规则</h2><ul>
-<li>不重复。这是生成订单号最基本、最重要的原则。比如一个人在京东上买了一个手机，另外一个人在京东上买了一包卫生纸，生成了一样的订单编号，一个人给客服打电话，客服一查，到底是哪个商品呢？</li>
-<li>安全。订单编号不能暴露客户的id，或者让竞争对手很容易看出近期的订单量。</li>
-<li>不能大规模生成随机码。当订单量比较多的时候，大规模生成随机码容易发生碰撞。</li>
-<li>控制位数。客户向客服上报订单编号时，太长不仅容易出错，而且耽误时间。</li>
-<li>符合实际需求。订单的生成规则要根据自己的项目中实际的需求。比如一个小型网站使用淘宝的订单编号生成规则，显然有点大费周章了。</li>
-<li>订单号尽量保持整形。提高数据库的检索效率，也不至于凌乱，或是让一些英文发信不标准的朋友尴尬。</li>
-</ul>
-<h2 id="实例参考"><a href="#实例参考" class="headerlink" title="实例参考"></a>实例参考</h2><ul>
-<li><p>小米订单生成规则。1——111218—03234—5170，将订单分为四个部分。第一部分，1表示购买，2表示退货。第二部分，表示2011年12月18日下的单。第三部分，时间戳对应0:53:54。最后一部分，表示在同一秒内下的第5170单，也就是说，小米认为，在一秒内不会超过一万个订单。</p>
-</li>
-<li><p>宅妈妈app订单生成规则。订单是一个四位数的自增数字，可能想让用户感觉到订单在不断的增加，或者业务初期不想让用户反馈问题时报上冗长的订单号。</p>
-</li>
-</ul>
-<h2 id="所犯的错"><a href="#所犯的错" class="headerlink" title="所犯的错"></a>所犯的错</h2><p>开始的时候欲使用的订单生成规则为：年月日+时间戳（五为）+随机数（2位）+客户id后四位，如20170421—34324——32—32321。如果这样设置的话当客户超过十万人时，如果id为1和100001同一秒下单订单号就有可能重复，而且随机数的一般作用为混淆别人找出订单生成规则，而实际项目中没有必要，不是很符合实际需求。</p>
-<h2 id="项目中使用的订单生成规则"><a href="#项目中使用的订单生成规则" class="headerlink" title="项目中使用的订单生成规则"></a>项目中使用的订单生成规则</h2><p>综合以上因素，项目中决定使用：年月日+时间戳（后五位）+同一秒内订单生成序列号（三位）。例：20170421—34234—001，前13位精确到秒，后三位表示同一秒内生成的第一单。如果同一秒内生成了多个订单，则这些订单钱13位一样，后三位依次递增，也就是系统认为一秒内不会同时生成1000个订单。</p>
-<blockquote>
-<p>如有错误，欢迎指正！</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="web" scheme="https://chuhang123.github.io/tags/web/"/>
     
   </entry>
   
@@ -1775,6 +1820,47 @@
       <category term="demo" scheme="https://chuhang123.github.io/tags/demo/"/>
     
       <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>订单号生成规则简述</title>
+    <link href="https://chuhang123.github.io/2017/05/13/%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0/"/>
+    <id>https://chuhang123.github.io/2017/05/13/订单号生成规则简述/</id>
+    <published>2017-05-13T01:51:34.000Z</published>
+    <updated>2017-07-29T19:04:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。</p>
+<a id="more"></a>
+<h2 id="订单编号生成规则"><a href="#订单编号生成规则" class="headerlink" title="订单编号生成规则"></a>订单编号生成规则</h2><ul>
+<li>不重复。这是生成订单号最基本、最重要的原则。比如一个人在京东上买了一个手机，另外一个人在京东上买了一包卫生纸，生成了一样的订单编号，一个人给客服打电话，客服一查，到底是哪个商品呢？</li>
+<li>安全。订单编号不能暴露客户的id，或者让竞争对手很容易看出近期的订单量。</li>
+<li>不能大规模生成随机码。当订单量比较多的时候，大规模生成随机码容易发生碰撞。</li>
+<li>控制位数。客户向客服上报订单编号时，太长不仅容易出错，而且耽误时间。</li>
+<li>符合实际需求。订单的生成规则要根据自己的项目中实际的需求。比如一个小型网站使用淘宝的订单编号生成规则，显然有点大费周章了。</li>
+<li>订单号尽量保持整形。提高数据库的检索效率，也不至于凌乱，或是让一些英文发信不标准的朋友尴尬。</li>
+</ul>
+<h2 id="实例参考"><a href="#实例参考" class="headerlink" title="实例参考"></a>实例参考</h2><ul>
+<li><p>小米订单生成规则。1——111218—03234—5170，将订单分为四个部分。第一部分，1表示购买，2表示退货。第二部分，表示2011年12月18日下的单。第三部分，时间戳对应0:53:54。最后一部分，表示在同一秒内下的第5170单，也就是说，小米认为，在一秒内不会超过一万个订单。</p>
+</li>
+<li><p>宅妈妈app订单生成规则。订单是一个四位数的自增数字，可能想让用户感觉到订单在不断的增加，或者业务初期不想让用户反馈问题时报上冗长的订单号。</p>
+</li>
+</ul>
+<h2 id="所犯的错"><a href="#所犯的错" class="headerlink" title="所犯的错"></a>所犯的错</h2><p>开始的时候欲使用的订单生成规则为：年月日+时间戳（五为）+随机数（2位）+客户id后四位，如20170421—34324——32—32321。如果这样设置的话当客户超过十万人时，如果id为1和100001同一秒下单订单号就有可能重复，而且随机数的一般作用为混淆别人找出订单生成规则，而实际项目中没有必要，不是很符合实际需求。</p>
+<h2 id="项目中使用的订单生成规则"><a href="#项目中使用的订单生成规则" class="headerlink" title="项目中使用的订单生成规则"></a>项目中使用的订单生成规则</h2><p>综合以上因素，项目中决定使用：年月日+时间戳（后五位）+同一秒内订单生成序列号（三位）。例：20170421—34234—001，前13位精确到秒，后三位表示同一秒内生成的第一单。如果同一秒内生成了多个订单，则这些订单钱13位一样，后三位依次递增，也就是系统认为一秒内不会同时生成1000个订单。</p>
+<blockquote>
+<p>如有错误，欢迎指正！</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="web" scheme="https://chuhang123.github.io/tags/web/"/>
     
   </entry>
   
@@ -1848,6 +1934,27 @@
   </entry>
   
   <entry>
+    <title>Gallery</title>
+    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
+    <id>https://chuhang123.github.io/2017/04/16/test/</id>
+    <published>2017-04-16T01:51:34.000Z</published>
+    <updated>2017-07-29T19:04:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一个gallery测试</p>
+]]></content>
+    
+    <summary type="html">
+    
+      Gallery Post Test. 测试图片类文章的显示。
+    
+    </summary>
+    
+      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>搭建个人博客全过程简要</title>
     <link href="https://chuhang123.github.io/2017/04/16/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%AE%80%E8%A6%81/"/>
     <id>https://chuhang123.github.io/2017/04/16/搭建个人博客简要/</id>
@@ -1882,27 +1989,6 @@
     
     
       <category term="hexo" scheme="https://chuhang123.github.io/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gallery</title>
-    <link href="https://chuhang123.github.io/2017/04/16/test/"/>
-    <id>https://chuhang123.github.io/2017/04/16/test/</id>
-    <published>2017-04-16T01:51:34.000Z</published>
-    <updated>2017-07-29T19:04:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一个gallery测试</p>
-]]></content>
-    
-    <summary type="html">
-    
-      Gallery Post Test. 测试图片类文章的显示。
-    
-    </summary>
-    
-      <category term="photos" scheme="https://chuhang123.github.io/categories/photos/"/>
-    
     
   </entry>
   
