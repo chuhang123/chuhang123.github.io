@@ -1,7 +1,7 @@
 ---
 title: java异常处理学习
 date: 2017-11-20 13:56:47
-tags:
+tags: [exception, throw, catch, try, error]
 categories: java
 ---
 
