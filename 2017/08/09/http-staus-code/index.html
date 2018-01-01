@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>HTTP常见状态码 200 301 302 404 500 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="http">
+    <meta name="description" content="一些常见的状态码为：
+1开头1xx(临时响应)表示临时响应并需要请求者继续执行操作的状态代码。代码 说明100 (继续) 请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP常见状态码 200 301 302 404 500">
+<meta property="og:url" content="https://chuhang123.github.io/2017/08/09/http-staus-code/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="一些常见的状态码为：
+1开头1xx(临时响应)表示临时响应并需要请求者继续执行操作的状态代码。代码 说明100 (继续) 请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP常见状态码 200 301 302 404 500">
+<meta name="twitter:description" content="一些常见的状态码为：
+1开头1xx(临时响应)表示临时响应并需要请求者继续执行操作的状态代码。代码 说明100 (继续) 请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTTP常见状态码 200 301 302 404 500</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">HTTP常见状态码 200 301 302 404 500</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-09T12:29:58.000Z" itemprop="datePublished" class="page-time">
+  2017-08-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1开头"><span class="post-toc-number">1.</span> <span class="post-toc-text">1开头</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2开头"><span class="post-toc-number">2.</span> <span class="post-toc-text">2开头</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3开头"><span class="post-toc-number">3.</span> <span class="post-toc-text">3开头</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4开头"><span class="post-toc-number">4.</span> <span class="post-toc-text">4开头</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5开头"><span class="post-toc-number">5.</span> <span class="post-toc-text">5开头</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-http-staus-code"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">HTTP常见状态码 200 301 302 404 500</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-09 20:29:58" datetime="2017-08-09T12:29:58.000Z"  itemprop="datePublished">2017-08-09</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>一些常见的状态码为：</p>
+<h2 id="1开头"><a href="#1开头" class="headerlink" title="1开头"></a>1开头</h2><p>1xx(临时响应)表示临时响应并需要请求者继续执行操作的状态代码。代码 说明<br>100 (继续) 请求者应当继续提出请求。 服务器返回此代码表示已收到请求的第一部分，正在等待其余部分。</p>
+<a id="more"></a>
+<p>101 (切换协议) 请求者已要求服务器切换协议，服务器已确认并准备切换。</p>
+<h2 id="2开头"><a href="#2开头" class="headerlink" title="2开头"></a>2开头</h2><p>2xx (成功)表示成功处理了请求的状态代码。代码 说明</p>
+<p>200 (成功) 服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。</p>
+<p>201 (已创建) 请求成功并且服务器创建了新的资源。</p>
+<p>202 (已接受) 服务器已接受请求，但尚未处理。</p>
+<p>203 (非授权信息) 服务器已成功处理了请求，但返回的信息可能来自另一来源。</p>
+<p>204 (无内容) 服务器成功处理了请求，但没有返回任何内容。</p>
+<p>205 (重置内容) 服务器成功处理了请求，但没有返回任何内容。</p>
+<p>206 (部分内容) 服务器成功处理了部分 GET 请求。</p>
+<h2 id="3开头"><a href="#3开头" class="headerlink" title="3开头"></a>3开头</h2><p> 3xx (重定向) 表示要完成请求，需要进一步操作。 通常，这些状态代码用来重定向。代码 说明</p>
+<p>300 (多种选择) 针对请求，服务器可执行多种操作。 服务器可根据请求者 (user agent) 选择一项操作，或提供操作列表供请求者选择。</p>
+<p>301 (永久移动) 请求的网页已永久移动到新位置。 服务器返回此响应(对 GET 或 HEAD 请求的响应)时，会自动将请求者转到新位置。</p>
+<p>302 (临时移动) 服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</p>
+<p>303 (查看其他位置) 请求者应当对不同的位置使用单独的 GET 请求来检索响应时，服务器返回此代码。</p>
+<p>304 (未修改) 自从上次请求后，请求的网页未修改过。 服务器返回此响应时，不会返回网页内容。</p>
+<p>305 (使用代理) 请求者只能使用代理访问请求的网页。 如果服务器返回此响应，还表示请求者应使用代理。</p>
+<p>307 (临时重定向) 服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</p>
+<h2 id="4开头"><a href="#4开头" class="headerlink" title="4开头"></a>4开头</h2><p>4xx(请求错误) 这些状态代码表示请求可能出错，妨碍了服务器的处理。代码 说明</p>
+<p>400 (错误请求) 服务器不理解请求的语法。</p>
+<p>401 (未授权) 请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。</p>
+<p>403 (禁止) 服务器拒绝请求。</p>
+<p>404 (未找到) 服务器找不到请求的网页。</p>
+<p>405 (方法禁用) 禁用请求中指定的方法。</p>
+<p>406 (不接受) 无法使用请求的内容特性响应请求的网页。</p>
+<p>407 (需要代理授权) 此状态代码与 401(未授权)类似，但指定请求者应当授权使用代理。</p>
+<p>408 (请求超时) 服务器等候请求时发生超时。</p>
+<p>409 (冲突) 服务器在完成请求时发生冲突。 服务器必须在响应中包含有关冲突的信息。</p>
+<p>410 (已删除) 如果请求的资源已永久删除，服务器就会返回此响应。</p>
+<p>411 (需要有效长度) 服务器不接受不含有效内容长度标头字段的请求。</p>
+<p>412 (未满足前提条件) 服务器未满足请求者在请求中设置的其中一个前提条件。</p>
+<p>413 (请求实体过大) 服务器无法处理请求，因为请求实体过大，超出服务器的处理能力。</p>
+<p>414 (请求的 URI 过长) 请求的 URI(通常为网址)过长，服务器无法处理。</p>
+<p>415 (不支持的媒体类型) 请求的格式不受请求页面的支持。</p>
+<p>416 (请求范围不符合要求) 如果页面无法提供请求的范围，则服务器会返回此状态代码。</p>
+<p>417 (未满足期望值) 服务器未满足”期望”请求标头字段的要求。</p>
+<h2 id="5开头"><a href="#5开头" class="headerlink" title="5开头"></a>5开头</h2><p>5xx(服务器错误)这些状态代码表示服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错。代码 说明</p>
+<p>500 (服务器内部错误) 服务器遇到错误，无法完成请求。</p>
+<p>501 (尚未实施) 服务器不具备完成请求的功能。 例如，服务器无法识别请求方法时可能会返回此代码。</p>
+<p>502 (错误网关) 服务器作为网关或代理，从上游服务器收到无效响应。</p>
+<p>503 (服务不可用) 服务器目前无法使用(由于超载或停机维护)。 通常，这只是暂时状态。</p>
+<p>504 (网关超时) 服务器作为网关或代理，但是没有及时从上游服务器收到请求。</p>
+<p>505 (HTTP 版本不受支持) 服务器不支持请求中所用的 HTTP 协议版本。</p>
+<blockquote>
+<p>转自：<a href="http://www.cnblogs.com/starof/p/5035119.html" target="_blank" rel="external">HTTP常见状态码 200 301 302 404 500</a> </p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/08/09/http-staus-code/&title=《HTTP常见状态码 200 301 302 404 500》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/08/09/http-staus-code/&title=《HTTP常见状态码 200 301 302 404 500》 — chuhang 技术不宅&source=一些常见的状态码为：
+1开头1xx(临时响应)表示临时响应并需要请求者继续执行操作的状态代码。代码 说明100 (继续) 请求者应当继续提出请求。 服务器..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/08/09/http-staus-code/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTTP常见状态码 200 301 302 404 500》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/08/09/http-staus-code/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/08/09/http-staus-code/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/27/GLib-GIO-ERROR-Settings-schema-xxx-is-not-installed/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">GLib-GIO-ERROR **: Settings schema xxx  is not installed</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/01/spring-wiring-bean/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">spring装配bean——自动化装配、java显式装配</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="HTTP常见状态码 200 301 302 404 500" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/08/09/http-staus-code/&title=《HTTP常见状态码 200 301 302 404 500》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/08/09/http-staus-code/&title=《HTTP常见状态码 200 301 302 404 500》 — chuhang 技术不宅&source=一些常见的状态码为：
+1开头1xx(临时响应)表示临时响应并需要请求者继续执行操作的状态代码。代码 说明100 (继续) 请求者应当继续提出请求。 服务器..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/08/09/http-staus-code/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTTP常见状态码 200 301 302 404 500》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/08/09/http-staus-code/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/08/09/http-staus-code/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQW4CMQwFUO5/abptpQL/O9NKk7ysEJoheSwsO/bjEa/nt/Xqm+T5ld+8YGFgYNyW8Xy7ki2TjXP2+11e/g4GBsYBjFc/nT+Tg1+9tbIvBgYGRvtMctDkXQwMDIyVI7bpY3QUDAwMjLeMpIhtD5Gw27/sglocAwPjhoz81v3/P/9JfwMDA+NWjGe52gZkfrmWB9lfToWBgbE1Iw9weQuzTfJmARcDA+NMxlUBtx3FaAP08LoNAwPj5oxZEZvA2pGv2TUcBgbG3ozZCNdVAxPteNlS3oqBgXFzRpvq5a3K9g/Kn/nxGQMDY2vGeup2QWEZJ5cfdsHAwDiAMUvj2qu6WfoYvYWBgbE1ow2j7Td5sG4LZgwMjNMYbeDLA247eLECxsDAOIGRl7VtG3I47LU+WoGBgXFzRrtxEo5XrvuHA2QYGBiHMVaaiPlAWPvMBxgGBsbWjFkRu97ObJPOmo2BgbEdYziGNbrQX6k6o+YlBgbGkYz2eq5N/lbG0YqAi4GBsREjCYLXtg0uC80YGBgHM2ZX//mARRvoP8y1YWBgbMd4lqtNB+sL/TJMY2BgnMCYlak5eDbAkbRIhyU3BgbGbRlXHahtT7YBdylBxMDA2ILxPoFLAuWsrG3Tvg/DFhgYGBhxIyEH562C4UQbBgbGkYzZIdpWQU3CwMA4gJEUse2x2nDcppIYGBjnMPLSsU312kMn4XWpqYmBgXE/xheKcCLg4DFrLAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

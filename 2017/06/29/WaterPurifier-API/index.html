@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>净水器API | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="API">
+    <meta name="description" content="净水器方提供API接口，负责处理单个净水器的请求信息。如获取充值信息，用户使用饮水机信息等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="净水器API">
+<meta property="og:url" content="https://chuhang123.github.io/2017/06/29/WaterPurifier-API/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="净水器方提供API接口，负责处理单个净水器的请求信息。如获取充值信息，用户使用饮水机信息等。">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="净水器API">
+<meta name="twitter:description" content="净水器方提供API接口，负责处理单个净水器的请求信息。如获取充值信息，用户使用饮水机信息等。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">净水器API</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">净水器API</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-29T02:30:09.000Z" itemprop="datePublished" class="page-time">
+  2017-06-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#API列表"><span class="post-toc-number">1.</span> <span class="post-toc-text">API列表</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#getCurrentTime"><span class="post-toc-number">2.</span> <span class="post-toc-text">getCurrentTime</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#URL"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">URL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持格式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">支持格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP请求方式"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">HTTP请求方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求参数"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">请求参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求示例"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">请求示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应结果示例"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">响应结果示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#getRechargeInfo"><span class="post-toc-number">3.</span> <span class="post-toc-text">getRechargeInfo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#URL-1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">URL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持格式-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">支持格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP请求方式-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">HTTP请求方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求参数-1"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">请求参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求示例-1"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">请求示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应结果示例-1"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">响应结果示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#isRechargeOk"><span class="post-toc-number">4.</span> <span class="post-toc-text">isRechargeOk</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#URL-2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">URL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持格式-2"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">支持格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP请求方式-2"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">HTTP请求方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求参数-2"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">请求参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求头信息"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">请求头信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求示例-2"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">请求示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应结果示例-2"><span class="post-toc-number">4.7.</span> <span class="post-toc-text">响应结果示例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#useInfo"><span class="post-toc-number">5.</span> <span class="post-toc-text">useInfo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#URL-3"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">URL</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#支持格式-3"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">支持格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP请求方式-3"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">HTTP请求方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求参数-3"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">请求参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求头信息-1"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">请求头信息</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#请求示例-3"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">请求示例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#响应结果示例-3"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">响应结果示例</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-WaterPurifier-API"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">净水器API</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-29 10:30:09" datetime="2017-06-29T02:30:09.000Z"  itemprop="datePublished">2017-06-29</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>净水器方提供API接口，负责处理单个净水器的请求信息。如获取充值信息，用户使用饮水机信息等。</p>
+<a id="more"></a>
+<h1 id="API列表"><a href="#API列表" class="headerlink" title="API列表"></a>API列表</h1><ul>
+<li><a href="./#getCurrentTime">getCurrentTime</a>  ，获取服务器当前时间</li>
+<li><a href="./#getRechargeInfo">getRechargeInfo</a> ， 获取充值信息</li>
+<li><a href="./#isRechargeOk">isRechargeOk</a>  ，是否充值成功</li>
+<li><a href="./#useInfo">useInfo</a> ，净水器使用信息</li>
+</ul>
+<h1 id="getCurrentTime"><a href="#getCurrentTime" class="headerlink" title="getCurrentTime"></a>getCurrentTime</h1><p>获取服务器当前时间</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p><a href="https://api.water.mengyunzhi.com/getCurrentTime" target="_blank" rel="external">https://api.water.mengyunzhi.com/getCurrentTime</a> </p>
+<h2 id="支持格式"><a href="#支持格式" class="headerlink" title="支持格式"></a>支持格式</h2><p>JSON</p>
+<h2 id="HTTP请求方式"><a href="#HTTP请求方式" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h2><p>GET</p>
+<h2 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h2><p>无</p>
+<h2 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/api/getCurrentTime</span> HTTP/1.1</div><div class="line"><span class="attribute">Content-Type</span>: application/x-www-form-urlencoded;charset=UTF-8</div><div class="line"><span class="attribute">Host</span>: https://api.water.mengyunzhi.com</div></pre></td></tr></table></figure>
+<h2 id="响应结果示例"><a href="#响应结果示例" class="headerlink" title="响应结果示例"></a>响应结果示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Content-Type</span>: text/plain;charset=ISO-8859-1</div><div class="line"><span class="attribute">Content-Length</span>: 10</div><div class="line">  </div><div class="line"><span class="attribute">1498891791</span></div></pre></td></tr></table></figure>
+<h1 id="getRechargeInfo"><a href="#getRechargeInfo" class="headerlink" title="getRechargeInfo"></a>getRechargeInfo</h1><p>获取充值水量</p>
+<h2 id="URL-1"><a href="#URL-1" class="headerlink" title="URL"></a>URL</h2><p><a href="https://api.water.mengyunzhi.com/getRechargeInfo" target="_blank" rel="external">https://api.water.mengyunzhi.com/getRechargeInfo</a></p>
+<h2 id="支持格式-1"><a href="#支持格式-1" class="headerlink" title="支持格式"></a>支持格式</h2><p>JSON</p>
+<h2 id="HTTP请求方式-1"><a href="#HTTP请求方式-1" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h2><p>GET</p>
+<h2 id="请求参数-1"><a href="#请求参数-1" class="headerlink" title="请求参数"></a>请求参数</h2><ul>
+<li>id。类型：Long。说明：净水器编号。</li>
+<li>timestamp。类型：String。说明：时间戳。</li>
+<li>randomString。类型：String。说明：随机生成的字符串。</li>
+<li>encryptionInfo。类型：String。将timestamp、randomString、”mengyunzhi”进行字符串拼接（格式：timestamp + randomString + “mengyunzhi”），并对拼接结果进行sha1加密，生成encryptionInfo。</li>
+</ul>
+<h2 id="请求示例-1"><a href="#请求示例-1" class="headerlink" title="请求示例"></a>请求示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/api/getRechargeInfo?id=23213&amp;timestamp=1497457292548&amp;randomString=unzdtggyopn1fl7sx68b8olxr&amp;encryptionInfo=37cde59cfa3384c84d9bf7545be348bc880c79bd</span> HTTP/1.1</div><div class="line"><span class="attribute">Content-Type</span>: application/x-www-form-urlencoded;charset=UTF-8</div><div class="line"><span class="attribute">Host</span>: https://api.water.mengyunzhi.com</div></pre></td></tr></table></figure>
+<h2 id="响应结果示例-1"><a href="#响应结果示例-1" class="headerlink" title="响应结果示例"></a>响应结果示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Content-Type</span>: application/json;charset=UTF-8</div><div class="line"><span class="attribute">Content-Length</span>: 2</div><div class="line">   </div><div class="line"><span class="attribute">20</span></div></pre></td></tr></table></figure>
+<h1 id="isRechargeOk"><a href="#isRechargeOk" class="headerlink" title="isRechargeOk"></a>isRechargeOk</h1><p>是否充值成功</p>
+<h2 id="URL-2"><a href="#URL-2" class="headerlink" title="URL"></a>URL</h2><p><a href="https://api.water.mengyunzhi.com/isRechargeOk" target="_blank" rel="external">https://api.water.mengyunzhi.com/isRechargeOk</a></p>
+<h2 id="支持格式-2"><a href="#支持格式-2" class="headerlink" title="支持格式"></a>支持格式</h2><p>JSON</p>
+<h2 id="HTTP请求方式-2"><a href="#HTTP请求方式-2" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h2><p>POST</p>
+<h2 id="请求参数-2"><a href="#请求参数-2" class="headerlink" title="请求参数"></a>请求参数</h2><ul>
+<li>id。类型：Long。说明：净水器编号。</li>
+<li>shouldRecharge.。类型：int。说明：应该充值水量。</li>
+<li>actualRecharge。类型：int。说明：实际充值水量。</li>
+</ul>
+<h2 id="请求头信息"><a href="#请求头信息" class="headerlink" title="请求头信息"></a>请求头信息</h2><ul>
+<li>timestamp。类型：String。说明：时间戳。</li>
+<li>randomString。类型：String。说明：随机生成的字符串。</li>
+<li>encryptionInfo。类型：String。将timestamp、randomString、”mengyunzhi”进行字符串拼接（格式：timestamp + randomString + “mengyunzhi”），并对拼接结果进行sha1加密，生成encryptionInfo。</li>
+</ul>
+<h2 id="请求示例-2"><a href="#请求示例-2" class="headerlink" title="请求示例"></a>请求示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">POST</span> <span class="string">/api/isRechargeOk</span> HTTP/1.1</div><div class="line"></div><div class="line"><span class="groovy">Content-<span class="string">Type:</span> application/json;charset=UTF<span class="number">-8</span></span></div><div class="line"><span class="string">Host:</span> <span class="string">https:</span><span class="comment">//api.water.mengyunzhi.com</span></div><div class="line"><span class="string">Timestamp:</span> <span class="number">1497457292548</span></div><div class="line"><span class="string">RandomString:</span> unzdtggyopn1fl7sx68b8olxr</div><div class="line"><span class="string">EncryptionInfo:</span> <span class="number">37</span>cde59cfa3384c84d9bf7545be348bc880c79bd</div><div class="line">   </div><div class="line">&#123;</div><div class="line">	<span class="string">"id"</span>: <span class="number">1</span>,</div><div class="line">	<span class="string">"shouldRecharge"</span>: <span class="number">200</span>,</div><div class="line">	<span class="string">"actualRecharge"</span>: <span class="number">200</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="响应结果示例-2"><a href="#响应结果示例-2" class="headerlink" title="响应结果示例"></a>响应结果示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div></pre></td></tr></table></figure>
+<h1 id="useInfo"><a href="#useInfo" class="headerlink" title="useInfo"></a>useInfo</h1><p>净水器使用信息</p>
+<h2 id="URL-3"><a href="#URL-3" class="headerlink" title="URL"></a>URL</h2><p><a href="https://api.water.mengyunzhi.com/useInfo" target="_blank" rel="external">https://api.water.mengyunzhi.com/useInfo</a></p>
+<h2 id="支持格式-3"><a href="#支持格式-3" class="headerlink" title="支持格式"></a>支持格式</h2><p>JSON</p>
+<h2 id="HTTP请求方式-3"><a href="#HTTP请求方式-3" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h2><p>POST</p>
+<h2 id="请求参数-3"><a href="#请求参数-3" class="headerlink" title="请求参数"></a>请求参数</h2><ul>
+<li>id。类型：Long。说明：净水器编号。</li>
+<li>usedBeforeWaterQuality。类型：int。说明：净水前水质。</li>
+<li>usedAfterWaterQuality。类型：int。说明：净水后水质。</li>
+<li>usedWaterQuantity。类型：int。说明：用水量。</li>
+<li>lastInteractTime。类型：Long。说明：上次交互的时间戳。</li>
+</ul>
+<h2 id="请求头信息-1"><a href="#请求头信息-1" class="headerlink" title="请求头信息"></a>请求头信息</h2><ul>
+<li>timestamp。类型：String。说明：时间戳。</li>
+<li>randomString。类型：String。说明：随机生成的字符串。</li>
+<li>encryptionInfo。类型：String。将timestamp、randomString、”mengyunzhi”进行字符串拼接（格式：timestamp + randomString + “mengyunzhi”），并对拼接结果进行sha1加密，生成encryptionInfo。</li>
+</ul>
+<h2 id="请求示例-3"><a href="#请求示例-3" class="headerlink" title="请求示例"></a>请求示例</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">POST <span class="regexp">/api/</span>useInfo HTTP/<span class="number">1.1</span></div><div class="line">Content-<span class="string">Type:</span> application/json;charset=UTF<span class="number">-8</span></div><div class="line"><span class="string">Host:</span> <span class="string">https:</span><span class="comment">//api.water.mengyunzhi.com</span></div><div class="line"><span class="string">Timestamp:</span> <span class="number">1497457292548</span></div><div class="line"><span class="string">RandomString:</span> unzdtggyopn1fl7sx68b8olxr</div><div class="line"><span class="string">EncryptionInfo:</span> <span class="number">37</span>cde59cfa3384c84d9bf7545be348bc880c79bd</div><div class="line">   </div><div class="line">&#123;</div><div class="line">	<span class="string">"id"</span>: <span class="string">"1"</span>,</div><div class="line">	<span class="string">"usedBeforeWaterQuality"</span>: <span class="number">200</span>,</div><div class="line">	<span class="string">"usedAfterWaterQuality"</span>: <span class="number">2030</span>,</div><div class="line">	<span class="string">"usedWaterQuantity"</span>: <span class="number">2200</span>,</div><div class="line">	<span class="string">"lastInteractTime"</span>: <span class="number">1497457292548</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="响应结果示例-3"><a href="#响应结果示例-3" class="headerlink" title="响应结果示例"></a>响应结果示例</h2><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/&title=《净水器API》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/&title=《净水器API》 — chuhang 技术不宅&source=净水器方提供API接口，负责处理单个净水器的请求信息。如获取充值信息，用户使用饮水机信息等。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《净水器API》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/05/Solve-js-asynchronously/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JS异步编程解决方法实例</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/26/git-command/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">git常用指令</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="净水器API" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/&title=《净水器API》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/&title=《净水器API》 — chuhang 技术不宅&source=净水器方提供API接口，负责处理单个净水器的请求信息。如获取充值信息，用户使用饮水机信息等。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《净水器API》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/29/WaterPurifier-API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3ayw6CUAxFUf7/p3FqguA+LZrQuxkZRGExaPraNnzsb8f7mePn4/XH3x6vPLvLzYcMGTIey9gvD3INvzH/T36NDBky1mGQW579dRqayRn+bDJkyJDRoXbyOhkyZMjoM0gI5uUrCb4yZMiQQYpJXpqmwfSvtbgMGTIeyKi1yf7z+SfzDRkyZDyKsYdHrQStDTuDp5IhQ8ZoBg9wJGlLxwmdgCtDhow1GbWkrdZoS9fCyBkZMmRMZSBluDDBqZ2X+CHDlSFDxmhGrRFfSwpRkheGbBkyZMxmpAsNpBDtt/DI60MJogwZMgYx0gKyFRbTJlrajJMhQ8Y4Bm/c8ySvMzYorn3IkCFjAUb6cCShTAvatND9sjMiQ4aMQQw+AUxvzzFpSnoKliFDxlBGmszxBYvO4kVaSMuQIWM2o/ZjQuWLGpyKUkMZMmQMZdzVOEsXwvoDBhkyZKzA4K20ToJIkkWeUH74TxkyZIxmXH/N17lqC17pEAIlozJkyBjKSG+QJnY8+JIrT59KhgwZCzDSYeT1n6atsRtWPWTIkLEwg5e1neKWN9qC8lWGDBkjGLXClZ9JX0G69iFDhowVGOmwkIw2+VpGLcXsjDxlyJDxXEba6up85t+mL0iGDBkrMHirq7ZMljb908RRhgwZMtIRJm+l8YHExt+iDBkylmd0giYPyrwtKEOGjHUY6fJWWo6moTlu1cmQIWM0o5Z38RAZb3/8bqgpQ4aM5zFenWKJhwxP8F4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

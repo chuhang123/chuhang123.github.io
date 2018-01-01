@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>在SpringMVC中启用https协议 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="https">
+    <meta name="description" content="由于项目需求，笔者使用SpringMVC开发的后台必须使用https协议。经过一番折腾后，终于完成了这一需求。但是由于刚接触spirng，水平有限，从中走了许多弯路，本文记录了问题的解决方案，并对从中踩过坑进行反思。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在SpringMVC中启用https协议">
+<meta property="og:url" content="https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="由于项目需求，笔者使用SpringMVC开发的后台必须使用https协议。经过一番折腾后，终于完成了这一需求。但是由于刚接触spirng，水平有限，从中走了许多弯路，本文记录了问题的解决方案，并对从中踩过坑进行反思。">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_079.png">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在SpringMVC中启用https协议">
+<meta name="twitter:description" content="由于项目需求，笔者使用SpringMVC开发的后台必须使用https协议。经过一番折腾后，终于完成了这一需求。但是由于刚接触spirng，水平有限，从中走了许多弯路，本文记录了问题的解决方案，并对从中踩过坑进行反思。">
+<meta name="twitter:image" content="https://chuhang123.github.io/images/选区_079.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">在SpringMVC中启用https协议</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">在SpringMVC中启用https协议</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-26T08:02:03.000Z" itemprop="datePublished" class="page-time">
+  2017-06-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringMvc/">SpringMvc</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取SSL证书"><span class="post-toc-number">1.</span> <span class="post-toc-text">获取SSL证书</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在SpringMVC中启用https协议"><span class="post-toc-number">2.</span> <span class="post-toc-text">在SpringMVC中启用https协议</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将http请求重定向至http"><span class="post-toc-number">3.</span> <span class="post-toc-text">将http请求重定向至http</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#所犯的错误"><span class="post-toc-number">4.</span> <span class="post-toc-text">所犯的错误</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Enable-https-in-Spring-Boot"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">在SpringMVC中启用https协议</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-26 16:02:03" datetime="2017-06-26T08:02:03.000Z"  itemprop="datePublished">2017-06-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringMvc/">SpringMvc</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>由于项目需求，笔者使用SpringMVC开发的后台必须使用https协议。经过一番折腾后，终于完成了这一需求。但是由于刚接触spirng，水平有限，从中走了许多弯路，本文记录了问题的解决方案，并对从中踩过坑进行反思。</p>
+<a id="more"></a>
+<h2 id="获取SSL证书"><a href="#获取SSL证书" class="headerlink" title="获取SSL证书"></a>获取SSL证书</h2><p>获取SSL证书的方式有两种</p>
+<ul>
+<li>通过keytool生成在（需要java环境），打开终端输入下面的命令<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -<span class="keyword">alias</span> tomcat  -storetype PKCS12 -keyalg RSA -keysize <span class="number">2048</span>  -keystore keystore.p12 -validity <span class="number">3650</span></div><div class="line"></div><div class="line">Enter keystore password:</div><div class="line">Re-enter new password:</div><div class="line">What <span class="keyword">is</span> your first <span class="keyword">and</span> last <span class="keyword">name</span>?</div><div class="line">[Unknown]:</div><div class="line">What <span class="keyword">is</span> the <span class="keyword">name</span> <span class="keyword">of</span> your organizational <span class="keyword">unit</span>?</div><div class="line">[Unknown]:</div><div class="line">What <span class="keyword">is</span> the <span class="keyword">name</span> <span class="keyword">of</span> your organization?</div><div class="line">[Unknown]:</div><div class="line">What <span class="keyword">is</span> the <span class="keyword">name</span> <span class="keyword">of</span> your City <span class="keyword">or</span> Locality?</div><div class="line">[Unknown]:</div><div class="line">What <span class="keyword">is</span> the <span class="keyword">name</span> <span class="keyword">of</span> your State <span class="keyword">or</span> Province?</div><div class="line">[Unknown]:</div><div class="line">What <span class="keyword">is</span> the two-letter country code <span class="keyword">for</span> this <span class="keyword">unit</span>?</div><div class="line">[Unknown]:</div><div class="line"><span class="keyword">Is</span> CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown correct?</div><div class="line">[no]: yes</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>完成后，将会在系统目录下生成 keystore.p12文件，你也可以在指定目录下生成该文件，如果在<code>/home/administrator/下载/installpackage/key</code>路径下生成keystore.p12文件，可使用下面的指令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize <span class="number">2048</span> -keystore <span class="regexp">/home/</span>administrator<span class="regexp">/下载/i</span>nstallpackage<span class="regexp">/key/</span>keystore.p12 -validity <span class="number">3650</span></div></pre></td></tr></table></figure></p>
+<p>此方法比较方便快捷，但是浏览器会提示不安全（如下图），比较适用于开发阶段。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/选区_079.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<ul>
+<li>另外一种是通过正规渠道购买。</li>
+</ul>
+<h2 id="在SpringMVC中启用https协议"><a href="#在SpringMVC中启用https协议" class="headerlink" title="在SpringMVC中启用https协议"></a>在SpringMVC中启用https协议</h2><p>首先，在配置文件中引入Spring Boot依赖。Spring Boot内嵌的tomcat服务器会在http服务的8080端口启动。在application.properties文件中通过一下配置可启用https协议：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">server.port=<span class="number">8443</span></div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-store</span>=classpath:keystore<span class="selector-class">.p12</span> 		<span class="comment">//把之前生成的证书放在src/main/resources目录下</span></div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-store-password</span>=changeit</div><div class="line">server<span class="selector-class">.ssl</span><span class="selector-class">.key-password</span>=changeit</div></pre></td></tr></table></figure></p>
+<p>按照以上配置，启动应用程序，即可访问<a href="https://localhost:8443" target="_blank" rel="external">https://localhost:8443</a> 。</p>
+<h2 id="将http请求重定向至http"><a href="#将http请求重定向至http" class="headerlink" title="将http请求重定向至http"></a>将http请求重定向至http</h2><p>如果你也想使你的应用程序支持http服务，可以在配置文件中增加一下代码<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">Bean</span></div><div class="line">public EmbeddedServletContainerFactory servletContainer() &#123;</div><div class="line">    TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() &#123;</div><div class="line">    @Override</div><div class="line">    protected void postProcessContext(<span class="built_in">Context</span> <span class="built_in">context</span>) &#123;</div><div class="line">      SecurityConstraint securityConstraint = new SecurityConstraint()<span class="comment">;</span></div><div class="line">      securityConstraint.setUserConstraint(<span class="string">"CONFIDENTIAL"</span>)<span class="comment">;</span></div><div class="line">      SecurityCollection collection = new SecurityCollection()<span class="comment">;</span></div><div class="line">      collection.<span class="keyword">addPattern("/*");</span></div><div class="line">      securityConstraint.<span class="keyword">addCollection(collection);</span></div><div class="line">      <span class="built_in">context</span>.<span class="keyword">addConstraint(securityConstraint);</span></div><div class="line">    &#125;</div><div class="line">  &#125;<span class="comment">;</span></div><div class="line"></div><div class="line">  tomcat.<span class="keyword">addAdditionalTomcatConnectors(initiateHttpConnector());</span></div><div class="line">  return tomcat<span class="comment">;</span></div><div class="line">&#125;</div><div class="line">private Connector initiateHttpConnector() &#123;</div><div class="line">  Connector connector = new Connector(<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span>)<span class="comment">;</span></div><div class="line">  connector.setScheme(<span class="string">"http"</span>)<span class="comment">;</span></div><div class="line">  connector.setPort(<span class="number">8080</span>)<span class="comment">;</span></div><div class="line">  connector.setSecure(false)<span class="comment">;</span></div><div class="line">  connector.setRedirectPort(<span class="number">8443</span>)<span class="comment">;</span></div><div class="line"></div><div class="line">  return connector<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>配置完成后，如果您访问<a href="http://localhost8080" target="_blank" rel="external">http://localhost8080</a> ,浏览器将会跳转至<a href="https://localhost:8443/" target="_blank" rel="external">https://localhost:8443/</a> 。</p>
+<h2 id="所犯的错误"><a href="#所犯的错误" class="headerlink" title="所犯的错误"></a>所犯的错误</h2><ul>
+<li>最开始google这个问题时，看到starkoverflow中有人说使用https服务的前提条件就是配置tomcat支持https。但是之前认为每次应用程序能在tomcat服务器上启动，是因为idea自带的tomcat。后来看了一篇<a href="https://spring.io/blog/2014/03/07/deploying-spring-boot-applications" target="_blank" rel="external">官方文档</a> ，才知道是spring boot集成了tomcat。</li>
+<li>有时候过于追求完美，在linux、windows系统下分别配置tomcat多个版本，然后在idea中集成tomcat时windows系统一直出问题，也耽误了一些时间。也因此有了<a href="https://chuhang123.github.io/2017/06/23/%E5%9C%A8IDEA%E4%B8%AD%E9%83%A8%E7%BD%B2tomcat/">这篇博客</a> </li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>解决这个问题花费了较长时间，主要原因是平时看文档看的太少，对很多东西都不了解。解决问题的过程中很多情况是不知道把代码放在那，不清楚是否适用于本项目。解决的问题中下载了多个实例，对sping的架构有了进一步的认识。</p>
+<blockquote>
+<p>参考文献：</p>
+<ol>
+<li><a href="https://drissamri.be/blog/java/enable-https-in-spring-boot/" target="_blank" rel="external">Enable HTTPS in Spring Boot</a> </li>
+<li><a href="https://spring.io/blog/2014/03/07/deploying-spring-boot-applications" target="_blank" rel="external">https://spring.io/blog/2014/03/07/deploying-spring-boot-applications</a></li>
+<li><a href="https://spring.io/guides/gs/securing-web/" target="_blank" rel="external">https://spring.io/guides/gs/securing-web/</a></li>
+</ol>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/&title=《在SpringMVC中启用https协议》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/&title=《在SpringMVC中启用https协议》 — chuhang 技术不宅&source=由于项目需求，笔者使用SpringMVC开发的后台必须使用https协议。经过一番折腾后，终于完成了这一需求。但是由于刚接触spirng，水平有限，从中走..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在SpringMVC中启用https协议》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/26/git-command/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">git常用指令</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/23/http请求的封装与过滤/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">http请求的封装与过滤</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="在SpringMVC中启用https协议" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/&title=《在SpringMVC中启用https协议》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/&title=《在SpringMVC中启用https协议》 — chuhang 技术不宅&source=由于项目需求，笔者使用SpringMVC开发的后台必须使用https协议。经过一番折腾后，终于完成了这一需求。但是由于刚接触spirng，水平有限，从中走..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《在SpringMVC中启用https协议》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/26/Enable-https-in-Spring-Boot/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQVLDMAwF0N7/0mXLDKT5kizI4mXF0Mb288JyJb1e8fP+8Xz//9kRrj7N5yo/eHh4eOOlXy3iaoJk4s9jfp4refdyhXh4eHhrvM+Lvjq+83cTzNWYeUDCw8PDeybv5iAOxsxJ+Xbj4eHhPZnXS0/ML9N4eHh4T+MlF9/kgltden5pXs+14OHh4cW8vIr0nL9X6nt4eHh446p6NbXaK4z1inDRavHw8PAWeJPC/3xZeVJ4tE48PDy8o7xewT4vTfUSEHlh7OY7eHh4eAu86hU5vwonTQCn0rhR2MDDw8M7ypsM2vv/pKxVTZrg4eHhneVVF9pLDeSf5qWvKIDh4eHhLfAmF+XP01STDpNrdLn1Cg8PD2/MS37ST/Icveaq5CofhQo8PDy8o7x5qrSaqsjTDfll+qanDA8PD2+Z1yuG5eP0CmzVoFVeFh4eHl7xO2fbSXuBIZmrmdTAw8PDW+NNEhB5E1WCr16db7YeDw8P7yivOujk+E4u69Vi283IeHh4eMu8XpNTD5+XzfImsF/Wg4eHh7fASw7ZfKG9tG81hDSTJnh4eHiHeJNgMEnyntqaQtMVHh4e3lFeL3GQV+cnRbLq5RsPDw9vm5cf7nkxrHpBz4NKszELDw8P7w95yQ/+6oE+35RygwIeHh7eMi9vIOgVtPIZk6aBQk8ZHh4e3hpv0mJV/bTXNFBG4uHh4S3zesdx0grQW1y+KdFu4eHh4Y157+KTJxR6weZwEMLDw8P7n/vtq5rSrb7VS3bk4QcPDw9vgzcpZfWKUr3A0wwMeHh4eGu8cjPTIJzk7/a+iYeHh/c0XnJwT7KpeViKNgUPDw/vAbxqkSzfsknB7PJdPDw8vDVetWSVL7QXPPJmrELTFR4eHt4h3iQ1UD2mJ8HgbKIEDw8Pr8X7ArBx2k9YskFDAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

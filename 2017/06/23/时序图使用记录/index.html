@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>时序图使用记录 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="时序图">
+    <meta name="description" content="如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时序图使用记录">
+<meta property="og:url" content="https://chuhang123.github.io/2017/06/23/时序图使用记录/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。">
+<meta property="og:image" content="https://chuhang123.github.io/images/8.jpg">
+<meta property="og:image" content="https://chuhang123.github.io/images/9.jpg">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时序图使用记录">
+<meta name="twitter:description" content="如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。">
+<meta name="twitter:image" content="https://chuhang123.github.io/images/8.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">时序图使用记录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">时序图使用记录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-23T12:43:02.000Z" itemprop="datePublished" class="page-time">
+  2017-06-23
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不规范的时序图"><span class="post-toc-number">2.</span> <span class="post-toc-text">不规范的时序图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时序图的相关知识"><span class="post-toc-number">3.</span> <span class="post-toc-text">时序图的相关知识</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#规范后的时序图"><span class="post-toc-number">4.</span> <span class="post-toc-text">规范后的时序图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#错误之处"><span class="post-toc-number">5.</span> <span class="post-toc-text">错误之处</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-时序图使用记录"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">时序图使用记录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-23 20:43:02" datetime="2017-06-23T12:43:02.000Z"  itemprop="datePublished">2017-06-23</time>
+
+            
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。   </p>
+<a id="more"></a>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>本文的实例中，主要表示净水器和服务器之间的交互过程。需要注意的是，此实例主要表示净水器和服务器之间进行http请求。净水器的有效参数：上次交互时间、创建时间、净水前水质、净水后水质、净水器编号、用水量、充值信息。</p>
+<h2 id="不规范的时序图"><a href="#不规范的时序图" class="headerlink" title="不规范的时序图"></a>不规范的时序图</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/8.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="时序图的相关知识"><a href="#时序图的相关知识" class="headerlink" title="时序图的相关知识"></a>时序图的相关知识</h2><ul>
+<li>时序图的定义：描述了对象之间传递消息的时间顺序, 用来表示用例中的行为顺序, 是强调消息时间顺序的交互图。</li>
+<li>时序图组成 : 时序图包括四个元素 对象(Object), 生命线(Lifeline), 激活(Activation), 消息(Message);</li>
+</ul>
+<h2 id="规范后的时序图"><a href="#规范后的时序图" class="headerlink" title="规范后的时序图"></a>规范后的时序图</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/9.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="错误之处"><a href="#错误之处" class="headerlink" title="错误之处"></a>错误之处</h2><ul>
+<li>请求成功的表示方法为200</li>
+<li>返回信息为虚线，且返回消息后相应的对象不再处于激活状态</li>
+<li>一般情况下，每发送一次消息，对方会进行回复，发送方从而判断发送的消息接收方是否接收到。</li>
+<li>逻辑错误。（本文不予描述）</li>
+</ul>
+<blockquote>
+<p>参考文献：<a href="http://blog.csdn.net/doniexun/article/details/38317537" target="_blank" rel="external">UML入门 之 交互图 – 时序图 协作图详解</a> </p>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时序图/">时序图</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/23/时序图使用记录/&title=《时序图使用记录》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/23/时序图使用记录/&title=《时序图使用记录》 — chuhang 技术不宅&source=如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。   " data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/23/时序图使用记录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《时序图使用记录》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/23/时序图使用记录/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/23/时序图使用记录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/23/http请求的封装与过滤/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">http请求的封装与过滤</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/23/在IDEA中部署tomcat/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在IDEA中部署tomcat</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="时序图使用记录" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/06/23/时序图使用记录/&title=《时序图使用记录》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/06/23/时序图使用记录/&title=《时序图使用记录》 — chuhang 技术不宅&source=如果我们想清楚的表示两个类的交互过程，可以通过使用时序图来表示。本文从时序图在实际项目中的应用入手，从不规范到较为规范的过程。以及对时序图的简单学习。   " data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/06/23/时序图使用记录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《时序图使用记录》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/06/23/时序图使用记录/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/06/23/时序图使用记录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOklEQVR42u3a246DMAxF0f7/TzOvlRjoPjZzSbx5qqoQsqjkxo5fL3wdb9f7N+cx5/Hne+/nPI987JIhQ8ayjOP2Issij+dzpmNkyJAxh3H14P5nsiA+z+X3MmTIkHH7mXxT20TKkCFDRp+Rbv7ux/9ZwJUhQ8YijNp2rVNES+99LBeXIUPGggxedf/9zz9yviFDhoylGEd4kQBKAmtnDd+sSoYMGVszeIDj5TC+uewEXBkyZExj1BLI+2QyHVNLdx/o6ZAhQ8a/Z/DSVafUVSvhBSFbhgwZYxgkNSXpaLq9i48qeR4sQ4aM7RhPHRiQ7SBv2kCtGDJkyBjJSJPV/l08iUUlNhkyZGzEIGV6slGrPbgW6C9nliFDxtYMvlFLA2ua3PaPEGTIkLErgzdSkKPNdAuYNpOhNgsZMmRsx0g3efwYMt0I1lpgZciQMYfBm1P7R5v3Bb7OPDJkyNiPQabrLPGBt0v+HmTIkDGMkaav/OCz31pxOV6GDBlbM2qlf/6wWkJb/BuQIUPGAEatEMbDIi/SFV+fDBkyhjFq4bXTCJuuBAVcGTJkjGF0CmQkmKaFtsuRMmTI2JRxhBcKfDhNTQtwH34HGTJkbMpIDwt58pnelW4Ha0eeMmTIWJfRCbK1ltNawP0wgwwZMgYwSApKjjzT1opaEitDhgwZnSBbWyI/bIjLiTJkyBjMiANiWOaLX5AMGTIGMEgSy1u1UnanwCdDhowJjHTf9WwTWC3gFg81ZciQsR7jC5bIvCpER+ijAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>SpringMVC实现session分布式管理 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="session">
+    <meta name="description" content="在程序开发中不可避免的要和session打交道，那么我们如何在Spring项目使用session呢？本文记录了在项目中使用session的流程和遇到的问题。
+
+环境：SpringMVC，tomcat，redis，Spring session">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringMVC实现session分布式管理">
+<meta property="og:url" content="https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="在程序开发中不可避免的要和session打交道，那么我们如何在Spring项目使用session呢？本文记录了在项目中使用session的流程和遇到的问题。
+
+环境：SpringMVC，tomcat，redis，Spring session">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_083.png">
+<meta property="og:image" content="https://chuhang123.github.io/images/选区_084.png">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringMVC实现session分布式管理">
+<meta name="twitter:description" content="在程序开发中不可避免的要和session打交道，那么我们如何在Spring项目使用session呢？本文记录了在项目中使用session的流程和遇到的问题。
+
+环境：SpringMVC，tomcat，redis，Spring session">
+<meta name="twitter:image" content="https://chuhang123.github.io/images/选区_083.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SpringMVC实现session分布式管理</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SpringMVC实现session分布式管理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-07-05T19:48:23.000Z" itemprop="datePublished" class="page-time">
+  2017-07-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringMvc/">SpringMvc</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置spring-session"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置spring session</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何获取session"><span class="post-toc-number">2.</span> <span class="post-toc-text">如何获取session</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Using-session-in-SpringMVC"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SpringMVC实现session分布式管理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-07-06 03:48:23" datetime="2017-07-05T19:48:23.000Z"  itemprop="datePublished">2017-07-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SpringMvc/">SpringMvc</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在程序开发中不可避免的要和session打交道，那么我们如何在Spring项目使用session呢？本文记录了在项目中使用session的流程和遇到的问题。</p>
+<blockquote>
+<p>环境：SpringMVC，tomcat，redis，Spring session</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="配置spring-session"><a href="#配置spring-session" class="headerlink" title="配置spring session"></a>配置spring session</h2><ul>
+<li><p>安装jar包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.session<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-session<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>安装redis，安装方式请自行google。下面附几条常用的命令。</p>
+<ul>
+<li>启动<code>redis-server.exe redis.windows.conf</code></li>
+<li>运行<code>redis-cli.exe -h 127.0.0.1 -p 6379</code></li>
+<li>设置密码<code>config set requirepass test123</code></li>
+<li>授权<code>auth test123</code></li>
+<li>查询<code>keys  *</code></li>
+</ul>
+</li>
+<li><p>配置spring</p>
+<ul>
+<li><p>创建spring配置</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@Configuration</span></div><div class="line"><span class="variable">@EnableRedisHttpSession</span> </div><div class="line">public class HttpSessionConfig &#123;</div><div class="line">	<span class="comment">// 设置HttpSession策略。默认读取header中的X-Auth-Token,作为sessionId。</span></div><div class="line">        <span class="variable">@Bean</span></div><div class="line">        public HttpSessionStrategy httpSessionStrategy() &#123;</div><div class="line">                <span class="selector-tag">return</span> <span class="selector-tag">new</span> <span class="selector-tag">HeaderHttpSessionStrategy</span>(); </div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> @EnableRedisHttpSession注解创建了springSessionRepositoryFilter来实现过滤功能，将所有的session都放在了redis中。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>在.properties或者.yml文件中配置redis<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">spring<span class="selector-class">.session</span><span class="selector-class">.store-type</span>=redis</div><div class="line">spring<span class="selector-class">.redis</span><span class="selector-class">.host</span>=localhost</div><div class="line">spring<span class="selector-class">.redis</span><span class="selector-class">.password</span>=test123</div><div class="line">spring<span class="selector-class">.redis</span><span class="selector-class">.port</span>=<span class="number">6379</span></div><div class="line">server.session-timeout=<span class="number">86400</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="如何获取session"><a href="#如何获取session" class="headerlink" title="如何获取session"></a>如何获取session</h2><p>我们可以通过一下方式通过键值对的形式储存设置session。<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HttpSession session = request.getSession()<span class="comment">;</span></div><div class="line">session.setAttribute(key, value)<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>运行后，我们可以看到redis中多了一条记录。但是我们如何把这条记录取出来呢，这个问题似乎难倒了很多人。在上面配置spring时，我们加入了以下代码<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置HttpSession策略。默认读取header中的X-Auth-Token,作为sessionId。</span></div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="keyword">public</span> <span class="function">HttpSessionStrategy <span class="title">httpSessionStrategy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HeaderHttpSessionStrategy(); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码的作用是，当我们接收到http请求时，响应头信息会有<code>x-auth-token</code>，当我们你发送请求时，头信息中也会有<code>x-auth-token</code>。回到问题，接下来如何具体实现呢，时序图如下<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/选区_083.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>当我们第一次发送请求后，响应头信息中会有一项<code>x-auth-token</code>，再发送下一次请求时，把第一次请求的<code>x-auth-token</code>及对应的值放在头信息中，那么HttpSession就认为是同一个客户发送的请求，我们就可以通过<code>getAttribute</code>方法获取session信息了。</p>
+<blockquote>
+<p>时序图中的长方形表示激活，代表时序图中对象执行一项操作的时期。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过时序图屡一下关系<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/选区_084.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>通过时序图可以知道，我们把session信息储存在过滤器中，这样session就不依赖于各个节点的服务器，直接从高性能的键值对数据库redis中获取session信息。</p>
+<p>参考文献：1.<a href="https://docs.spring.io/spring-session/docs/current/reference/html5/guides/rest.html" target="_blank" rel="external">https://docs.spring.io/spring-session/docs/current/reference/html5/guides/rest.html</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/session/">session</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/&title=《SpringMVC实现session分布式管理》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/&title=《SpringMVC实现session分布式管理》 — chuhang 技术不宅&source=在程序开发中不可避免的要和session打交道，那么我们如何在Spring项目使用session呢？本文记录了在项目中使用session的流程和遇到的问题..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringMVC实现session分布式管理》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/07/16/http-and-https/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">https初步学习之——原理、性能</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/07/05/Solve-js-asynchronously/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JS异步编程解决方法实例</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="SpringMVC实现session分布式管理" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/&title=《SpringMVC实现session分布式管理》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/&title=《SpringMVC实现session分布式管理》 — chuhang 技术不宅&source=在程序开发中不可避免的要和session打交道，那么我们如何在Spring项目使用session呢？本文记录了在项目中使用session的流程和遇到的问题..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SpringMVC实现session分布式管理》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/07/06/Using-session-in-SpringMVC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW7DMAwEwP7/0+m1QRB5SUpOCoxPQWvHHh9EZqmfn/h4/Dmq/309c31t8nnzgYeHhzd49Ncj563PfHdOcvfqN+Dh4eHdw0seOl97q0VlXSTWxePCgoeHh/c1vEn/frGUB3fEw8PD+1+8KrW63H+4MODh4eHFvCSM6AW++ecPZy14eHh4MS9/6O/5fGS+h4eHhzeeqieNb76gr/++675PV+Hh4eEd4OULbrV53RAiDM7Bw8PDO83LGb3YYrK5ahIH4+Hh4Z3j5bFpfpvkxsl3JpsJLgoGHh4e3lZer9nNR/4TRl4eot8KeHh4eJt4u4ZPvdChWmyqwQQeHh7eCV510c8B1QY9LzCFcAQPDw/vAG8y4qpe1dtYMGn98fDw8E7w8sKQL+jV5rv6bfmADQ8PD+8Ebx4uVKOK3jfnZaNcA/Hw8PCKvHzZrYYIk8FYdSMCHh4e3p28vCHOtwvMR1+9Jvti6xUeHh7eJl71cau9+SQUnhQSPDw8vNO8XY119UheXG889vSLAQ8PD28rr9cKT7ZbrR+9GnBEbTceHh7eVl51sNQrDMk77oUazU1XeHh4eANePtqfDPsfraPaXuPh4eHdyZtEqJOmOX/EDU0/Hh4e3lZeddlNlvK8/FQLUj4Sw8PDw7uHl8cKvbihF0D0ngoPDw/vTl6vsZ4UkqRINM/Hw8PDO8xLGuW88U0GbAljVCTw8PDwtvJ6Q6l8ANYrNtVo+GLTFR4eHt5WXnXBzUOHXkiRFJLexi88PDy8vbxeMag2x+tG+dyLwMPDwzvHS0KH8k6uVkQ7GYC9zVrw8PDwPsrLF/1Jw917uXh4eHjfz0tGVtXtBb1U4e21eHh4eMd4ydKcb5/KH3rNngTKeHh4eOd4vb1a81gh3+BVCG3neQYeHh7e6r6/Q0+7YB/dm7sAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

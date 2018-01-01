@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>js的浅拷贝和深拷贝学习 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="deep,shallow,copy,clone,assignment">
+    <meta name="description" content="最近做项目时，发现把A赋值给B，当我改变B时，A也随之改变了。google了一下，了解到在js中，当一个变量复制另一个变量时，其实复制的是一个地址，改变其中一个变量，另一个也会随之改变。
+这种复制分两种情况：拷贝引用（浅拷贝）和拷贝实例（深拷贝）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js的浅拷贝和深拷贝学习">
+<meta property="og:url" content="https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="最近做项目时，发现把A赋值给B，当我改变B时，A也随之改变了。google了一下，了解到在js中，当一个变量复制另一个变量时，其实复制的是一个地址，改变其中一个变量，另一个也会随之改变。
+这种复制分两种情况：拷贝引用（浅拷贝）和拷贝实例（深拷贝）">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js的浅拷贝和深拷贝学习">
+<meta name="twitter:description" content="最近做项目时，发现把A赋值给B，当我改变B时，A也随之改变了。google了一下，了解到在js中，当一个变量复制另一个变量时，其实复制的是一个地址，改变其中一个变量，另一个也会随之改变。
+这种复制分两种情况：拷贝引用（浅拷贝）和拷贝实例（深拷贝）">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js的浅拷贝和深拷贝学习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js的浅拷贝和深拷贝学习</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-08T08:31:00.000Z" itemprop="datePublished" class="page-time">
+  2017-10-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#浅copy"><span class="post-toc-number">1.</span> <span class="post-toc-text">浅copy</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#深copy"><span class="post-toc-number">2.</span> <span class="post-toc-text">深copy</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-js-deep-copy-and-shallow-copy"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js的浅拷贝和深拷贝学习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-08 16:31:00" datetime="2017-10-08T08:31:00.000Z"  itemprop="datePublished">2017-10-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>最近做项目时，发现把A赋值给B，当我改变B时，A也随之改变了。google了一下，了解到在js中，当一个变量复制另一个变量时，其实复制的是一个地址，改变其中一个变量，另一个也会随之改变。</p>
+<p>这种复制分两种情况：拷贝引用（浅拷贝）和拷贝实例（深拷贝）<br><a id="more"></a></p>
+<h2 id="浅copy"><a href="#浅copy" class="headerlink" title="浅copy"></a>浅copy</h2><ul>
+<li><p>拷贝原对象的引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o1 = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</div><div class="line"><span class="keyword">var</span> o2 = o1;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(o1 === o2);  <span class="comment">// =&gt;true</span></div><div class="line">o2.a = <span class="number">2</span>; </div><div class="line"><span class="built_in">console</span>.log(o1.a); <span class="comment">// =&gt; 2</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝原对象的实例，但是对其内部的引用类型值，拷贝的是其引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o1 = [<span class="string">'darko'</span>, &#123;<span class="attr">age</span>: <span class="number">22</span>&#125;];</div><div class="line"><span class="keyword">var</span> o2 = o1.slice(); <span class="comment">// 根据Array.prototype.slice()的特性，这里会返回一个o1的浅拷贝对象</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(o1 === o2); <span class="comment">// =&gt; false，说明o2拷贝的是o1的一个实例</span></div><div class="line"></div><div class="line">o2[<span class="number">0</span>] = <span class="string">'lee'</span>;</div><div class="line"><span class="built_in">console</span>.log(o1[<span class="number">0</span>]); <span class="comment">// =&gt; "darko" o1和o2内部包含的基本类型值，复制的是其实例，不会相互影响</span></div><div class="line"></div><div class="line">o2[<span class="number">1</span>].age = <span class="number">23</span>;</div><div class="line"><span class="built_in">console</span>.log(o1[<span class="number">1</span>].age); <span class="comment">// =&gt;23 o1和o2内部包含的引用类型值，复制的是其引用，会相互影响</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>浅copy实现<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowClone</span>(<span class="params">source</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!source || <span class="keyword">typeof</span> source !== <span class="string">'object'</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error arguments'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> targetObj = source.constructor === <span class="built_in">Array</span> ? [] : &#123;&#125;;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> keys <span class="keyword">in</span> source) &#123;</div><div class="line">        <span class="keyword">if</span> (source.hasOwnProperty(keys)) &#123;</div><div class="line">            targetObj[keys] = source[keys];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> targetObj;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="深copy"><a href="#深copy" class="headerlink" title="深copy"></a>深copy</h2><p>深copy有两种方法</p>
+<ul>
+<li>使用JSON.stringify和JSON.parse。<br><code>JSON.parse(JSON.stringify(object))</code>。这种方法只能copy对象的属性，不能copy对象的方法。</li>
+<li>使用递归的方法实现<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function deepClone(<span class="keyword">source</span>)&#123;</div><div class="line">   <span class="keyword">if</span>(!<span class="keyword">source</span> || typeof <span class="keyword">source</span> !== <span class="string">'object'</span>)&#123;</div><div class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">'error arguments'</span>, <span class="string">'shallowClone'</span>);</div><div class="line">   &#125;</div><div class="line">   var targetObj = <span class="keyword">source</span>.constructor === Array ? [] : &#123;&#125;;</div><div class="line">   <span class="keyword">for</span>(var keys in <span class="keyword">source</span>)&#123;</div><div class="line">      <span class="keyword">if</span>(<span class="keyword">source</span>.hasOwnProperty(keys))&#123;</div><div class="line">         <span class="keyword">if</span>(<span class="keyword">source</span>[keys] &amp;&amp; typeof <span class="keyword">source</span>[keys] === <span class="string">'object'</span>)&#123;</div><div class="line">           targetObj[keys] = <span class="keyword">source</span>[keys].constructor === Array ? [] : &#123;&#125;;</div><div class="line">           targetObj[keys] = deepClone(<span class="keyword">source</span>[keys]);</div><div class="line">         &#125;<span class="keyword">else</span>&#123;</div><div class="line">           targetObj[keys] = <span class="keyword">source</span>[keys];</div><div class="line">         &#125;</div><div class="line">      &#125; </div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> targetObj;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://segmentfault.com/a/1190000008637489" target="_blank" rel="external">JavaScript中的浅拷贝和深拷贝</a> </li>
+<li><a href="https://www.zhihu.com/question/23031215" target="_blank" rel="external">javascript中的深拷贝和浅拷贝？</a> </li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/assignment/">assignment</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/clone/">clone</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/copy/">copy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/deep/">deep</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shallow/">shallow</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/&title=《js的浅拷贝和深拷贝学习》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/&title=《js的浅拷贝和深拷贝学习》 — chuhang 技术不宅&source=最近做项目时，发现把A赋值给B，当我改变B时，A也随之改变了。google了一下，了解到在js中，当一个变量复制另一个变量时，其实复制的是一个地址，改变其..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js的浅拷贝和深拷贝学习》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/09/Learning-JPA-OneToMany/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">学习JPA的@OneToMany注解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/09/18/windows-ubuntu-double-system-install-record/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">windows10/ubuntu双系统安装记录</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="js的浅拷贝和深拷贝学习" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/&title=《js的浅拷贝和深拷贝学习》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/&title=《js的浅拷贝和深拷贝学习》 — chuhang 技术不宅&source=最近做项目时，发现把A赋值给B，当我改变B时，A也随之改变了。google了一下，了解到在js中，当一个变量复制另一个变量时，其实复制的是一个地址，改变其..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js的浅拷贝和深拷贝学习》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/08/js-deep-copy-and-shallow-copy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQY7bMAwF0Nz/0u26aJ35n5QmU+BlFSS2xeeFRJB8veLPr4fP+2vyf5NVnu468MHDw8M7FPrfj85/f79Ksu7TC8pjxsPDw7vNewro6ZpksXa7b1/r+5jx8PDwfg6vBbSpef5C8fDw8P4X3ntk/oLaVfDw8PB+Gq9NfPfFiLascL3WgoeHhxfz8i7Sz/l+pb+Hh4eHt+6qzzb9NqB83TpaPDw8vAu8WRBJsbVNf/MY6jjx8PDwjvJmzaq22Lop2rYliT+uwcPDw/sWXr5xJ5jNvbMy7qs9o/Dw8PBKXttYaocM2nvfv6ZhhHh4eHgXeG0v6VSbKjkY8sPmQH8PDw8PL1hlVmDNU+RZ4r55TtHfw8PDw1vwNoNWm3DbwkSbmuPh4eHd47UB7SulSYl2M7aFh4eHd5uXtJTy7+1zksOpPhLw8PDwrvHaFDkp725aVu2hEhVQ8PDw8C7wZkMAs4GDtpCRN8OKlhgeHh7egtc+Lk9w2zR6kzoXxQg8PDy8o7wcvAk0L9Hm4wuPUeHh4eFd4+XbcZtSt8XZzev7x+94eHh4l3mv8pOPBWwabG1iXdeY8fDw8EreqWGCPMR8u2/BeHh4eJ/itQfDLNlNUudkreRfPDw8vO/ntYMCbVhtI202XoCHh4d3ltcWCNrC66adlm/0j9fg4eHhXePtt+/ZKFVekmiPKzw8PLzv582a+vmGPkvKD1dN8PDw8I62/2cDAW3pNh8gqA8hPDw8vAu8zR47a+qfAs8GtvDw8PBO8ZLDYJNSnz02ktW/aIDh4eHhHeIlLauctzlINsWUx4MBDw8P76O8vOCbV1Pbl1Kn1Hh4eHgf5SXJ8ay4MGuYfXEvHh4e3jXevkCwScfzf/P0HQ8PD+8e79Rg1izEtoV2bNYMDw8Pb8L7Df5W72S/6VezAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

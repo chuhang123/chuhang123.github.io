@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>java中json和object相互转换 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="json,object,gson">
+    <meta name="description" content="我们经常会用到json和oject类型的相互转换，这篇文章记录了通过gson进行object和json的相互转换。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java中json和object相互转换">
+<meta property="og:url" content="https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="我们经常会用到json和oject类型的相互转换，这篇文章记录了通过gson进行object和json的相互转换。">
+<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java中json和object相互转换">
+<meta name="twitter:description" content="我们经常会用到json和oject类型的相互转换，这篇文章记录了通过gson进行object和json的相互转换。">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">java中json和object相互转换</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">java中json和object相互转换</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-21T08:45:14.000Z" itemprop="datePublished" class="page-time">
+  2017-10-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gson-依赖"><span class="post-toc-number">1.</span> <span class="post-toc-text">gson 依赖</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#object转换为json"><span class="post-toc-number">2.</span> <span class="post-toc-text">object转换为json</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#json转化为object"><span class="post-toc-number">3.</span> <span class="post-toc-text">json转化为object</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-how-to-convert-json-to-from-object-Gson"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">java中json和object相互转换</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-21 16:45:14" datetime="2017-10-21T08:45:14.000Z"  itemprop="datePublished">2017-10-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>我们经常会用到json和oject类型的相互转换，这篇文章记录了通过gson进行object和json的相互转换。</p>
+<a id="more"></a>
+<h2 id="gson-依赖"><a href="#gson-依赖" class="headerlink" title="gson 依赖"></a>gson 依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.code.gson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="object转换为json"><a href="#object转换为json" class="headerlink" title="object转换为json"></a>object转换为json</h2><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// <span class="number">1</span>.新建一个对象</div><div class="line">FromMessage <span class="keyword">from</span>Message = new FromMessage();</div><div class="line"><span class="keyword">from</span>Message.<span class="built_in">set</span>Content(<span class="string">"test"</span>);</div><div class="line"><span class="keyword">from</span>Message.<span class="built_in">set</span>IsRead(Boolean.FALSE);</div><div class="line"></div><div class="line">// <span class="number">2</span>.将对象转化为json字符串</div><div class="line">Gson gson = new Gson();</div><div class="line">String jsonString = gson.<span class="keyword">to</span>Json(<span class="keyword">from</span>Message);</div><div class="line">System.<span class="keyword">out</span>.println(jsonString);			// &#123;<span class="string">"content"</span>:<span class="string">"test"</span>,<span class="string">"isRead"</span>:false&#125;</div></pre></td></tr></table></figure>
+<h2 id="json转化为object"><a href="#json转化为object" class="headerlink" title="json转化为object"></a>json转化为object</h2><figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Gson <span class="attr">gson</span> = new Gson();</div><div class="line">String <span class="attr">jsonString</span> = <span class="string">"&#123;\"</span>content\<span class="string">":\"</span>test\<span class="string">",\"</span>isRead\<span class="string">":false&#125;"</span>;</div><div class="line">FromMessage <span class="attr">fromMessage1</span> = gson.fromJson(jsonString, FromMessage.class);</div><div class="line">System.out.println(fromMessage1);  		//Message&#123;<span class="attr">id=null,</span> <span class="attr">content='test',</span> <span class="attr">title='null',</span> <span class="attr">isRead=false,</span> <span class="attr">fromDepartment=null,</span> <span class="attr">toDepartment=null,</span> <span class="attr">firstReadTime=null,</span> <span class="attr">firstReadUser=null,</span> <span class="attr">createUser=null,</span> <span class="attr">createTime=null&#125;</span></div></pre></td></tr></table></figure>
+<p>参考文章：<br><a href="https://www.mkyong.com/java/how-do-convert-java-object-to-from-json-format-gson-api/" target="_blank" rel="external">How to convert Java object to JSON string</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gson/">gson</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/">json</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/object/">object</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/&title=《java中json和object相互转换》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/&title=《java中json和object相互转换》 — chuhang 技术不宅&source=我们经常会用到json和oject类型的相互转换，这篇文章记录了通过gson进行object和json的相互转换。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java中json和object相互转换》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/21/angular-spring-batch-delete/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">angular和springmvc实现批量删除</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/17/Learning-to-use-entity-inheritance-with-JPA-and-Hibernate/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">学习hebinate继承映射关系</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="java中json和object相互转换" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/&title=《java中json和object相互转换》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/&title=《java中json和object相互转换》 — chuhang 技术不宅&source=我们经常会用到json和oject类型的相互转换，这篇文章记录了通过gson进行object和json的相互转换。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java中json和object相互转换》 — chuhang 技术不宅&url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2017/10/21/how-to-convert-json-to-from-object-Gson/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aQW4jMQwEwPz/09lrFouMu0XR8ALlU2B7ZlQKINIkv77i1/eP1893km8m3//tDskTL7zw8PDwBkt/vvXzO/8uIr/D89Of7/Z8FR4eHt4e7/nITmB5UEk2N1lDEmbw8PDwPo3XprzRUR4k8Xh4eHj/Ly8vKJxtULuVeHh4eO/ktaltXqjNt/L5Duu1Fjw8PLyYlxcUPufvlf4eHh4e3rirnrSj2jbVrf5+tFo8PDy8Bd5Z+TUPG2eNrknLDQ8PD2+b17agkkW3Tazk6M+//9dT8PDw8BZ4c0Y+BHCrqZZ8eu2/hIeHh/fY+mobXZMSw6StlQcSPDw8vA1eu5S8nZ+UOfKj/2xMAQ8PD2+D1ybEZyWDvDHWFnOLWgseHh7eMi9Po/PAkHw6CQMvihF4eHh4V3nt8NNZkGhLEhfGGvDw8PDWeG1gSHpM7VhAcdznRQ08PDy8Bd58cCovELeDCGflCTw8PLxt3mRY6iwA3Cr7RtuNh4eHt8A7S46fb5qXa9txhHzACw8PD2+Plzer2j2bl2svbC4eHh7eAi9fYtvWSg7xNnVuV4WHh4e3wZsc6GekydaMUmo8PDy8q7w2eW2Xkpdx65j2XP7Aw8PDW+CdFQjapPmMPd9iPDw8vD1efkCfFXnbbv5Zcv9ibXh4eHhXeWeFhrbBPx8pGM1E4OHh4S3wkmW1RdizQm0eeKKr8PDw8N7Cax8/KWecDVcVSTweHh7eVd53+UpKq7cCRj5u9eu1eHh4eAu8sx/8CX6emuchZ1LIwMPDwzvj3SoxTAJAzqgDAx4eHt4aLx+Qao/stlXWRrMX6T4eHh7eB/DaxLodJmgHF15sBx4eHt4H8NrmVrtlk6oCHh4e3jt5STHiuSnVJtyTcasiTcfDw8Nb4E1+8LfDUm0waMfCRv09PDw8vNdX/QHodLtgTWrrPwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
