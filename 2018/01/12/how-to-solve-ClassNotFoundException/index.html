@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>java找不到连接数据库的jdbc驱动 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="sql,jdbc">
+    <meta name="description" content="java链接数据库时需要mysql的驱动,但是我们下载驱动之后,应该如何配置呢,才能正确的找到驱动的位置.(ubuntu系统)
+报错如下:12345678java.lang.ClassNotFoundException: com.mysql.jdbc.Driver        at java.net.URLClassLoader.findClass(URLClassLoader.java:381">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java找不到连接数据库的jdbc驱动">
+<meta property="og:url" content="https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="java链接数据库时需要mysql的驱动,但是我们下载驱动之后,应该如何配置呢,才能正确的找到驱动的位置.(ubuntu系统)
+报错如下:12345678java.lang.ClassNotFoundException: com.mysql.jdbc.Driver        at java.net.URLClassLoader.findClass(URLClassLoader.java:381">
+<meta property="og:updated_time" content="2018-01-12T01:29:45.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java找不到连接数据库的jdbc驱动">
+<meta name="twitter:description" content="java链接数据库时需要mysql的驱动,但是我们下载驱动之后,应该如何配置呢,才能正确的找到驱动的位置.(ubuntu系统)
+报错如下:12345678java.lang.ClassNotFoundException: com.mysql.jdbc.Driver        at java.net.URLClassLoader.findClass(URLClassLoader.java:381">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">java找不到连接数据库的jdbc驱动</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">java找不到连接数据库的jdbc驱动</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-12T01:22:01.000Z" itemprop="datePublished" class="page-time">
+  2018-01-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-how-to-solve-ClassNotFoundException"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">java找不到连接数据库的jdbc驱动</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-12 09:22:01" datetime="2018-01-12T01:22:01.000Z"  itemprop="datePublished">2018-01-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>java链接数据库时需要mysql的驱动,但是我们下载驱动之后,应该如何配置呢,才能正确的找到驱动的位置.(ubuntu系统)</p>
+<p>报错如下:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">java<span class="selector-class">.lang</span><span class="selector-class">.ClassNotFoundException</span>: com<span class="selector-class">.mysql</span><span class="selector-class">.jdbc</span><span class="selector-class">.Driver</span></div><div class="line">        at java<span class="selector-class">.net</span><span class="selector-class">.URLClassLoader</span><span class="selector-class">.findClass</span>(URLClassLoader<span class="selector-class">.java</span>:<span class="number">381</span>)</div><div class="line">        at java<span class="selector-class">.lang</span><span class="selector-class">.ClassLoader</span><span class="selector-class">.loadClass</span>(ClassLoader<span class="selector-class">.java</span>:<span class="number">424</span>)</div><div class="line">        at sun<span class="selector-class">.misc</span><span class="selector-class">.Launcher</span><span class="variable">$AppClassLoader</span>.loadClass(Launcher<span class="selector-class">.java</span>:<span class="number">335</span>)</div><div class="line">        at java<span class="selector-class">.lang</span><span class="selector-class">.ClassLoader</span><span class="selector-class">.loadClass</span>(ClassLoader<span class="selector-class">.java</span>:<span class="number">357</span>)</div><div class="line">        at java<span class="selector-class">.lang</span><span class="selector-class">.Class</span><span class="selector-class">.forName0</span>(Native Method)</div><div class="line">        at java<span class="selector-class">.lang</span><span class="selector-class">.Class</span><span class="selector-class">.forName</span>(Class<span class="selector-class">.java</span>:<span class="number">264</span>)</div><div class="line">        at MySQLDemo.main(MySQLDemo<span class="selector-class">.java</span>:<span class="number">18</span>)</div></pre></td></tr></table></figure></p>
+<p>解决方法如下:</p>
+<ul>
+<li><code>sudo gedit /etc/profile</code></li>
+<li><p>将驱动的位置设置到环境变量中:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## mysql driver</span></div><div class="line">export CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>/<span class="title">mysql</span>-<span class="title">connector</span>-<span class="title">java</span>-5.1.39-<span class="title">bin</span>.<span class="title">jar</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>使刚才配置的环境变量生效:<code>source /etc/profile</code><br>配置环境变量之后,就可以正确的找到驱动了.</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-01-12T01:29:45.104Z" itemprop="dateUpdated">2018-01-12 09:29:45</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/&title=《java找不到连接数据库的jdbc驱动》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/&title=《java找不到连接数据库的jdbc驱动》 — chuhang 技术不宅&source=this is a test." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java找不到连接数据库的jdbc驱动》 — chuhang 技术不宅&url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/06/How-to-set-up-the-plank-to-boot-from-start/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">如何设置plank开机自启动</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="java找不到连接数据库的jdbc驱动" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/&title=《java找不到连接数据库的jdbc驱动》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/&title=《java找不到连接数据库的jdbc驱动》 — chuhang 技术不宅&source=this is a test." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java找不到连接数据库的jdbc驱动》 — chuhang 技术不宅&url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2018/01/12/how-to-solve-ClassNotFoundException/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3aQW7DMAwEwP7/0ynQc53uklaSAqNTUDuKRgdRJfn1FY/Hz3j+OXl69eZ+ttXAw8PDGy39arTvtAu9mq391tUMeHh4eOd4STB4/mZy0N8VhJI14+Hh4X0Cb8NOvpX/Ch4eHt7/5T2/4LbBI98OPDw8vE/gtYmGPPXQbkq7httyLXh4eHgx70SC4PTnN9T38PDw8MqjeZbqnR3fj5sGHh4e3glekgJIFtFenfNtyoNB8R8DHh4e3oLXJl7zgz7fsk3A+OPSj4eHh3eM1xaZ9k0GeaJ21f6Fh4eH9xJevvSk+aB9ZxNUfvktPDw8vGO8PBFw18W3vYJHYSB5jIeHh3cTb1awP7H0WYKjSEbg4eHhrXntBTpfYh6E8mt3G5bw8PDwTvDyJEKy6Nnuztq2krYDPDw8vNfw2utvGwyG7VOjMhgeHh7eOV4y2kJXfrjnW9aGHzw8PLwTvPbxJpHaLqul5ng8PDy807x26vYy3YafGxq88PDw8Ba8vC1gk5bdh4e2qIaHh4f3Sl7SAhWlUEdLn8W0yxCFh4eHd4zXHuubjWhbB2aFNDw8PLz38maF/E1RrUVezoaHh4d3gJdfbfMkwj4BkTcKRKECDw8P7yW8WQo1DyftnFEAuJoBDw8P71Zee81ti16z1MPshMfDw8N7Pe+PYlLwNC+Atdf39hfx8PDwzvHaa2ubkpgtvQ0YRZICDw8Pb817lGPTntW2EewbFPDw8PBO8G6IJKMEa90+VbZ84eHh4Z3m5a1Rs2RuvlltKiSaGQ8PD+8Yrz2U87/MSlyblMQvgQEPDw/vTbzZ0Z8vetOkdfkmHh4e3sfw8u/uC13tbDcEBjw8PLwDec7N35Nmgk2IwsPDwzvNu6sQlU/dtnblaZHhwMPDw0t539u+xTpGZaiqAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

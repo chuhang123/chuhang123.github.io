@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java找不到连接数据库的jdbc驱动]]></title>
+    <url>%2F2018%2F01%2F12%2Fhow-to-solve-ClassNotFoundException%2F</url>
+    <content type="text"><![CDATA[java链接数据库时需要mysql的驱动,但是我们下载驱动之后,应该如何配置呢,才能正确的找到驱动的位置.(ubuntu系统) 报错如下:12345678java.lang.ClassNotFoundException: com.mysql.jdbc.Driver at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) at java.lang.Class.forName0(Native Method) at java.lang.Class.forName(Class.java:264) at MySQLDemo.main(MySQLDemo.java:18) 解决方法如下: sudo gedit /etc/profile 将驱动的位置设置到环境变量中: 12## mysql driverexport CLASSPATH=.:$JAVA_HOME/lib/mysql-connector-java-5.1.39-bin.jar 使刚才配置的环境变量生效:source /etc/profile配置环境变量之后,就可以正确的找到驱动了.]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>jdbc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何设置plank开机自启动]]></title>
     <url>%2F2018%2F01%2F06%2FHow-to-set-up-the-plank-to-boot-from-start%2F</url>
     <content type="text"><![CDATA[本问记录plank如何安装,并如何设置plank开机自启动. 安装plank 123sudo add-apt-repository ppa:ricotz/dockysudo apt-get updatesudo apt-get install plank 设置plank开机自启动.sudo gedit ~/.config/autostart/plank.desktop,并增加如下内容 1234567891011[Desktop Entry]Type=ApplicationExec=plankHidden=falseNoDisplay=falseName[en_US]=plankName=plankComment[en_US]=plankComment=plankX-GNOME-Autostart-Delay=2X-GNOME-Autostart-enabled=true 安装plank后,如果不能正常启动,重启电脑即可. 参考:Install Plank on Ubuntu, make it start on boot]]></content>
@@ -220,7 +232,7 @@
   <entry>
     <title><![CDATA[git常用指令]]></title>
     <url>%2F2017%2F06%2F26%2Fgit-command%2F</url>
-    <content type="text"><![CDATA[在日常的开发中，经常会用到一些git指令，但是有些git指令不是太常用，用的时候经常忘记，每次都要重新google。于是，就把一些时常会用到的git 指令记录下来，方便以后使用。 假设以下所有分支名为test 删除分支 删除本地分支git branch -d test 删除远程分支git branch -r -f test，git push origin :test 查看分支 查看本地分支 git branch 查看远程分支和本地分支git branch -a 查看所有远程分支git branch -r 新建分支 新建，但不切换git branch test 新建并且换git checkout -b test 将代码添加至暂存区并提交 添加当前目录的所有文件到暂存区git add .. 提交代码git commit -m &#39;commit info&#39; 合并分支 合并分支git merge test 合并后，如果有冲突，显示冲突文件git status 配置用户名密码对于私有项目，我们每次对远程仓库操作，都需要输入用户名密码。解决方法 git config credential.helper store git pull,输入用户名密码后，用户名密码将会被存储。 git pull -u改变用户名密码 其他 最近5次commitgit log -5 --pretty --oneline 切换到某节点git checkout bd26839 新建一个commit，用来撤销指定commitgit revert bd26839 撤销上一次的提交，相当于github中的undo操作git reset HEAD~ 回复上次的提交代码git revert bd26839 强制更新远程分支：git push -f 将某个文件夹下的文件切换到某分支： git checkout development Webapp/app/index.html]]></content>
+    <content type="text"><![CDATA[在日常的开发中，经常会用到一些git指令，但是有些git指令不是太常用，用的时候经常忘记，每次都要重新google。于是，就把一些时常会用到的git 指令记录下来，方便以后使用。 假设以下所有分支名为test 删除分支 删除本地分支git branch -d test 删除远程分支git branch -r -f test，git push origin :test 查看分支 查看本地分支 git branch 查看远程分支和本地分支git branch -a 查看所有远程分支git branch -r 新建分支 新建，但不切换git branch test 新建并且换git checkout -b test 将代码添加至暂存区并提交 添加当前目录的所有文件到暂存区git add .. 提交代码git commit -m &#39;commit info&#39; 合并分支 合并分支git merge test 合并后，如果有冲突，显示冲突文件git status 配置用户名密码对于私有项目，我们每次对远程仓库操作，都需要输入用户名密码。解决方法 git config credential.helper store git pull,输入用户名密码后，用户名密码将会被存储。 git pull -u改变用户名密码 其他 最近5次commitgit log -5 --pretty --oneline 切换到某节点git checkout bd26839 新建一个commit，用来撤销指定commitgit revert bd26839 撤销上一次的提交，相当于github中的undo操作git reset HEAD~ 回复上次的提交代码git revert bd26839 强制更新远程分支：git push -f 将某个文件夹下的文件切换到某分支： git checkout development Webapp/app/index.html 查看正则匹配的分支git branch |grep &#39;1&#39;(名称包含1的分支) 删除正则匹配的所有分支git branch |grep &#39;1&#39;|xargs git branch -D(名称包含1的分支)]]></content>
       <tags>
         <tag>git</tag>
       </tags>
@@ -330,14 +342,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[错题本]]></title>
-    <url>%2F2017%2F05%2F16%2F%E9%94%99%E9%A2%98%E6%9C%AC%2F</url>
-    <content type="text"><![CDATA[1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。2.考研机试题九度 ，配色网站Color Scheme ，易用框架easyui ,3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。 4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。5.剑指offer]]></content>
-      <tags>
-        <tag>错题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Difference between GET and POST]]></title>
     <url>%2F2017%2F05%2F16%2FDifference-between-GET-and-POST%2F</url>
     <content type="text"><![CDATA[According to the online information and the books of PHP, I have sorted out the difference between GET and POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. security We might see some documents sometimes display that GET is safe but disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because we can not change data by using GET. And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url. The size of the data transfer GETurl is limited in special browser or server. For example, the length of url in IE browser is limited as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited. POSTbecause POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST. Data encodingAs the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit must be ASCII coding. If it is not ASCII coding, we need to convert. Default formGET is the default action of form. Relationship with serverGET is used to get data from server, while POST is used to transfer data to server.]]></content>
@@ -350,12 +354,20 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Brief process of building a personal blog]]></title>
-    <url>%2F2017%2F05%2F16%2FThe-brief-process-of-building-a-personal-blog%2F</url>
-    <content type="text"><![CDATA[The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype. Building Github PagesI have built my site by Github Pages, recommond document . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space. Learning HexoBuilding hexo environment needs node, npm, and the specific installation steps has been given by hexo official website . I recommend learning materials , if after deploying on server, there are not styles, you can deploy on the site again after executing hexo clean command. I used jacman theme , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. Writting blogs by using markdownI did not know markdown before building blog, so I download a mainstream markdown tool called reMarkable . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. If some of the result is not what you want, you can add a space and try it again. eg: ### mengyunzhi（there is a space between the last “#”and”m”). Uploading picturesBecause you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used Image Uploader to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. Searching in siteI tried to baidu’s search site and para, but I failed. And I saw swiftype by accident, you can try it in my blog. Here is a tutorial . I recommend swiftype instead baidu and google’s search site. ConclusionAbove is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you! If there are mistakes, please correct me.]]></content>
+    <title><![CDATA[初始cookie与session]]></title>
+    <url>%2F2017%2F05%2F16%2F%E5%88%9D%E5%A7%8Bcookie%E4%B8%8Esession%2F</url>
+    <content type="text"><![CDATA[作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。 了解cookie当登录一个网站时，网站往往会请求用户输入用户名和密码，并且用户可以勾选“下次自动登录”。如果勾选了，那么下次访问同一网站时，用户会发现没输入用户名和密码就已经登录了。这正是因为前一次登录时，服务器发送了包含登录凭据（用户名加密码的某种加密形式）的Cookie到用户的硬盘上。第二次登录时，（如果该Cookie尚未到期）浏览器会发送该Cookie，服务器验证凭据，于是不必输入用户名和密码就让用户登录了。 cookie分类Cookie总是保存在客户端中，按在客户端中的存储位置，可分为内存Cookie和硬盘Cookie。内存Cookie由浏览器维护，保存在内存中，浏览器关闭后就消失了，其存在时间是短暂的。硬盘Cookie保存在硬盘里，有一个过期时间，除非用户手工清理或到了过期时间，硬盘Cookie不会被删除，其存在时间是长期的。所以，按存在时间，可分为非持久Cookie和持久Cookie。 cookie的缺陷 Cookie会被附加在每个HTTP请求中，所以无形中增加了流量。 由于在HTTP请求中的Cookie是明文传递的，所以安全性成问题。（除非用HTTPS） Cookie的大小限制在4KB左右。对于复杂的存储需求来说是不够用的。[3] session是什么技术session采用的是在服务器端保存状态数据的方案。当较多的用户数据长时间的储存在服务器上，会增加服务器的负担，因此session中的数据信息要尽可能的少。 关于session session_id的名称可以修改么？可以通过session_name()来获取或者设置。 session_id的值可以修改么？可以通过session_id()来获取或者设置。 session文件在计算机中的保存路径可以修改么？可以通过session_save_path()来获取或者设置。windows系统上的默认值为“C:\Windows\Temp”。 启动session会话后怎么做？通过session_start()函数启动回话后，接下来就可以注册session变量，PHP通过预定义数组来注册session变量，并且用isset()函数或者empty（）函数判断session变量是否注册。 session和cookie的区别。 cookie机制采用的是在客户端保存的方案，也就是说cookie数据存放在用户的浏览器上，而session机制采用的是在服务器端保存的方案，即session数据存放在服务器端。 单个cookie文件的大小在客户端限制是3字节，而session文件大小在服务器段没有限制。 恶意网站可以通过暗中读取用户cookie的方式来盗取用户的隐私信息，因此，考虑到安全性，应当减少cookie的使用，转而使用session。 session将数据保存在服务器上，当访问增多时，会降低服务器的性能，因此，考虑到减轻服务器的负担，应当减少使用session，转而使用cookie。故建议在实际开发中，将重要的信息使用session保存，其他信息使用cookie保存。 总结用户访问一个服务器，服务器首先检客户端是否含有session标识（session id）。如果客户端已经创建过session，则服务器会把他检索出来使用，如果没有，服务器会为他重新创建一个相关联的session id，并返回给客户端。用户浏览器收到这个session id后，会在硬盘的指定目录下生成客户端的session文件。文件的命名格为”sess”+session_id，文件中包含的是回话的具体内容。就这样建立一个回话后，下一次http请求时，用户浏览器会将当前域名下所有的cookie发给服务器，服务器根据cookie 中的session_id来读取保存在计算机中的相应session文件，并从session文件中获取会话的内容。 如有错误，欢迎指正！]]></content>
       <categories>
-        <category>English</category>
+        <category>php</category>
       </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[错题本]]></title>
+    <url>%2F2017%2F05%2F16%2F%E9%94%99%E9%A2%98%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。2.考研机试题九度 ，配色网站Color Scheme ，易用框架easyui ,3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。 4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。5.剑指offer]]></content>
+      <tags>
+        <tag>错题</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[数据结构——线性表]]></title>
@@ -369,12 +381,20 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[初始cookie与session]]></title>
-    <url>%2F2017%2F05%2F16%2F%E5%88%9D%E5%A7%8Bcookie%E4%B8%8Esession%2F</url>
-    <content type="text"><![CDATA[作为一个程序员，你可能会经常听到cookie和session这一对好兄弟，下面简单介绍一下 他们。 了解cookie当登录一个网站时，网站往往会请求用户输入用户名和密码，并且用户可以勾选“下次自动登录”。如果勾选了，那么下次访问同一网站时，用户会发现没输入用户名和密码就已经登录了。这正是因为前一次登录时，服务器发送了包含登录凭据（用户名加密码的某种加密形式）的Cookie到用户的硬盘上。第二次登录时，（如果该Cookie尚未到期）浏览器会发送该Cookie，服务器验证凭据，于是不必输入用户名和密码就让用户登录了。 cookie分类Cookie总是保存在客户端中，按在客户端中的存储位置，可分为内存Cookie和硬盘Cookie。内存Cookie由浏览器维护，保存在内存中，浏览器关闭后就消失了，其存在时间是短暂的。硬盘Cookie保存在硬盘里，有一个过期时间，除非用户手工清理或到了过期时间，硬盘Cookie不会被删除，其存在时间是长期的。所以，按存在时间，可分为非持久Cookie和持久Cookie。 cookie的缺陷 Cookie会被附加在每个HTTP请求中，所以无形中增加了流量。 由于在HTTP请求中的Cookie是明文传递的，所以安全性成问题。（除非用HTTPS） Cookie的大小限制在4KB左右。对于复杂的存储需求来说是不够用的。[3] session是什么技术session采用的是在服务器端保存状态数据的方案。当较多的用户数据长时间的储存在服务器上，会增加服务器的负担，因此session中的数据信息要尽可能的少。 关于session session_id的名称可以修改么？可以通过session_name()来获取或者设置。 session_id的值可以修改么？可以通过session_id()来获取或者设置。 session文件在计算机中的保存路径可以修改么？可以通过session_save_path()来获取或者设置。windows系统上的默认值为“C:\Windows\Temp”。 启动session会话后怎么做？通过session_start()函数启动回话后，接下来就可以注册session变量，PHP通过预定义数组来注册session变量，并且用isset()函数或者empty（）函数判断session变量是否注册。 session和cookie的区别。 cookie机制采用的是在客户端保存的方案，也就是说cookie数据存放在用户的浏览器上，而session机制采用的是在服务器端保存的方案，即session数据存放在服务器端。 单个cookie文件的大小在客户端限制是3字节，而session文件大小在服务器段没有限制。 恶意网站可以通过暗中读取用户cookie的方式来盗取用户的隐私信息，因此，考虑到安全性，应当减少cookie的使用，转而使用session。 session将数据保存在服务器上，当访问增多时，会降低服务器的性能，因此，考虑到减轻服务器的负担，应当减少使用session，转而使用cookie。故建议在实际开发中，将重要的信息使用session保存，其他信息使用cookie保存。 总结用户访问一个服务器，服务器首先检客户端是否含有session标识（session id）。如果客户端已经创建过session，则服务器会把他检索出来使用，如果没有，服务器会为他重新创建一个相关联的session id，并返回给客户端。用户浏览器收到这个session id后，会在硬盘的指定目录下生成客户端的session文件。文件的命名格为”sess”+session_id，文件中包含的是回话的具体内容。就这样建立一个回话后，下一次http请求时，用户浏览器会将当前域名下所有的cookie发给服务器，服务器根据cookie 中的session_id来读取保存在计算机中的相应session文件，并从session文件中获取会话的内容。 如有错误，欢迎指正！]]></content>
+    <title><![CDATA[Brief process of building a personal blog]]></title>
+    <url>%2F2017%2F05%2F16%2FThe-brief-process-of-building-a-personal-blog%2F</url>
+    <content type="text"><![CDATA[The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype. Building Github PagesI have built my site by Github Pages, recommond document . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space. Learning HexoBuilding hexo environment needs node, npm, and the specific installation steps has been given by hexo official website . I recommend learning materials , if after deploying on server, there are not styles, you can deploy on the site again after executing hexo clean command. I used jacman theme , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. Writting blogs by using markdownI did not know markdown before building blog, so I download a mainstream markdown tool called reMarkable . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. If some of the result is not what you want, you can add a space and try it again. eg: ### mengyunzhi（there is a space between the last “#”and”m”). Uploading picturesBecause you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used Image Uploader to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. Searching in siteI tried to baidu’s search site and para, but I failed. And I saw swiftype by accident, you can try it in my blog. Here is a tutorial . I recommend swiftype instead baidu and google’s search site. ConclusionAbove is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you! If there are mistakes, please correct me.]]></content>
       <categories>
-        <category>php</category>
+        <category>English</category>
       </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[订单号生成规则简述]]></title>
+    <url>%2F2017%2F05%2F13%2F%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0%2F</url>
+    <content type="text"><![CDATA[最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。 订单编号生成规则 不重复。这是生成订单号最基本、最重要的原则。比如一个人在京东上买了一个手机，另外一个人在京东上买了一包卫生纸，生成了一样的订单编号，一个人给客服打电话，客服一查，到底是哪个商品呢？ 安全。订单编号不能暴露客户的id，或者让竞争对手很容易看出近期的订单量。 不能大规模生成随机码。当订单量比较多的时候，大规模生成随机码容易发生碰撞。 控制位数。客户向客服上报订单编号时，太长不仅容易出错，而且耽误时间。 符合实际需求。订单的生成规则要根据自己的项目中实际的需求。比如一个小型网站使用淘宝的订单编号生成规则，显然有点大费周章了。 订单号尽量保持整形。提高数据库的检索效率，也不至于凌乱，或是让一些英文发信不标准的朋友尴尬。 实例参考 小米订单生成规则。1——111218—03234—5170，将订单分为四个部分。第一部分，1表示购买，2表示退货。第二部分，表示2011年12月18日下的单。第三部分，时间戳对应0:53:54。最后一部分，表示在同一秒内下的第5170单，也就是说，小米认为，在一秒内不会超过一万个订单。 宅妈妈app订单生成规则。订单是一个四位数的自增数字，可能想让用户感觉到订单在不断的增加，或者业务初期不想让用户反馈问题时报上冗长的订单号。 所犯的错开始的时候欲使用的订单生成规则为：年月日+时间戳（五为）+随机数（2位）+客户id后四位，如20170421—34324——32—32321。如果这样设置的话当客户超过十万人时，如果id为1和100001同一秒下单订单号就有可能重复，而且随机数的一般作用为混淆别人找出订单生成规则，而实际项目中没有必要，不是很符合实际需求。 项目中使用的订单生成规则综合以上因素，项目中决定使用：年月日+时间戳（后五位）+同一秒内订单生成序列号（三位）。例：20170421—34234—001，前13位精确到秒，后三位表示同一秒内生成的第一单。如果同一秒内生成了多个订单，则这些订单钱13位一样，后三位依次递增，也就是系统认为一秒内不会同时生成1000个订单。 如有错误，欢迎指正！]]></content>
+      <tags>
+        <tag>web</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[angular+thinkphp上传图片]]></title>
@@ -397,14 +417,6 @@
       <tags>
         <tag>demo</tag>
         <tag>链表</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[订单号生成规则简述]]></title>
-    <url>%2F2017%2F05%2F13%2F%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0%2F</url>
-    <content type="text"><![CDATA[最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。 订单编号生成规则 不重复。这是生成订单号最基本、最重要的原则。比如一个人在京东上买了一个手机，另外一个人在京东上买了一包卫生纸，生成了一样的订单编号，一个人给客服打电话，客服一查，到底是哪个商品呢？ 安全。订单编号不能暴露客户的id，或者让竞争对手很容易看出近期的订单量。 不能大规模生成随机码。当订单量比较多的时候，大规模生成随机码容易发生碰撞。 控制位数。客户向客服上报订单编号时，太长不仅容易出错，而且耽误时间。 符合实际需求。订单的生成规则要根据自己的项目中实际的需求。比如一个小型网站使用淘宝的订单编号生成规则，显然有点大费周章了。 订单号尽量保持整形。提高数据库的检索效率，也不至于凌乱，或是让一些英文发信不标准的朋友尴尬。 实例参考 小米订单生成规则。1——111218—03234—5170，将订单分为四个部分。第一部分，1表示购买，2表示退货。第二部分，表示2011年12月18日下的单。第三部分，时间戳对应0:53:54。最后一部分，表示在同一秒内下的第5170单，也就是说，小米认为，在一秒内不会超过一万个订单。 宅妈妈app订单生成规则。订单是一个四位数的自增数字，可能想让用户感觉到订单在不断的增加，或者业务初期不想让用户反馈问题时报上冗长的订单号。 所犯的错开始的时候欲使用的订单生成规则为：年月日+时间戳（五为）+随机数（2位）+客户id后四位，如20170421—34324——32—32321。如果这样设置的话当客户超过十万人时，如果id为1和100001同一秒下单订单号就有可能重复，而且随机数的一般作用为混淆别人找出订单生成规则，而实际项目中没有必要，不是很符合实际需求。 项目中使用的订单生成规则综合以上因素，项目中决定使用：年月日+时间戳（后五位）+同一秒内订单生成序列号（三位）。例：20170421—34234—001，前13位精确到秒，后三位表示同一秒内生成的第一单。如果同一秒内生成了多个订单，则这些订单钱13位一样，后三位依次递增，也就是系统认为一秒内不会同时生成1000个订单。 如有错误，欢迎指正！]]></content>
-      <tags>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>

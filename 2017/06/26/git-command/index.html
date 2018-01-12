@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://chuhang123.github.io/2017/06/26/git-command/index.html">
 <meta property="og:site_name" content="chuhang 技术不宅">
 <meta property="og:description" content="在日常的开发中，经常会用到一些git指令，但是有些git指令不是太常用，用的时候经常忘记，每次都要重新google。于是，就把一些时常会用到的git 指令记录下来，方便以后使用。">
-<meta property="og:updated_time" content="2017-11-20T13:06:58.931Z">
+<meta property="og:updated_time" content="2018-01-10T01:07:35.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git常用指令">
 <meta name="twitter:description" content="在日常的开发中，经常会用到一些git指令，但是有些git指令不是太常用，用的时候经常忘记，每次都要重新google。于是，就把一些时常会用到的git 指令记录下来，方便以后使用。">
@@ -210,6 +210,8 @@
 <li>回复上次的提交代码<code>git revert bd26839</code></li>
 <li>强制更新远程分支：git push -f <remote> <branch></branch></remote></li>
 <li>将某个文件夹下的文件切换到某分支： git checkout development Webapp/app/index.html</li>
+<li>查看正则匹配的分支<code>git branch |grep &#39;1&#39;</code>(名称包含1的分支)</li>
+<li>删除正则匹配的所有分支<code>git branch |grep &#39;1&#39;|xargs git branch -D</code>(名称包含1的分支)</li>
 </ul>
 
         </div>
@@ -218,7 +220,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-11-20T13:06:58.931Z" itemprop="dateUpdated">2017-11-20 21:06:58</time>
+    最后更新时间：<time datetime="2018-01-10T01:07:35.980Z" itemprop="dateUpdated">2018-01-10 09:07:35</time>
 </span><br>
 
 
