@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>学习闭包 | chuhang 技术不宅 | A technology blog for myself.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="closureu,基础">
+    <meta name="description" content="在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习闭包">
+<meta property="og:url" content="https://chuhang123.github.io/2018/02/01/learn-closure/index.html">
+<meta property="og:site_name" content="chuhang 技术不宅">
+<meta property="og:description" content="在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量.">
+<meta property="og:updated_time" content="2018-02-01T12:46:39.189Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习闭包">
+<meta name="twitter:description" content="在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量.">
+    
+        <link rel="alternate" type="application/atom+xml" title="chuhang 技术不宅" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/author.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">chuhang</h5>
+          <a href="mailto:109360364@qq.com" title="109360364@qq.com" class="mail">109360364@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/chuhang123" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">学习闭包</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">学习闭包</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-01T11:22:34.000Z" itemprop="datePublished" class="page-time">
+  2018-02-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-learn-closure"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">学习闭包</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-01 19:22:34" datetime="2018-02-01T11:22:34.000Z"  itemprop="datePublished">2018-02-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/js/">js</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量.</p>
+<a id="more"></a>
+<p>闭包有以下两种形式:</p>
+<ul>
+<li>将变量始终保存在内存中.代码如下:<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span> <span class="comment">&#123;</span></span></div><div class="line">	temp = 123;</div><div class="line">&#125;)<span class="params">()</span>;</div><div class="line"><span class="comment">// 输出123</span></div><div class="line">console.log(temp);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在上述代码中,因为在test函数中定义变量时没有使用var,所以temp是全局的,所以在函数外,仍然可以正常的输出变量.因为这个变量是一个全局变量,不会被回收.</p>
+<ul>
+<li>阻止垃圾回收器将变量从内存中移除.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> test = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> name = <span class="string">'mengyunzhi'</span>;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		<span class="attr">age</span>: <span class="number">18</span>,</div><div class="line">		<span class="attr">innerName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="comment">// 输出18</span></div><div class="line"><span class="built_in">console</span>.log(test.age);</div><div class="line"><span class="comment">// 输出mengyunzhi</span></div><div class="line"><span class="built_in">console</span>.log(test.innerName());</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在函数被保存到test对象时,一个闭包就创建了.在函数的外面,我们可以动态的访问age变量和调用innerName函数,阻止了垃圾回收器将变量和函数从内存中移除.</p>
+<p>又因为闭包使函数中的变量和方法永久的保存在了内存中,所以我们应该谨慎使用闭包,防止内存的浪费.</p>
+<p>参考文献:<br>1.单页web应用,JS从前段到后端.[书籍]<br>2.<a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external">学习Javascript闭包（Closure）</a> </p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-02-01T12:46:39.189Z" itemprop="dateUpdated">2018-02-01 20:46:39</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="https://chuhang123.github.io">
+            <img src="/img/author.jpg" alt="chuhang">
+            chuhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/closureu/">closureu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2018/02/01/learn-closure/&title=《学习闭包》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2018/02/01/learn-closure/&title=《学习闭包》 — chuhang 技术不宅&source=在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2018/02/01/learn-closure/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《学习闭包》 — chuhang 技术不宅&url=https://chuhang123.github.io/2018/02/01/learn-closure/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2018/02/01/learn-closure/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/12/how-to-solve-ClassNotFoundException/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">java找不到连接数据库的jdbc驱动</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="学习闭包" style="
+    padding-left: 2%;
+    width:90%;padding-right: 2%;
+"></div>
+<script>
+  (function(){
+    var appid = 'cyt1izVGM',
+    conf = 'c245a97f00b9a8889eb374d9a544c127';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'https://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>chuhang &copy; 2016 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://chuhang123.github.io/2018/02/01/learn-closure/&title=《学习闭包》 — chuhang 技术不宅&pic=https://chuhang123.github.io/img/author.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://chuhang123.github.io/2018/02/01/learn-closure/&title=《学习闭包》 — chuhang 技术不宅&source=在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://chuhang123.github.io/2018/02/01/learn-closure/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《学习闭包》 — chuhang 技术不宅&url=https://chuhang123.github.io/2018/02/01/learn-closure/&via=https://chuhang123.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://chuhang123.github.io/2018/02/01/learn-closure/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3a0W7jMAwEwPz/T+deC9ydsys6BSyNn4LGtTQuwFIkX6/4ev+4fv4kuf/v371+5vWTRxcGBsZjGe/L63qBZMnrZyb3JC8FAwPjBMb/ls8/J2E0eUFJWMfAwMBItp5sbi1xxMDAwPhGwG0TyvwQi4GBgTEJoJM78yD7lbM4BgbGAxl51f33P3+lv4GBgfEoxru88iJ+3k5oA/Q/VsfAwNiasdaGnITmSYntw34wMDA2ZeTBbi19zNsD7UjHh78DBgbGpoy26dhuPfl2cS0MDIwDGPcW/SfBt2VjYGCcwBiNYY3HxdYS0w+dWAwMjE0ZyQGyPY5OmqNtIwEDA2NvRnJ0zEtjd41/1aMeGBgYxzCSR7eDEfPUM3qJGBgYWzPuTdryhfPD6g1pKAYGxhaM60DZFujbbeUH6Vf+yxgYGBsx8qNj3m5MwHnYjf4BYGBgHMNYS+bWjqx3tRYwMDDOYczzq/x15I3JYmQNAwNja0Zb7s+/bQc12oGPDyMXGBgYmzLyJSehs22CJk/GwMA4h9GG2nZIYpIIRsdjDAyMAxjtIyZpX9sSiII7BgbGpoy10v+9yeIkTNfdUQwMjAcy2mbh2iGz3UqSDq61PDEwMJ7LWBuhmLQHJuU5DAyMkxlt4GvbnHX5rCzhYWBgYCT3zI+so7QSAwMDY+mwmpThktJedCcGBsYBjLUxizYFLFK975XbMDAwHshoRxwmCd8kKbyhqYmBgfE8xh/+oX+tyU8UMAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'chuhang 技术不宅';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'chuhang 技术不宅';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

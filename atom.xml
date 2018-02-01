@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chuhang123.github.io/"/>
-  <updated>2018-01-12T01:29:45.104Z</updated>
+  <updated>2018-02-01T12:46:39.189Z</updated>
   <id>https://chuhang123.github.io/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习闭包</title>
+    <link href="https://chuhang123.github.io/2018/02/01/learn-closure/"/>
+    <id>https://chuhang123.github.io/2018/02/01/learn-closure/</id>
+    <published>2018-02-01T11:22:34.000Z</published>
+    <updated>2018-02-01T12:46:39.189Z</updated>
+    
+    <content type="html"><![CDATA[<p>在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量.</p>
+<a id="more"></a>
+<p>闭包有以下两种形式:</p>
+<ul>
+<li>将变量始终保存在内存中.代码如下:<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span> <span class="comment">&#123;</span></span></div><div class="line">	temp = 123;</div><div class="line">&#125;)<span class="params">()</span>;</div><div class="line"><span class="comment">// 输出123</span></div><div class="line">console.log(temp);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在上述代码中,因为在test函数中定义变量时没有使用var,所以temp是全局的,所以在函数外,仍然可以正常的输出变量.因为这个变量是一个全局变量,不会被回收.</p>
+<ul>
+<li>阻止垃圾回收器将变量从内存中移除.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> test = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> name = <span class="string">'mengyunzhi'</span>;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		<span class="attr">age</span>: <span class="number">18</span>,</div><div class="line">		<span class="attr">innerName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">			<span class="keyword">return</span> name;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="comment">// 输出18</span></div><div class="line"><span class="built_in">console</span>.log(test.age);</div><div class="line"><span class="comment">// 输出mengyunzhi</span></div><div class="line"><span class="built_in">console</span>.log(test.innerName());</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在函数被保存到test对象时,一个闭包就创建了.在函数的外面,我们可以动态的访问age变量和调用innerName函数,阻止了垃圾回收器将变量和函数从内存中移除.</p>
+<p>又因为闭包使函数中的变量和方法永久的保存在了内存中,所以我们应该谨慎使用闭包,防止内存的浪费.</p>
+<p>参考文献:<br>1.单页web应用,JS从前段到后端.[书籍]<br>2.<a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external">学习Javascript闭包（Closure）</a> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="js" scheme="https://chuhang123.github.io/categories/js/"/>
+    
+    
+      <category term="closureu" scheme="https://chuhang123.github.io/tags/closureu/"/>
+    
+      <category term="基础" scheme="https://chuhang123.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>java找不到连接数据库的jdbc驱动</title>
@@ -1656,6 +1695,62 @@
   </entry>
   
   <entry>
+    <title>错题本</title>
+    <link href="https://chuhang123.github.io/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
+    <id>https://chuhang123.github.io/2017/05/16/错题本/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-11-20T13:06:58.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。<br>2.考研机试题<a href="http://ac.jobdu.com/problemset.php" target="_blank" rel="external">九度</a> ，配色网站<a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">Color Scheme </a> ，易用框架<a href="http://www.jeasyui.net/" target="_blank" rel="external">easyui</a> ,<br>3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。</p>
+<a id="more"></a>
+<p>4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。<br>5.剑指offer</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。&lt;br&gt;2.考研机试题&lt;a href=&quot;http://ac.jobdu.com/problemset.php&quot;&gt;九度&lt;/a&gt; ，配色网站&lt;a href=&quot;http://colorschemedesigner.com/csd-3.5/&quot;&gt;Color Scheme &lt;/a&gt; ，易用框架&lt;a href=&quot;http://www.jeasyui.net/&quot;&gt;easyui&lt;/a&gt; ,&lt;br&gt;3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="错题" scheme="https://chuhang123.github.io/tags/%E9%94%99%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构——线性表</title>
+    <link href="https://chuhang123.github.io/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
+    <id>https://chuhang123.github.io/2017/05/16/链表/</id>
+    <published>2017-05-16T01:51:34.000Z</published>
+    <updated>2017-11-20T13:06:58.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的<a href="http://study.163.com/course/courseMain.htm?courseId=468002" target="_blank" rel="external">视频教程</a> ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固</p>
+<a id="more"></a>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A1%A8" target="_blank" rel="external">线性表</a> 是由n个数据元素组成的有限序列。线性表分为<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="external">链表</a> 和<a href="https://zh.wikipedia.org/wiki/%E9%A1%BA%E5%BA%8F%E8%A1%A8" target="_blank" rel="external">顺序表</a> 。</p>
+<ul>
+<li>顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。</li>
+<li>链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。</li>
+<li>为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。</li>
+</ul>
+<blockquote>
+<p>参考 <a href="http://www.cnblogs.com/cyjb/p/Lists.html" target="_blank" rel="external">http://www.cnblogs.com/cyjb/p/Lists.html</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的&lt;a href=&quot;http://study.163.com/course/courseMain.htm?courseId=468002&quot;&gt;视频教程&lt;/a&gt; ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据结构" scheme="https://chuhang123.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Difference between GET and POST</title>
     <link href="https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/"/>
     <id>https://chuhang123.github.io/2017/05/16/Difference-between-GET-and-POST/</id>
@@ -1734,62 +1829,6 @@
     
       <category term="php" scheme="https://chuhang123.github.io/categories/php/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>错题本</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E9%94%99%E9%A2%98%E6%9C%AC/"/>
-    <id>https://chuhang123.github.io/2017/05/16/错题本/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-11-20T13:06:58.931Z</updated>
-    
-    <content type="html"><![CDATA[<p>1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。<br>2.考研机试题<a href="http://ac.jobdu.com/problemset.php" target="_blank" rel="external">九度</a> ，配色网站<a href="http://colorschemedesigner.com/csd-3.5/" target="_blank" rel="external">Color Scheme </a> ，易用框架<a href="http://www.jeasyui.net/" target="_blank" rel="external">easyui</a> ,<br>3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。</p>
-<a id="more"></a>
-<p>4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。<br>5.剑指offer</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。&lt;br&gt;2.考研机试题&lt;a href=&quot;http://ac.jobdu.com/problemset.php&quot;&gt;九度&lt;/a&gt; ，配色网站&lt;a href=&quot;http://colorschemedesigner.com/csd-3.5/&quot;&gt;Color Scheme &lt;/a&gt; ，易用框架&lt;a href=&quot;http://www.jeasyui.net/&quot;&gt;easyui&lt;/a&gt; ,&lt;br&gt;3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="错题" scheme="https://chuhang123.github.io/tags/%E9%94%99%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构——线性表</title>
-    <link href="https://chuhang123.github.io/2017/05/16/%E9%93%BE%E8%A1%A8/"/>
-    <id>https://chuhang123.github.io/2017/05/16/链表/</id>
-    <published>2017-05-16T01:51:34.000Z</published>
-    <updated>2017-11-20T13:06:58.931Z</updated>
-    
-    <content type="html"><![CDATA[<p>选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的<a href="http://study.163.com/course/courseMain.htm?courseId=468002" target="_blank" rel="external">视频教程</a> ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固</p>
-<a id="more"></a>
-<p><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%80%A7%E8%A1%A8" target="_blank" rel="external">线性表</a> 是由n个数据元素组成的有限序列。线性表分为<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="external">链表</a> 和<a href="https://zh.wikipedia.org/wiki/%E9%A1%BA%E5%BA%8F%E8%A1%A8" target="_blank" rel="external">顺序表</a> 。</p>
-<ul>
-<li>顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。</li>
-<li>链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。</li>
-<li>为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。</li>
-</ul>
-<blockquote>
-<p>参考 <a href="http://www.cnblogs.com/cyjb/p/Lists.html" target="_blank" rel="external">http://www.cnblogs.com/cyjb/p/Lists.html</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的&lt;a href=&quot;http://study.163.com/course/courseMain.htm?courseId=468002&quot;&gt;视频教程&lt;/a&gt; ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="数据结构" scheme="https://chuhang123.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="链表" scheme="https://chuhang123.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
   </entry>
   

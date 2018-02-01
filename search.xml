@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[学习闭包]]></title>
+    <url>%2F2018%2F02%2F01%2Flearn-closure%2F</url>
+    <content type="text"><![CDATA[在js中,有一个叫做垃圾回收器的东西,当函数执行完毕后,管理内存的本地方法会将函数中所创建的所有东西移除,因为通常函数执行完毕,我们不在需要这个函数中的东西了.那么问题来了,如果某个函数执行完毕后,我们仍然需要这个函数中的一个变量的值,应该怎么办呢?闭包是组织垃圾回收期将变量从内存中移除的方法,使我们在函数外面可以访问到该变量. 闭包有以下两种形式: 将变量始终保存在内存中.代码如下:12345(function test() &#123; temp = 123;&#125;)();// 输出123console.log(temp); 在上述代码中,因为在test函数中定义变量时没有使用var,所以temp是全局的,所以在函数外,仍然可以正常的输出变量.因为这个变量是一个全局变量,不会被回收. 阻止垃圾回收器将变量从内存中移除.123456789101112131415var test = (function () &#123; var name = 'mengyunzhi'; return &#123; age: 18, innerName: function() &#123; return name; &#125; &#125;&#125;)();// 输出18console.log(test.age);// 输出mengyunzhiconsole.log(test.innerName()); 在函数被保存到test对象时,一个闭包就创建了.在函数的外面,我们可以动态的访问age变量和调用innerName函数,阻止了垃圾回收器将变量和函数从内存中移除. 又因为闭包使函数中的变量和方法永久的保存在了内存中,所以我们应该谨慎使用闭包,防止内存的浪费. 参考文献:1.单页web应用,JS从前段到后端.[书籍]2.学习Javascript闭包（Closure）]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>closureu</tag>
+        <tag>基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[java找不到连接数据库的jdbc驱动]]></title>
     <url>%2F2018%2F01%2F12%2Fhow-to-solve-ClassNotFoundException%2F</url>
     <content type="text"><![CDATA[java链接数据库时需要mysql的驱动,但是我们下载驱动之后,应该如何配置呢,才能正确的找到驱动的位置.(ubuntu系统) 报错如下:12345678java.lang.ClassNotFoundException: com.mysql.jdbc.Driver at java.net.URLClassLoader.findClass(URLClassLoader.java:381) at java.lang.ClassLoader.loadClass(ClassLoader.java:424) at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335) at java.lang.ClassLoader.loadClass(ClassLoader.java:357) at java.lang.Class.forName0(Native Method) at java.lang.Class.forName(Class.java:264) at MySQLDemo.main(MySQLDemo.java:18) 解决方法如下: sudo gedit /etc/profile 将驱动的位置设置到环境变量中: 12## mysql driverexport CLASSPATH=.:$JAVA_HOME/lib/mysql-connector-java-5.1.39-bin.jar 使刚才配置的环境变量生效:source /etc/profile配置环境变量之后,就可以正确的找到驱动了.]]></content>
@@ -342,6 +354,25 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[错题本]]></title>
+    <url>%2F2017%2F05%2F16%2F%E9%94%99%E9%A2%98%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。2.考研机试题九度 ，配色网站Color Scheme ，易用框架easyui ,3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。 4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。5.剑指offer]]></content>
+      <tags>
+        <tag>错题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据结构——线性表]]></title>
+    <url>%2F2017%2F05%2F16%2F%E9%93%BE%E8%A1%A8%2F</url>
+    <content type="text"><![CDATA[选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的视频教程 ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固 线性表 是由n个数据元素组成的有限序列。线性表分为链表 和顺序表 。 顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。 链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。 为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。 参考 http://www.cnblogs.com/cyjb/p/Lists.html]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Difference between GET and POST]]></title>
     <url>%2F2017%2F05%2F16%2FDifference-between-GET-and-POST%2F</url>
     <content type="text"><![CDATA[According to the online information and the books of PHP, I have sorted out the difference between GET and POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. security We might see some documents sometimes display that GET is safe but disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because we can not change data by using GET. And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url. The size of the data transfer GETurl is limited in special browser or server. For example, the length of url in IE browser is limited as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited. POSTbecause POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST. Data encodingAs the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit must be ASCII coding. If it is not ASCII coding, we need to convert. Default formGET is the default action of form. Relationship with serverGET is used to get data from server, while POST is used to transfer data to server.]]></content>
@@ -360,25 +391,6 @@
       <categories>
         <category>php</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[错题本]]></title>
-    <url>%2F2017%2F05%2F16%2F%E9%94%99%E9%A2%98%E6%9C%AC%2F</url>
-    <content type="text"><![CDATA[1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。2.考研机试题九度 ，配色网站Color Scheme ，易用框架easyui ,3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。 4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。5.剑指offer]]></content>
-      <tags>
-        <tag>错题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[数据结构——线性表]]></title>
-    <url>%2F2017%2F05%2F16%2F%E9%93%BE%E8%A1%A8%2F</url>
-    <content type="text"><![CDATA[选择专业时没能选上技术方向，心痛。以后应该也没有数据结构的课程了，无奈，只能自学数据结构了，不过发现了一个很好的视频教程 ，讲的类似大话数据结构，很赞。因为时间比较紧张，而数据结构的课程有90个课时，所以这次学习的目标是了解数据结构的大致思想，敲写少量的代码加以巩固 线性表 是由n个数据元素组成的有限序列。线性表分为链表 和顺序表 。 顺序表的一般表现形式为数组，顺序表的主要特点就是长度固定，不可避免的浪费一些内存。 链表的长度是不固定的，储存的空间也不是连续的，当增加或者删除元素是也不会影响全局，但是由于链表需要很多次小块的分配内存，而分配内存的操作相对比较耗时。因此，链表不像理论分析的那么美好。 为了弥补链表在内存分配上的不足，出现了静态链表。他会预先分配一个足够长的数组，之后的数据元素都会保存在里面了。静态链表一般是由两个表组成的，一个是保存数据元素的链表，一个是保存空闲节点的链表。由于数据元素都是储存在数组中，所以经常使用数组索引代替指针。由于静态链表不需要很多次的分配内存，所以静态链表的效率和顺序表的效率几乎一样。 参考 http://www.cnblogs.com/cyjb/p/Lists.html]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>链表</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[Brief process of building a personal blog]]></title>
