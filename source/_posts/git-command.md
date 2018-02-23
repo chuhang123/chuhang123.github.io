@@ -44,3 +44,5 @@ tags: [git]
 + 回复上次的提交代码``git revert bd26839``
 + 强制更新远程分支：git push -f <remote> <branch>
 + 将某个文件夹下的文件切换到某分支： git checkout development Webapp/app/index.html
++ 查看正则匹配的分支``git branch |grep '1'``(名称包含1的分支)
++ 删除正则匹配的所有分支``git branch |grep '1'|xargs git branch -D``(名称包含1的分支)
