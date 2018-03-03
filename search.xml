@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[2017年终总结]]></title>
     <url>%2F2018%2F02%2F22%2F2017-year-end-summary%2F</url>
-    <content type="text"><![CDATA[2017已经结束,是时候沉下心来仔细想想这一年都学到了什么,收获了多少?回忆年初,已经不能确定是2017年的年初还是2016年的年初 ,所以也确实需要一篇文章来记录总结. 干了些什么? 1~4月,负责旅游项目的后台开发,使用的是thinkphp框架开发.由于水平,经验不足,项目最终夭折. 并学习C语言,数据结构,跟着网易云上的一个教程开发了一个简单的管理信息系统. 同时,系统切换到linux. 4~5月,学习java,SpringMvc框架, 5~7月,因为要做一个净水器的项目,学习微信小程序.净水器项目后台api使用刚学习的SpringMvc.生气的是,项目即将完工的时候,甲方不做了. 7~12,负责修改计量项目的一些bug,并根据甲方需求做一些小的点.在这个过程中不断学习angularjs和SpringMvc.并负责国家海洋中心的调研,做了原型. 今年总计写了大约40篇博客,用于记录或总结. 在最后一季度,突然对阅读产生了兴趣,在上课和编程之余,读了这几本书:&lt;&lt;他的国&gt;&gt;,&lt;&lt;移民生活&gt;&gt;,&lt;&lt;生死疲劳&gt;&gt;,&lt;&lt;激荡三十年&gt;&gt;的上下部,&lt;&lt;跌宕一百年&gt;&gt;的上下部,&lt;&lt;浩荡两千年&gt;&gt;,&lt;&lt;红树林&gt;&gt;,&lt;&lt;激荡十年,水大鱼大&gt;&gt;,&lt;&lt;人类群星闪耀时&gt;&gt;,&lt;&lt;蛙&gt;&gt;. 技术性的图书看的有&lt;&lt;人月神话&gt;&gt;（适合产品经理），&lt;&lt;单页ｗｅｂ应用&gt;&gt;,&lt;&lt;ｈｅｂｉｎａｔｅ实战&gt;&gt;等． 今年和对象看了19场电影,每次看电影都是非常开心的,哈哈. 拿到了驾照 关于装备在年初的时候，由于使用的是ｐｈｐ开发，也没有感觉到我的笔记本在性能上有哪些明显的缺陷，但是自从转到ｊａｖａ开发，使用ｉｄｅａ后，发现ｗｉｎｄｏｗｓ系统太卡，就转到ｕｂｕｎｔｕ系统，发现流畅了很多．后来加上了一４Ｇ的内存条，又把机械硬盘换成了固态硬盘，启动测量项目本来需要几分钟或者几十分钟或者直接卡死，现在只需要几十秒，感觉舒服了好多．后来又使用双屏幕，大屏幕敲代码，小屏幕看效果，感觉敲代码爽了好多．假期由于不能使用双屏幕，才发现好的装备是多么的爽，多么的重要！！！ 总结 钻研基础知识时，要优先考虑比较厚的书，因为厚说明他讲的更详细一些．而我之前常常因为携带不方便，而抗拒厚的书． 持续学习，长时间的积累，在不知不觉中发现自己确实是进步了．遇到问题更加淡定了． 很高兴自己除了编程，又找到了一个爱好—阅读，希望能坚持下去 今年的状态还是不错的，一直处于学习的状态中，很少睡懒觉，不玩游戏，看书，敲敲代码，上课，陪陪女朋友，看看电影，很开心，很知足，很充实． 展望２０１８２０１８年唯一的目标就是考上研究生，希望自己和女朋友都能如愿的考上研究生，希望可以像自己期望的那样坚持学习，上半年可以偶尔根据自己的爱好看一些闲书，下半年全力以赴考研． 路漫漫其修远兮，吾将上下而求索．]]></content>
+    <content type="text"><![CDATA[2017已经结束,是时候沉下心来仔细想想这一年都学到了什么,收获了多少?回忆年初,已经不能确定是2017年的年初还是2016年的年初 ,所以也确实需要一篇文章来记录总结. 干了些什么? 1~4月,负责旅游项目的后台开发,使用的是thinkphp框架开发.由于水平,经验不足,项目最终夭折. 并学习C语言,数据结构,跟着网易云上的一个教程开发了一个简单的管理信息系统. 同时,系统切换到linux. 4~5月,学习java,SpringMvc框架, 5~7月,因为要做一个净水器的项目,学习微信小程序.净水器项目后台api使用刚学习的SpringMvc.生气的是,项目即将完工的时候,甲方不做了. 7~12,负责修改计量项目的一些bug,并根据甲方需求做一些小的点.在这个过程中不断学习angularjs和SpringMvc.并负责国家海洋中心的调研,做了原型. 今年总计写了大约40篇博客,用于记录或总结. 在最后一季度,突然对阅读产生了兴趣,在上课和编程之余,读了这几本书:&lt;&lt;他的国&gt;&gt;,&lt;&lt;移民生活&gt;&gt;,&lt;&lt;生死疲劳&gt;&gt;,&lt;&lt;激荡三十年&gt;&gt;的上下部,&lt;&lt;跌宕一百年&gt;&gt;的上下部,&lt;&lt;浩荡两千年&gt;&gt;,&lt;&lt;红树林&gt;&gt;,&lt;&lt;激荡十年,水大鱼大&gt;&gt;,&lt;&lt;人类群星闪耀时&gt;&gt;,&lt;&lt;蛙&gt;&gt;&lt;&lt;活着&gt;&gt;. 技术性的图书看的有&lt;&lt;人月神话&gt;&gt;（适合产品经理），&lt;&lt;单页ｗｅｂ应用&gt;&gt;,&lt;&lt;ｈｅｂｉｎａｔｅ实战&gt;&gt;等． 今年和对象看了19场电影,每次看电影都是非常开心的,哈哈. 拿到了驾照 关于装备在年初的时候，由于使用的是ｐｈｐ开发，也没有感觉到我的笔记本在性能上有哪些明显的缺陷，但是自从转到ｊａｖａ开发，使用ｉｄｅａ后，发现ｗｉｎｄｏｗｓ系统太卡，就转到ｕｂｕｎｔｕ系统，发现流畅了很多．后来加上了一４Ｇ的内存条，又把机械硬盘换成了固态硬盘，启动测量项目本来需要几分钟或者几十分钟或者直接卡死，现在只需要几十秒，感觉舒服了好多．后来又使用双屏幕，大屏幕敲代码，小屏幕看效果，感觉敲代码爽了好多．假期由于不能使用双屏幕，才发现好的装备是多么的爽，多么的重要！！！ 总结 钻研基础知识时，要优先考虑比较厚的书，因为厚说明他讲的更详细一些．而我之前常常因为携带不方便，而抗拒厚的书． 持续学习，长时间的积累，在不知不觉中发现自己确实是进步了．遇到问题更加淡定了． 很高兴自己除了编程，又找到了一个爱好—阅读，希望能坚持下去 今年的状态还是不错的，一直处于学习的状态中，很少睡懒觉，不玩游戏，看书，敲敲代码，上课，陪陪女朋友，看看电影，很开心，很知足，很充实． 展望２０１８２０１８年唯一的目标就是考上研究生，希望自己和女朋友都能如愿的考上研究生，希望可以像自己期望的那样坚持学习，上半年可以偶尔根据自己的爱好看一些闲书，下半年全力以赴考研． 路漫漫其修远兮，吾将上下而求索．]]></content>
       <categories>
         <category>年终总结</category>
       </categories>
@@ -111,8 +111,8 @@
         <category>Hibernate</category>
       </categories>
       <tags>
-        <tag>JPA</tag>
         <tag>inheritance</tag>
+        <tag>JPA</tag>
         <tag>entity</tag>
         <tag>map</tag>
       </tags>
@@ -367,11 +367,15 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[错题本]]></title>
-    <url>%2F2017%2F05%2F16%2F%E9%94%99%E9%A2%98%E6%9C%AC%2F</url>
-    <content type="text"><![CDATA[1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。2.考研机试题九度 ，配色网站Color Scheme ，易用框架easyui ,3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。 4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。5.剑指offer]]></content>
+    <title><![CDATA[Difference between GET and POST]]></title>
+    <url>%2F2017%2F05%2F16%2FDifference-between-GET-and-POST%2F</url>
+    <content type="text"><![CDATA[According to the online information and the books of PHP, I have sorted out the difference between GET and POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. security We might see some documents sometimes display that GET is safe but disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because we can not change data by using GET. And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url. The size of the data transfer GETurl is limited in special browser or server. For example, the length of url in IE browser is limited as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited. POSTbecause POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST. Data encodingAs the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit must be ASCII coding. If it is not ASCII coding, we need to convert. Default formGET is the default action of form. Relationship with serverGET is used to get data from server, while POST is used to transfer data to server.]]></content>
+      <categories>
+        <category>English</category>
+      </categories>
       <tags>
-        <tag>错题</tag>
+        <tag>GET</tag>
+        <tag>POST</tag>
       </tags>
   </entry>
   <entry>
@@ -394,24 +398,20 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[错题本]]></title>
+    <url>%2F2017%2F05%2F16%2F%E9%94%99%E9%A2%98%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[1.一些数据是有API借口的，如航班信息。有时间尝试在tour项目的航班管理中通过API获取航班信息。2.考研机试题九度 ，配色网站Color Scheme ，易用框架easyui ,3.数据库的视图的作用是查询，不能实现增删改的功能，如果多张表关联，查询信息如果比较麻烦，那么，用视图最好不过。 4.数据表冗余问题，如果个数据表中的字段有多条信息，那么，就需要再建立一张关联的表，而不要为了方便转化成json字符串，一方面产生了数据的冗余，不易管理数据，一方面不符合软件设计的基本思想。5.剑指offer]]></content>
+      <tags>
+        <tag>错题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Brief process of building a personal blog]]></title>
     <url>%2F2017%2F05%2F16%2FThe-brief-process-of-building-a-personal-blog%2F</url>
     <content type="text"><![CDATA[The article is a brief statement mainly about the whole process of building personal blog, which is about from building Github Pages, learning hexo, to write blogs by using markdown, achieve the feature of uploading pictures. Tools: github account, node, npm, hexo, Image Uploader, markdown, swiftype. Building Github PagesI have built my site by Github Pages, recommond document . If you only want to write blogs, the 300M space of Github Pages is enough to use. Because now the mainstream blog framework are static page, does not involve the interaction with the database, so do not need too much space. Learning HexoBuilding hexo environment needs node, npm, and the specific installation steps has been given by hexo official website . I recommend learning materials , if after deploying on server, there are not styles, you can deploy on the site again after executing hexo clean command. I used jacman theme , due to the jacman’s author has written a detail tutorial, you can complete the theme setting by fowllowing it step by step. Writting blogs by using markdownI did not know markdown before building blog, so I download a mainstream markdown tool called reMarkable . After learning basic grammer, I have sorted out common grammer in markdown. I hope it can help you. If some of the result is not what you want, you can add a space and try it again. eg: ### mengyunzhi（there is a space between the last “#”and”m”). Uploading picturesBecause you often need some pictures to explain what you want to express, the feature of uploading pictures is necessary, I used Image Uploader to upload pictures. After downloading Image Uploader, uploading a picture and copy the url of picture by using it, you can achieve the feature of uploading pictures. Searching in siteI tried to baidu’s search site and para, but I failed. And I saw swiftype by accident, you can try it in my blog. Here is a tutorial . I recommend swiftype instead baidu and google’s search site. ConclusionAbove is the process of building a whole personal blog. Before building the blog, maybe you feel that you need to be in a high level. But after you know it, you may find you can build your blog in short time even you are amateur. I believe that if reader have the determine to build your personal blog, you can be able to do as well as you want. Good luck to you! If there are mistakes, please correct me.]]></content>
       <categories>
         <category>English</category>
       </categories>
-  </entry>
-  <entry>
-    <title><![CDATA[Difference between GET and POST]]></title>
-    <url>%2F2017%2F05%2F16%2FDifference-between-GET-and-POST%2F</url>
-    <content type="text"><![CDATA[According to the online information and the books of PHP, I have sorted out the difference between GET and POST to deepen memory and share with you. Intrinsical distincetion in them is that GET is used to query information but POST is used to update or save information. security We might see some documents sometimes display that GET is safe but disply it is not safe sometimes. But whether GET is safe or not ? GET is displayed to be safe in the documents because we can not change data by using GET. And GET is displayed to be not safe in the documents because when we use GET to submit data, data will display in url. The size of the data transfer GETurl is limited in special browser or server. For example, the length of url in IE browser is limited as 2k+35 byters. As for other browsers, url might be limited by operating system instead of browsers. So when we use GET to transefer data, the length will be limited. POSTbecause POST dose not use url to transfer data, the size of data is not limited theoretically. Actually, web server will limite the size of data of POST(Generally does not affect). So when we upload massive data, we can only use POST. Data encodingAs the GET data is displayed in the url, and url encoding is used in ASCII coding, so the data we submit must be ASCII coding. If it is not ASCII coding, we need to convert. Default formGET is the default action of form. Relationship with serverGET is used to get data from server, while POST is used to transfer data to server.]]></content>
-      <categories>
-        <category>English</category>
-      </categories>
-      <tags>
-        <tag>GET</tag>
-        <tag>POST</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[基于链表的C语言信息管理系统]]></title>
@@ -426,14 +426,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[订单号生成规则简述]]></title>
-    <url>%2F2017%2F05%2F13%2F%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0%2F</url>
-    <content type="text"><![CDATA[最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。 订单编号生成规则 不重复。这是生成订单号最基本、最重要的原则。比如一个人在京东上买了一个手机，另外一个人在京东上买了一包卫生纸，生成了一样的订单编号，一个人给客服打电话，客服一查，到底是哪个商品呢？ 安全。订单编号不能暴露客户的id，或者让竞争对手很容易看出近期的订单量。 不能大规模生成随机码。当订单量比较多的时候，大规模生成随机码容易发生碰撞。 控制位数。客户向客服上报订单编号时，太长不仅容易出错，而且耽误时间。 符合实际需求。订单的生成规则要根据自己的项目中实际的需求。比如一个小型网站使用淘宝的订单编号生成规则，显然有点大费周章了。 订单号尽量保持整形。提高数据库的检索效率，也不至于凌乱，或是让一些英文发信不标准的朋友尴尬。 实例参考 小米订单生成规则。1——111218—03234—5170，将订单分为四个部分。第一部分，1表示购买，2表示退货。第二部分，表示2011年12月18日下的单。第三部分，时间戳对应0:53:54。最后一部分，表示在同一秒内下的第5170单，也就是说，小米认为，在一秒内不会超过一万个订单。 宅妈妈app订单生成规则。订单是一个四位数的自增数字，可能想让用户感觉到订单在不断的增加，或者业务初期不想让用户反馈问题时报上冗长的订单号。 所犯的错开始的时候欲使用的订单生成规则为：年月日+时间戳（五为）+随机数（2位）+客户id后四位，如20170421—34324——32—32321。如果这样设置的话当客户超过十万人时，如果id为1和100001同一秒下单订单号就有可能重复，而且随机数的一般作用为混淆别人找出订单生成规则，而实际项目中没有必要，不是很符合实际需求。 项目中使用的订单生成规则综合以上因素，项目中决定使用：年月日+时间戳（后五位）+同一秒内订单生成序列号（三位）。例：20170421—34234—001，前13位精确到秒，后三位表示同一秒内生成的第一单。如果同一秒内生成了多个订单，则这些订单钱13位一样，后三位依次递增，也就是系统认为一秒内不会同时生成1000个订单。 如有错误，欢迎指正！]]></content>
-      <tags>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[angular+thinkphp上传图片]]></title>
     <url>%2F2017%2F05%2F13%2Fangular-thinkphp%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%2F</url>
     <content type="text"><![CDATA[最近做的项目中需要用到图片上传功能，决定使用angular+thinkphp实现图片上传功能。尝试了ng-flow、ng-file-upload，都没有达到理想的效果，最终使用angular-file-upload实现。 效果如下： 实现流程 获取图片信息 将图片移至指定的目录下 将图片的信息保存到数据库中 具体细节下载插件示例代码，插件的示例代码非常完善，图片的缩略图功能、进度展示、图片尺寸等信息示例代码中都有，并且每一个操作的返回值也都给出了，使用非常方便。将相关资源引入，上传的样式即可实现。修改路由信息，当用户点击上传按钮时，调用请求的方法，讲图片保存，并返回图片id，点击提交按钮，将图片id存入对应的模块中。 对应的时序图如下(新增和编辑)： 时序图 如有错误，欢迎指正！]]></content>
@@ -442,6 +434,14 @@
       </categories>
       <tags>
         <tag>demo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[订单号生成规则简述]]></title>
+    <url>%2F2017%2F05%2F13%2F%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99%E7%AE%80%E8%BF%B0%2F</url>
+    <content type="text"><![CDATA[最近做的项目需要生成订单编号，查阅资料后进行了学习总结，并将最终项目中使用的订单号生成规则进行记录。 订单编号生成规则 不重复。这是生成订单号最基本、最重要的原则。比如一个人在京东上买了一个手机，另外一个人在京东上买了一包卫生纸，生成了一样的订单编号，一个人给客服打电话，客服一查，到底是哪个商品呢？ 安全。订单编号不能暴露客户的id，或者让竞争对手很容易看出近期的订单量。 不能大规模生成随机码。当订单量比较多的时候，大规模生成随机码容易发生碰撞。 控制位数。客户向客服上报订单编号时，太长不仅容易出错，而且耽误时间。 符合实际需求。订单的生成规则要根据自己的项目中实际的需求。比如一个小型网站使用淘宝的订单编号生成规则，显然有点大费周章了。 订单号尽量保持整形。提高数据库的检索效率，也不至于凌乱，或是让一些英文发信不标准的朋友尴尬。 实例参考 小米订单生成规则。1——111218—03234—5170，将订单分为四个部分。第一部分，1表示购买，2表示退货。第二部分，表示2011年12月18日下的单。第三部分，时间戳对应0:53:54。最后一部分，表示在同一秒内下的第5170单，也就是说，小米认为，在一秒内不会超过一万个订单。 宅妈妈app订单生成规则。订单是一个四位数的自增数字，可能想让用户感觉到订单在不断的增加，或者业务初期不想让用户反馈问题时报上冗长的订单号。 所犯的错开始的时候欲使用的订单生成规则为：年月日+时间戳（五为）+随机数（2位）+客户id后四位，如20170421—34324——32—32321。如果这样设置的话当客户超过十万人时，如果id为1和100001同一秒下单订单号就有可能重复，而且随机数的一般作用为混淆别人找出订单生成规则，而实际项目中没有必要，不是很符合实际需求。 项目中使用的订单生成规则综合以上因素，项目中决定使用：年月日+时间戳（后五位）+同一秒内订单生成序列号（三位）。例：20170421—34234—001，前13位精确到秒，后三位表示同一秒内生成的第一单。如果同一秒内生成了多个订单，则这些订单钱13位一样，后三位依次递增，也就是系统认为一秒内不会同时生成1000个订单。 如有错误，欢迎指正！]]></content>
+      <tags>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
